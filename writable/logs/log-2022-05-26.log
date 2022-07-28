@@ -1,0 +1,7 @@
+CRITICAL - 2022-05-26 16:03:04 --> Call to a member function paginate() on array
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#5 {main}

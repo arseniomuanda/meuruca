@@ -1,0 +1,125 @@
+ERROR - 2022-04-09 04:48:39 --> mysqli_sql_exception: Unknown column 'undefined' in 'where clause' in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT viaturas...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT viaturas...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT viaturas...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(187): CodeIgniter\Database\BaseConnection->query('SELECT viaturas...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(137): App\Controllers\Operations->showUserCar(Object(CodeIgniter\Database\MySQLi\Connection), 'undefined')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-04-09 04:48:39 --> Unknown column 'undefined' in 'where clause'
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT viaturas...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT viaturas...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT viaturas...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(187): CodeIgniter\Database\BaseConnection->query('SELECT viaturas...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(137): App\Controllers\Operations->showUserCar(Object(CodeIgniter\Database\MySQLi\Connection), 'undefined')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+ERROR - 2022-04-09 04:50:30 --> mysqli_sql_exception: Unknown column 'undefined' in 'where clause' in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT viaturas...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT viaturas...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT viaturas...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(187): CodeIgniter\Database\BaseConnection->query('SELECT viaturas...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(137): App\Controllers\Operations->showUserCar(Object(CodeIgniter\Database\MySQLi\Connection), 'undefined')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-04-09 04:50:31 --> Unknown column 'undefined' in 'where clause'
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT viaturas...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT viaturas...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT viaturas...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(187): CodeIgniter\Database\BaseConnection->query('SELECT viaturas...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(137): App\Controllers\Operations->showUserCar(Object(CodeIgniter\Database\MySQLi\Connection), 'undefined')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+ERROR - 2022-04-09 04:50:55 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND viaturas.proprietario ORDER BY agendas.inicio ASC' at line 1 in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT * FROM `...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM `...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM `...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(486): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(113): App\Controllers\Operations->gestaoViaturaPerfil('3', Object(CodeIgniter\Database\MySQLi\Connection), '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-04-09 04:50:55 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND viaturas.proprietario ORDER BY agendas.inicio ASC' at line 1
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT * FROM `...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM `...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM `...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(486): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(113): App\Controllers\Operations->gestaoViaturaPerfil('3', Object(CodeIgniter\Database\MySQLi\Connection), '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+ERROR - 2022-04-09 04:51:33 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND viaturas.proprietario ORDER BY agendas.inicio ASC' at line 1 in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT * FROM `...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM `...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM `...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(486): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(113): App\Controllers\Operations->gestaoViaturaPerfil('3', Object(CodeIgniter\Database\MySQLi\Connection), '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-04-09 04:51:33 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND viaturas.proprietario ORDER BY agendas.inicio ASC' at line 1
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT * FROM `...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM `...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM `...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(486): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(113): App\Controllers\Operations->gestaoViaturaPerfil('3', Object(CodeIgniter\Database\MySQLi\Connection), '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+ERROR - 2022-04-09 10:08:29 --> mysqli_sql_exception: Unknown column 'undefined' in 'where clause' in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT viaturas...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT viaturas...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT viaturas...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(187): CodeIgniter\Database\BaseConnection->query('SELECT viaturas...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(137): App\Controllers\Operations->showUserCar(Object(CodeIgniter\Database\MySQLi\Connection), 'undefined')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-04-09 10:08:29 --> Unknown column 'undefined' in 'where clause'
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT viaturas...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT viaturas...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT viaturas...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(187): CodeIgniter\Database\BaseConnection->query('SELECT viaturas...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(137): App\Controllers\Operations->showUserCar(Object(CodeIgniter\Database\MySQLi\Connection), 'undefined')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}

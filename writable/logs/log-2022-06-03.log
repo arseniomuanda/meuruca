@@ -1,0 +1,106 @@
+CRITICAL - 2022-06-03 06:18:39 --> Trying to get property 'hash_factura' of non-object
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(632): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\WORKPLACE\\me...', 632, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('41', '16')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+ERROR - 2022-06-03 06:25:03 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM itemfacturas WHERE factura = 41' at line 1 in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT itemfact...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT itemfact...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT itemfact...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(682): CodeIgniter\Database\BaseConnection->query('SELECT itemfact...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('41', '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-06-03 06:25:03 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM itemfacturas WHERE factura = 41' at line 1
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT itemfact...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT itemfact...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT itemfact...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(682): CodeIgniter\Database\BaseConnection->query('SELECT itemfact...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('41', '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+ERROR - 2022-06-03 06:26:30 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM itemfacturas WHERE factura = 41' at line 1 in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT itemfact...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT itemfact...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT itemfact...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(682): CodeIgniter\Database\BaseConnection->query('SELECT itemfact...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('41', '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-06-03 06:26:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM itemfacturas WHERE factura = 41' at line 1
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT itemfact...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT itemfact...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT itemfact...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(682): CodeIgniter\Database\BaseConnection->query('SELECT itemfact...')
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('41', '16')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
+CRITICAL - 2022-06-03 06:30:47 --> Undefined variable: factura
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(661): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\WORKPLACE\\me...', 661, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('41', '16')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-03 10:05:40 --> Trying to get property 'hash_factura' of non-object
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(631): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\WORKPLACE\\me...', 631, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('141', '16')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-03 11:02:01 --> Trying to get property 'hash_factura' of non-object
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(631): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\WORKPLACE\\me...', 631, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('141', '16')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-03 11:57:12 --> Undefined property: App\Controllers\Operations::$auditoria
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(717): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\WORKPLACE\\me...', 717, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(205): App\Controllers\Operations->gerarFacturaapi('41', '16')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-03 11:57:13 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}

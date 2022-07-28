@@ -1,0 +1,37 @@
+CRITICAL - 2022-07-05 12:10:30 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-07-05 12:20:17 --> A non well formed numeric value encountered
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'C:\\WORKPLACE\\me...', 532, Array)
+#1 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(532): date('d-M-Y', '2022-06-12 00:0...')
+#2 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(716): nextManutencao('1220', '80', '40', '2022-04-17')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(187): App\Controllers\Operations->gestaoViaturaPerfil('3', Object(CodeIgniter\Database\MySQLi\Connection), '16')
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#9 {main}
+CRITICAL - 2022-07-05 14:52:24 --> Call to undefined method CodeIgniter\Database\MySQLi\Result::getRox()
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#5 {main}
+CRITICAL - 2022-07-05 14:59:39 --> Array to string conversion
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(126): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\WORKPLACE\\me...', 126, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-07-05 15:01:29 --> Array to string conversion
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(124): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\WORKPLACE\\me...', 124, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}

@@ -1,0 +1,134 @@
+ERROR - 2022-07-26 09:27:07 --> Error connecting to the database: Connection refused
+CRITICAL - 2022-07-26 09:27:07 --> Unable to connect to the database.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(283): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(237): App\Controllers\Login->existEmail('mano@gmail.com')
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#8 {main}
+ERROR - 2022-07-26 09:30:59 --> Error connecting to the database: Connection refused
+CRITICAL - 2022-07-26 09:30:59 --> Unable to connect to the database.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(283): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(237): App\Controllers\Login->existEmail('mano@gmail.com')
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#8 {main}
+CRITICAL - 2022-07-26 10:03:50 --> Undefined index: id
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(243): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/home/arsenio/W...', 243, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-26 10:14:14 --> Undefined index: criadopor
+#0 /home/arsenio/WORKPLACE/meuruca/app/Helpers/funcao_helper.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/home/arsenio/W...', 34, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(241): cadastronormal(Object(App\Models\ContaModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#7 {main}
+CRITICAL - 2022-07-26 10:14:29 --> There is no data to insert.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(735): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#3 /home/arsenio/WORKPLACE/meuruca/app/Helpers/funcao_helper.php(26): CodeIgniter\BaseModel->save(Array)
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(271): cadastronormal(Object(App\Models\UtilizacaoModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+CRITICAL - 2022-07-26 10:34:34 --> There is no data to insert.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(735): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#3 /home/arsenio/WORKPLACE/meuruca/app/Helpers/funcao_helper.php(26): CodeIgniter\BaseModel->save(Array)
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(271): cadastronormal(Object(App\Models\UtilizacaoModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+CRITICAL - 2022-07-26 10:38:20 --> There is no data to insert.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(735): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#3 /home/arsenio/WORKPLACE/meuruca/app/Helpers/funcao_helper.php(26): CodeIgniter\BaseModel->save(Array)
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(271): cadastronormal(Object(App\Models\UtilizacaoModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+CRITICAL - 2022-07-26 10:40:03 --> There is no data to insert.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(735): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#3 /home/arsenio/WORKPLACE/meuruca/app/Helpers/funcao_helper.php(26): CodeIgniter\BaseModel->save(Array)
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(271): cadastronormal(Object(App\Models\UtilizacaoModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+CRITICAL - 2022-07-26 10:50:04 --> Argument 2 passed to returnVoid() must be of the type int, string given, called in /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php on line 239
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(239): returnVoid(Array, 'Email J\xC3\xA1 Exist...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-26 10:50:05 --> Argument 2 passed to returnVoid() must be of the type int, string given, called in /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php on line 239
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(239): returnVoid(Array, 'Email J\xC3\xA1 Exist...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-26 10:51:16 --> Argument 2 passed to returnVoid() must be of the type int, string given, called in /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php on line 239
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(239): returnVoid(Array, 'Email J\xC3\xA1 Exist...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newaccount()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+ERROR - 2022-07-26 10:58:45 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE `utiliza...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utiliza...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utiliza...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(182): CodeIgniter\Database\BaseConnection->query('UPDATE `utiliza...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->logout()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+CRITICAL - 2022-07-26 10:58:45 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE `utiliza...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utiliza...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utiliza...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(182): CodeIgniter\Database\BaseConnection->query('UPDATE `utiliza...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->logout()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}

@@ -1,0 +1,47 @@
+CRITICAL - 2022-06-14 07:13:47 --> Trying to get property 'id' of non-object
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(150): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\WORKPLACE\\me...', 150, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+ERROR - 2022-06-14 07:53:05 --> mysqli_sql_exception: Unknown column '41r' in 'where clause' in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(146): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#9 {main}
+CRITICAL - 2022-06-14 07:53:05 --> Unknown column '41r' in 'where clause'
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(146): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#9 {main}
+CRITICAL - 2022-06-14 07:54:34 --> Trying to get property 'id' of non-object
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(153): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\WORKPLACE\\me...', 153, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-06-14 07:54:54 --> Trying to get property 'id' of non-object
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(154): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\WORKPLACE\\me...', 154, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}

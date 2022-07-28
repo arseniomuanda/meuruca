@@ -1,0 +1,15 @@
+ERROR - 2022-05-09 08:55:02 --> Error connecting to the database: Nenhuma ligação pôde ser feita porque o computador de destino
+as recusou ativamente.
+
+CRITICAL - 2022-05-09 08:55:02 --> Unable to connect to the database.
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1966): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(570): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1140): CodeIgniter\Model->countAllResults(false)
+#4 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(105): CodeIgniter\BaseModel->paginate()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}

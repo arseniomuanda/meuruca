@@ -1,0 +1,118 @@
+CRITICAL - 2022-06-17 11:11:24 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-06-17 11:18:09 --> syntax error, unexpected 'nextManutencao' (T_STRING), expecting ']'
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('operations')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('operations')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(384): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-06-17 15:24:50 --> syntax error, unexpected '}'
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('operations')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('operations')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(384): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-06-17 15:31:59 --> Undefined index: password
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(269): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\WORKPLACE\\me...', 269, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('', Object(CodeIgniter\Database\MySQLi\Connection), '', Array, Object(App\Models\UtilizadorModel))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 15:36:35 --> Trying to access array offset on value of type null
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(278): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'C:\\WORKPLACE\\me...', 278, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('3', Object(CodeIgniter\Database\MySQLi\Connection), '16', Array, Object(App\Models\UtilizadorModel))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 15:37:59 --> Trying to access array offset on value of type null
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(278): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'C:\\WORKPLACE\\me...', 278, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('3', Object(CodeIgniter\Database\MySQLi\Connection), '16', Array, Object(App\Models\UtilizadorModel))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 15:43:13 --> Undefined index: criadopor
+#0 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(298): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\WORKPLACE\\me...', 298, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(304): updatecomumafoto(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), 'Utilizador', 'utilizadors', NULL, 'foto')
+#2 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('6', Object(CodeIgniter\Database\MySQLi\Connection), '16', Array, Object(App\Models\UtilizadorModel))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#8 {main}
+CRITICAL - 2022-06-17 15:43:48 --> Undefined index: telefone
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(294): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\WORKPLACE\\me...', 294, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('6', Object(CodeIgniter\Database\MySQLi\Connection), '16', Array, Object(App\Models\UtilizadorModel))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 15:49:27 --> Too few arguments to function CodeIgniter\HTTP\IncomingRequest::getFile(), 0 passed in C:\WORKPLACE\meuruca\app\Controllers\Operations.php on line 145 and exactly 1 expected
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): CodeIgniter\HTTP\IncomingRequest->getFile()
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-06-17 15:57:39 --> Trying to access array offset on value of type null
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(280): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'C:\\WORKPLACE\\me...', 280, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('6', '16', Array, Object(App\Models\UtilizadorModel), Object(CodeIgniter\HTTP\Files\UploadedFile))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 15:59:49 --> Undefined index: old_password
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(270): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\WORKPLACE\\me...', 270, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('6', '16', Array, Object(App\Models\UtilizadorModel), Object(CodeIgniter\HTTP\Files\UploadedFile))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 15:59:55 --> Undefined index: new_password
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(274): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\WORKPLACE\\me...', 274, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('6', '16', Array, Object(App\Models\UtilizadorModel), Object(CodeIgniter\HTTP\Files\UploadedFile))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 15:59:59 --> Trying to access array offset on value of type null
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(280): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'C:\\WORKPLACE\\me...', 280, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('6', '16', Array, Object(App\Models\UtilizadorModel), Object(CodeIgniter\HTTP\Files\UploadedFile))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-06-17 16:00:15 --> Trying to access array offset on value of type null
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(280): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'C:\\WORKPLACE\\me...', 280, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(145): App\Controllers\Operations->changeUserProfile('6', '16', Array, Object(App\Models\UtilizadorModel), Object(CodeIgniter\HTTP\Files\UploadedFile))
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}

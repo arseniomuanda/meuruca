@@ -1,0 +1,294 @@
+[03-Jun-2022 12:07:55 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[03-Jun-2022 12:10:37 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[03-Jun-2022 12:11:16 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[03-Jun-2022 12:11:30 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[03-Jun-2022 12:12:09 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[03-Jun-2022 12:12:27 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 06:56:15 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 06:56:40 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 06:57:12 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 06:57:19 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 06:57:30 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 06:58:09 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 06:59:23 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 07:03:34 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 07:04:39 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 07:05:03 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 07:05:08 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 07:05:17 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 07:52:48 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 08:08:20 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 08:08:26 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 08:13:15 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[06-Jun-2022 08:14:15 America/Chicago] PHP Fatal error:  Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Type is not supported". in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php:42
+Stack trace:
+#0 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Type is not sup...')
+#1 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/API/ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#5 {main}
+  thrown in /home/arpetic/meuruca/vendor/codeigniter4/framework/system/Format/JSONFormatter.php on line 42
+[16-Jun-2022 05:43:36 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 05:43:36 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:05:00 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:05:00 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:05:18 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:05:18 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:05:37 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:05:52 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:05:53 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:08:22 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:08:22 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:08:43 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:08:43 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:08:59 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:09:11 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:09:12 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:09:21 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:09:49 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:09:49 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:09:52 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:10:39 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:10:54 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:10:54 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:10:54 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:07 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:07 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:08 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:09 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:09 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:10 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:10 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:11:10 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:15:05 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:15:06 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:15:09 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:15:10 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:29:54 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:29:54 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:35:11 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 06:35:11 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:02:26 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:02:26 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:02:26 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:02:26 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:06:19 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:06:19 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:12:57 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:12:57 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:13:47 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:19:52 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:19:52 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:21:28 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:21:38 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:21:38 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:21:38 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:22:19 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:22:19 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:22:47 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:22:47 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:22:55 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:22:55 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:22:55 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:23:45 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[16-Jun-2022 07:23:45 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[17-Jun-2022 10:43:41 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[17-Jun-2022 10:43:41 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[17-Jun-2022 10:43:43 America/Chicago] PHP Fatal error:  Cannot declare class App\Controllers\Operations, because the name is already in use in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 30
+[11-Jul-2022 11:04:17 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:04:32 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:05:04 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:05:36 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:10:54 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:13:07 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:13:43 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:14:36 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:16:35 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:17:49 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:20:03 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:20:59 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:21:15 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:21:38 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[11-Jul-2022 11:22:09 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[12-Jul-2022 09:25:26 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[12-Jul-2022 09:28:16 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[12-Jul-2022 09:44:34 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[12-Jul-2022 09:47:54 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[12-Jul-2022 10:07:49 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556

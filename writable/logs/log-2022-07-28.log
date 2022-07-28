@@ -1,0 +1,32 @@
+CRITICAL - 2022-07-28 00:22:06 --> Trying to get property 'api_token_date' of non-object
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(225): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/home/arsenio/W...', 225, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-28 00:22:08 --> Trying to get property 'api_token_date' of non-object
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(225): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/home/arsenio/W...', 225, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-28 00:22:09 --> Trying to get property 'api_token_date' of non-object
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(225): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/home/arsenio/W...', 225, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-28 00:22:10 --> Trying to get property 'api_token_date' of non-object
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(225): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/home/arsenio/W...', 225, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}

@@ -1,0 +1,79 @@
+CRITICAL - 2022-07-19 17:45:39 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/bootstrap.php(158): CodeIgniter\CodeIgniter->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/spark(53): require('...')
+#2 {main}
+CRITICAL - 2022-07-19 17:45:39 --> Uncaught ErrorException: Undefined variable $viewFile in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:281
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(281): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(281): include()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(147): CodeIgniter\Debug\Exceptions->render()
+#3 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler()
+#4 {main}
+
+Next ValueError: Path cannot be empty in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:281
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(147): CodeIgniter\Debug\Exceptions->render()
+#1 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler()
+#2 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-07-19 17:52:38 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/bootstrap.php(158): CodeIgniter\CodeIgniter->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/spark(53): require('...')
+#2 {main}
+CRITICAL - 2022-07-19 18:55:09 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/bootstrap.php(158): CodeIgniter\CodeIgniter->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/public/index.php(35): require('...')
+#2 {main}
+CRITICAL - 2022-07-19 18:55:09 --> Uncaught ErrorException: filter_var(): Passing null to parameter #3 ($options) of type array|int is deprecated in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php:338
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php(338): filter_var()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php(195): CodeIgniter\HTTP\Request->fetchGlobal()
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php(69): CodeIgniter\HTTP\Request->getServer()
+#4 /home/arsenio/WORKPLACE/meuruca/app/Views/errors/html/error_exception.php(210): CodeIgniter\HTTP\Request->getIPAddress()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(281): include('...')
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(147): CodeIgniter\Debug\Exceptions->render()
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler()
+#8 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-07-19 18:56:45 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/bootstrap.php(158): CodeIgniter\CodeIgniter->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/public/index.php(35): require('...')
+#2 {main}
+CRITICAL - 2022-07-19 18:56:45 --> Uncaught ErrorException: filter_var(): Passing null to parameter #3 ($options) of type array|int is deprecated in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php:338
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php(338): filter_var()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php(195): CodeIgniter\HTTP\Request->fetchGlobal()
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/HTTP/RequestTrait.php(69): CodeIgniter\HTTP\Request->getServer()
+#4 /home/arsenio/WORKPLACE/meuruca/app/Views/errors/html/error_exception.php(210): CodeIgniter\HTTP\Request->getIPAddress()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(281): include('...')
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(147): CodeIgniter\Debug\Exceptions->render()
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler()
+#8 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-07-19 18:57:11 --> Constant FILTER_SANITIZE_STRING is deprecated
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Router/RouteCollection.php(1359): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Router/RouteCollection.php(608): CodeIgniter\Router\RouteCollection->create()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Config/Routes.php(27): CodeIgniter\Router\RouteCollection->add()
+#3 /home/arsenio/WORKPLACE/meuruca/app/Config/Routes.php(12): require('...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(802): require('...')
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(384): CodeIgniter\CodeIgniter->tryToRouteIt()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest()
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-07-19 18:57:11 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /home/arsenio/WORKPLACE/meuruca/app/Config/Events.php:35) in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header()
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler()
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}

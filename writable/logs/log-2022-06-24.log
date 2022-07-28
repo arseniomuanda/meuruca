@@ -1,0 +1,9 @@
+CRITICAL - 2022-06-24 13:22:41 --> Trying to get property 'km_actual' of non-object
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(682): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\WORKPLACE\\me...', 682, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(165): App\Controllers\Operations->gestaoViaturaPerfil('44', Object(CodeIgniter\Database\MySQLi\Connection), '16')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}

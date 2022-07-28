@@ -1,0 +1,79 @@
+CRITICAL - 2022-07-27 09:39:00 --> Undefined index: email
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(222): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', '/home/arsenio/W...', 222, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-27 09:41:05 --> Undefined property: App\Controllers\Login::$utilizadorModel
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(226): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', '/home/arsenio/W...', 226, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-27 22:24:56 --> Object of class App\Controllers\Login could not be converted to string
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(195): CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', '/home/arsenio/W...', 195, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->askResetPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-27 22:48:40 --> Object of class App\Controllers\Login could not be converted to string
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(197): CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', '/home/arsenio/W...', 197, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->askResetPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-27 22:49:13 --> Object of class App\Controllers\Login could not be converted to string
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(197): CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', '/home/arsenio/W...', 197, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->askResetPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+CRITICAL - 2022-07-27 22:49:15 --> Object of class App\Controllers\Login could not be converted to string
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(197): CodeIgniter\Debug\Exceptions->errorHandler(4096, 'Object of class...', '/home/arsenio/W...', 197, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->askResetPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}
+ERROR - 2022-07-27 22:50:16 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@gmail.com' at line 1 in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE `utiliza...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utiliza...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utiliza...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(197): CodeIgniter\Database\BaseConnection->query('UPDATE `utiliza...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->askResetPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+CRITICAL - 2022-07-27 22:50:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@gmail.com' at line 1
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE `utiliza...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utiliza...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utiliza...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(197): CodeIgniter\Database\BaseConnection->query('UPDATE `utiliza...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->askResetPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+CRITICAL - 2022-07-27 23:54:40 --> Trying to get property 'api_token_date' of non-object
+#0 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(222): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', '/home/arsenio/W...', 222, Array)
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#6 {main}

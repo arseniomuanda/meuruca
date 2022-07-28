@@ -1,0 +1,357 @@
+CRITICAL - 2022-04-03 09:23:21 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:23:22 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:24:18 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:24:18 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:25:43 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:25:43 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:26:04 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:26:04 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:26:23 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:26:23 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:26:57 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:26:57 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:28:24 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:28:24 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:28:41 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:28:41 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:29:12 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:29:12 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 09:29:36 --> Argument 1 passed to CodeIgniter\Validation\Rules::min_length() must be of the type string or null, array given, called in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php on line 306
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(306): CodeIgniter\Validation\Rules->min_length(Array, '3', Array, NULL)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Validation\Validation.php(164): CodeIgniter\Validation\Validation->processRules('username', 'username', Array, Array, Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(1421): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(722): CodeIgniter\BaseModel->validate(Array)
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#6 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(16): CodeIgniter\BaseModel->save(Array)
+#7 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(192): cadastronormal(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#8 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(112): App\Controllers\Operations->newuser(Object(App\Models\UtilizadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#10 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#11 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#14 {main}
+CRITICAL - 2022-04-03 09:29:36 --> Uncaught CodeIgniter\Format\Exceptions\FormatException: Failed to parse json string, error: "Malformed UTF-8 characters, possibly incorrectly encoded". in C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php:42
+Stack trace:
+#0 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Format\JSONFormatter.php(42): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8...')
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(407): CodeIgniter\Format\JSONFormatter->format(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\API\ResponseTrait.php(114): CodeIgniter\Debug\Exceptions->format(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Debug\Exceptions.php(141): CodeIgniter\Debug\Exceptions->respond(Array, 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(TypeError))
+#5 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-04-03 11:31:33 --> Undefined offset: 1
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(194): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\WORKPLACE\\me...', 194, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->newpass('assets', 'images', 'logo-img.png')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-04-03 11:31:33 --> Undefined offset: 1
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(194): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\WORKPLACE\\me...', 194, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->newpass('assets', 'images', 'logo-img.png')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-04-03 11:50:18 --> Undefined offset: 1
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(194): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\WORKPLACE\\me...', 194, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->newpass('assets', 'images', 'logo-img.png')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-04-03 11:50:18 --> Undefined offset: 1
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(194): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\WORKPLACE\\me...', 194, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->newpass('assets', 'images', 'logo-img.png')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-04-03 11:51:23 --> Too few arguments to function App\Controllers\Operations::newPasswordByForgetedPassword(), 0 passed in C:\WORKPLACE\meuruca\app\Controllers\Operations.php on line 124 and exactly 2 expected
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(124): App\Controllers\Operations->newPasswordByForgetedPassword()
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-04-03 11:55:08 --> Undefined index: id
+#0 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(438): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\WORKPLACE\\me...', 438, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(124): App\Controllers\Operations->newPasswordByForgetedPassword(Array)
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#7 {main}
+CRITICAL - 2022-04-03 11:56:39 --> Undefined index: criadopor
+#0 C:\WORKPLACE\meuruca\app\Helpers\funcao_helper.php(235): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\WORKPLACE\\me...', 235, Array)
+#1 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(442): updatenomal(Object(App\Models\UtilizadorModel), Array, Object(App\Models\AuditoriaModel))
+#2 C:\WORKPLACE\meuruca\app\Controllers\Operations.php(124): App\Controllers\Operations->newPasswordByForgetedPassword(Array)
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Operations->index()
+#4 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#8 {main}
+CRITICAL - 2022-04-03 12:45:12 --> Undefined offset: 1
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(194): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\WORKPLACE\\me...', 194, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->newpass('assets', 'images', 'logo-img.png')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-04-03 12:45:12 --> Undefined offset: 1
+#0 C:\WORKPLACE\meuruca\app\Controllers\Login.php(194): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'C:\\WORKPLACE\\me...', 194, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->newpass('assets', 'images', 'logo-img.png')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#6 {main}
+CRITICAL - 2022-04-03 13:36:00 --> Undefined variable: token
+#0 C:\WORKPLACE\meuruca\app\Views\login\footer.php(70): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\WORKPLACE\\me...', 70, Array)
+#1 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\View\View.php(220): include('C:\\WORKPLACE\\me...')
+#2 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Common.php(1217): CodeIgniter\View\View->render('login/footer', Array, true)
+#4 C:\WORKPLACE\meuruca\app\Controllers\Login.php(219): view('login/footer')
+#5 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(935): App\Controllers\Login->passreset()
+#6 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\WORKPLACE\meuruca\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 C:\WORKPLACE\meuruca\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('C:\\WORKPLACE\\me...')
+#10 {main}
