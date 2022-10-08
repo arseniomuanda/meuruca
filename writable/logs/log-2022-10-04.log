@@ -1,0 +1,11 @@
+ERROR - 2022-10-04 12:31:50 --> Error connecting to the database: Unknown database 'meuruca'
+CRITICAL - 2022-10-04 12:31:50 --> Unable to connect to the database.
+#0 /Users/arseniomuanda/Documents/php/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 /Users/arseniomuanda/Documents/php/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#2 /Users/arseniomuanda/Documents/php/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login(NULL)
+#3 /Users/arseniomuanda/Documents/php/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->index()
+#4 /Users/arseniomuanda/Documents/php/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /Users/arseniomuanda/Documents/php/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/arseniomuanda/Documents/php/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 /Users/arseniomuanda/Documents/php/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#8 {main}

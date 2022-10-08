@@ -82,7 +82,7 @@ class Login extends ResourceController
         return $data;
     }
 
-    public function login()
+    public function index()
     {
         helper('funcao');
         $email      = $this->request->getPost('email');
@@ -155,14 +155,14 @@ class Login extends ResourceController
 
                 $this->session->set($data);
 
-                return $this->respond($data);
+                return $this->respond($data, 200);
             } else {
                 $data = [
                     'code'    => 401,
                     'message'   => 'Palavra pass errada!'
                 ];
 
-                return $this->respond($data);
+                return $this->respond($data, 401);
             }
         } else {
             $data = [
@@ -170,7 +170,7 @@ class Login extends ResourceController
                 'message'   => 'Email não encontrado!',
             ];
 
-            return $this->respond($data);
+            return $this->respond($data, 401);
         }
     }
 
@@ -181,7 +181,7 @@ class Login extends ResourceController
         $this->db->query("UPDATE `utilizadors` SET `api_token`= '' WHERE id = $id");;
         return $this->respond([
             'code' => 200
-        ]);
+        ], 200);
     }
 
     public function askResetPassword()
@@ -205,7 +205,7 @@ class Login extends ResourceController
         return $this->respond([
             'code' => 0,
             'message' => "Utilizador não encontrado!"
-        ]);
+        ], 400);
     }
 
     public function newPasswordByForgetedPassword()
@@ -223,12 +223,12 @@ class Login extends ResourceController
 
 
         if (strtotime(date('Y-m-d H:i:s')) > strtotime(date($user->api_token_date))){
-            $data = [
+            $data1 = [
                 'id' => $user->id,
                 'reset_token' => md5("12345678910" . date('d-m-Y') . $data['email']),
                 'criadopor' => $user->id,
             ];
-            updatenomal($this->utilizadorModel, $data, $this->auditoriaModel);
+            updatenomal($this->utilizadorModel, $data1, $this->auditoriaModel);
             return $this->respond(returnVoid($data, 404, "Token Expirado!"));
         }
 
@@ -243,10 +243,10 @@ class Login extends ResourceController
                     'criadopor' => $user->id,
                 ];
                 $resposta = updatenomal($this->utilizadorModel, $data, $this->auditoriaModel);
-                return $this->respond($resposta);
+                return $this->respond($resposta, 200);
             }
         }
-        return $this->respond(returnVoid($data, 400));
+        return $this->respond(returnVoid($data, 400), 400);
     }
 
     public function newaccount()
@@ -293,9 +293,9 @@ class Login extends ResourceController
             daletarespecial($proprietario['id'], $data['criadopor'], $this->db, $this->proprietarioModel, $this->auditoriaModel);
             daletarespecial($conta['id'], $data['criadopor'], $this->db, $this->contaModel, $this->auditoriaModel);
             $data['user'] = $user;
-            return $this->respond(returnVoid($data, (int) 400));
+            return $this->respond(returnVoid($data, (int) 400), 400);
         }
-        return $this->respond($user);
+        return $this->respond($user, 200);
     }
 
     private function existEmail($email)

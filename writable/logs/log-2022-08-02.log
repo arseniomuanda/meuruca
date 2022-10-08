@@ -1,0 +1,111 @@
+ERROR - 2022-08-02 10:51:34 --> Error connecting to the database: Connection refused
+CRITICAL - 2022-08-02 10:51:34 --> Unable to connect to the database.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('mano@gmail.com')
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#8 {main}
+ERROR - 2022-08-02 10:51:37 --> Error connecting to the database: Connection refused
+CRITICAL - 2022-08-02 10:51:37 --> Unable to connect to the database.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('mano@gmail.com')
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#8 {main}
+ERROR - 2022-08-02 10:51:39 --> Error connecting to the database: Connection refused
+CRITICAL - 2022-08-02 10:51:39 --> Unable to connect to the database.
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('mano@gmail.com')
+#3 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#8 {main}
+ERROR - 2022-08-02 10:52:03 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('mano@gmail.com')
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+ERROR - 2022-08-02 10:52:20 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('arsemuanda@gmai...')
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+ERROR - 2022-08-02 10:52:23 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('arsemuanda@gmai...')
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+ERROR - 2022-08-02 10:53:33 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('mano@gmail.com')
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+ERROR - 2022-08-02 10:54:22 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('mano@gmail.com')
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}
+ERROR - 2022-08-02 10:55:16 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT COUNT(*)...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(76): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...')
+#4 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(91): App\Controllers\Login->validar_login('mano@gmail.com')
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->login()
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#10 {main}

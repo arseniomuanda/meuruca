@@ -30,3 +30,171 @@ CRITICAL - 2022-07-28 00:22:10 --> Trying to get property 'api_token_date' of no
 #4 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
 #5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
 #6 {main}
+ERROR - 2022-07-28 09:58:47 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:58:50 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:58:51 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:58:51 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:58:52 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:59:00 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:59:00 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:59:01 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:59:02 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:59:03 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:59:04 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 09:59:05 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 10:00:46 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}
+ERROR - 2022-07-28 10:00:47 --> mysqli_sql_exception: No database selected in /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT * FROM u...')
+#1 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM u...')
+#2 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM u...')
+#3 /home/arsenio/WORKPLACE/meuruca/app/Controllers/Login.php(220): CodeIgniter\Database\BaseConnection->query('SELECT * FROM u...')
+#4 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->newPasswordByForgetedPassword()
+#5 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /home/arsenio/WORKPLACE/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /home/arsenio/WORKPLACE/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/home/arsenio/W...')
+#9 {main}

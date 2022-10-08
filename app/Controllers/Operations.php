@@ -26,6 +26,8 @@ use App\Models\TipoitemModel;
 use App\Models\UtilizacaoModel;
 use App\Models\UtilizadorModel;
 use App\Models\ViaturaModel;
+use App\Models\SeguroModel;
+use App\Models\SinistroModel;
 
 class Operations extends ResourceController
 {
@@ -74,6 +76,8 @@ class Operations extends ResourceController
         $this->viaturaModel = new ViaturaModel();
         $this->servicoModel = new ServicoModel();
         $this->prestadorModel = new PrestadorModel();
+        $this->seguroModel = new SeguroModel();
+        $this->sinistroModel = new SinistroModel();
 
         $this->db = Database::connect();
         $this->protect = new Login();
@@ -709,7 +713,7 @@ class Operations extends ResourceController
             "invoice" =>  $factura
         ];
 
-        /* return $this->respond($data); */
+        /* return $data; */
 
         $curl = curl_init();
 
@@ -805,6 +809,10 @@ class Operations extends ResourceController
                 return $this->prestadorModel;
             case 'proprietario':
                 return $this->proprietarioModel;
+            case 'seguros':
+                return $this->seguroModel;
+            case 'sinistro':
+                return $this->sinistroModel;
             case 'servico':
                 return $this->servicoModel;
             case 'tipoconta':
