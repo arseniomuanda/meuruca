@@ -96,8 +96,8 @@ class Login extends ResourceController
                 $dataLigin = date("Y-m-d H:i:s");
 
                 $this->auditoriaModel->save([
-                    'accao' => 'Reset',
-                    'processo' => 'Reset da palavra pass',
+                    'accao' => 'Login',
+                    'processo' => 'Login',
                     'registo' => $user->id,
                     'utilizadors' => $user->id,
                     'dataAcao' => date('Y-m-d'),
