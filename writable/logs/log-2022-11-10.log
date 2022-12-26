@@ -1,0 +1,60 @@
+CRITICAL - 2022-11-10 15:00:02 --> Call to undefined method App\Controllers\Operations::addEmargenciaImagem()
+#0 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#1 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#2 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Users/arseniomuanda/Arpetic/GitHub/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#4 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#5 {main}
+CRITICAL - 2022-11-10 15:35:45 --> Call to a member function save() on bool
+#0 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(431): cadastrocomumafoto(false, Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), Object(CodeIgniter\HTTP\Files\UploadedFile), 'path')
+#1 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(228): App\Controllers\Operations->addEmergenciaImagem(false, Array)
+#2 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2022-11-10 15:37:27 --> Call to a member function save() on bool
+#0 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(431): cadastrocomumafoto(false, Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), Object(CodeIgniter\HTTP\Files\UploadedFile), 'path')
+#1 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(228): App\Controllers\Operations->addEmergenciaImagem(false, Array)
+#2 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2022-11-10 15:38:48 --> Call to undefined method App\Controllers\Operations::addEmergenciaImagem()
+#0 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#1 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#2 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Users/arseniomuanda/Arpetic/GitHub/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#4 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#5 {main}
+CRITICAL - 2022-11-10 15:39:16 --> Call to a member function save() on bool
+#0 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(431): cadastrocomumafoto(false, Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), Object(CodeIgniter\HTTP\Files\UploadedFile), 'path')
+#1 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(228): App\Controllers\Operations->addAgendaImagem(false, Array)
+#2 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#3 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#4 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+ERROR - 2022-11-10 15:40:56 --> mysqli_sql_exception: Unknown column 'agenda' in 'field list' in /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('INSERT INTO `ag...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ag...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ag...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2265): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ag...', Array, false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+#5 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(758): CodeIgniter\Model->doInsert(Array)
+#6 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Helpers/funcao_helper.php(60): CodeIgniter\BaseModel->save(Array)
+#9 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(431): cadastrocomumafoto(Object(App\Models\AgendaimagemModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), Object(CodeIgniter\HTTP\Files\UploadedFile), 'path')
+#10 /Users/arseniomuanda/Arpetic/GitHub/meuruca/app/Controllers/Operations.php(228): App\Controllers\Operations->addAgendaImagem(Object(App\Models\AgendaimagemModel), Array)
+#11 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#12 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#13 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 /Users/arseniomuanda/Arpetic/GitHub/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#15 /Users/arseniomuanda/Arpetic/GitHub/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#16 {main}

@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ItemfacturaModel extends Model
+class LojaModel extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'itemfacturas';
+	protected $table                = 'lojas';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['factura', 'valor', 'criadopor', 'nome', 'conta', 'qntidade', 'itemId', 'gps', 'distancia'];
+	protected $allowedFields        = ['nome', 'nif', 'email', 'registo_comercial', 'website', 'capital', 'codigo_postal', 'conservatoria', 'telefone', 'fax', 'pais', 'provincia', 'cidade', 'rua', 'porta', 'morada'];
 
 	// Dates
 	protected $useTimestamps        = false;

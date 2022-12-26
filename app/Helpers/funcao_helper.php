@@ -548,16 +548,10 @@ function nextManutencao(
 
     $semanal = $dias_laborais + $final_de_semanda;
     $km_total = $km_actual - (float) $km_na_ultima_revisao;
-
-
-
-
     $dias = 0;
     do {
         $km_total += $semanal;
         $dias += 7;
-        echo $dias . " ";
-        echo $km_total; 
     } while ($km_total <= $periodo_de_revisao);
 
     $resultado = date('Y-m-d', strtotime($data_ultima_revisao . " + $dias days"));

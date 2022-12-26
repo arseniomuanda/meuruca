@@ -2,23 +2,28 @@
 
 namespace App\Controllers;
 
-use App\Models\AgendaModel;
 use App\Models\AnofabricoModel;
 use CodeIgniter\RESTful\ResourceController;
 use Config\Database;
 use \Firebase\JWT\JWT;
 
+use App\Models\AgendaimagemModel;
+use App\Models\AgendaModel;
 use App\Models\AuditoriaModel;
+use App\Models\CarrinhoModel;
+use App\Models\CategoriaModel;
 use App\Models\ContactoModel;
 use App\Models\ContaModel;
 use App\Models\EnderecoModel;
 use App\Models\FacturaModel;
 use App\Models\GestaoviaturaModel;
 use App\Models\ItemfacturaModel;
+use App\Models\LojaModel;
 use App\Models\MarcaModel;
 use App\Models\ModeloModel;
 use App\Models\OleogestaoviaturaModel;
 use App\Models\PrestadorModel;
+use App\Models\ProdutoModel;
 use App\Models\ProprietarioModel;
 use App\Models\ServicoModel;
 use App\Models\TipocontaModel;
@@ -78,6 +83,12 @@ class Operations extends ResourceController
         $this->prestadorModel = new PrestadorModel();
         $this->seguroModel = new SeguroModel();
         $this->sinistroModel = new SinistroModel();
+        $this->agendaimagemModel = new AgendaimagemModel();
+
+        $this->lojaModel = new LojaModel();
+        $this->categoriaModel = new CategoriaModel();
+        $this->produtoModel = new ProdutoModel();
+        $this->carrinhoModel = new CarrinhoModel();
 
         $this->db = Database::connect();
         $this->protect = new Login();
@@ -181,7 +192,7 @@ class Operations extends ResourceController
                             # code...
                             $response = $this->changeUserProfile($data['utilizador'], $data['proprietario'], $data, $model, $this->request->getFile('foto'));
                             break;
-                        case 'agendaProfile': 
+                        case 'agendaProfile':
                             # code...
                             $id = $data['id'];
                             if ($this->db->query("SELECT COUNT(*) total FROM agendas WHERE id = $id")->getRow(0)->total < 1) {
@@ -193,6 +204,7 @@ class Operations extends ResourceController
                             $response = [
                                 'data' => $agenda,
                                 'itens' => $this->db->query("SELECT * FROM itemfacturas WHERE factura = $factura->id")->getResult(),
+                                'imagens' => $this->db->query("SELECT * FROM agendaimages WHERE agenda = $id")->getResult(),
                                 'code' => 200
                             ];
                             return $this->respond($response);
@@ -218,8 +230,11 @@ class Operations extends ResourceController
                             $response = $this->newAgendamento($model, $data, $this->db, $this->auditoriaModel);
                             break;
                         case 'newAgendamentoItem':
-                            #             ...
+
                             $response = $this->addAgendamentoItem($model, $data, $data['servico'], $data['agenda']);
+                            break;
+                        case 'newAgendaImagem':
+                            $response = $this->addAgendaImagem($model, $data);
                             break;
                         case 'searcheCar':
                             # code...
@@ -237,6 +252,38 @@ class Operations extends ResourceController
                             # code...
                             $response = $this->gerarFacturaapi($data['agenda'], $data['proprietario']);
                             break;
+
+                            //ainda nao trabalhei nessas funçoes
+                        case 'buscarProdutos':
+                            # code...
+                            $where = [
+                                'categoria' => $this->request->getPost('categoria'),
+                                'loja' => $this->request->getPost('loja')
+                            ];
+
+                            $response = $this->getProducts($model, $where);
+                            break;
+                        case 'buscarCategorias':
+                            # code...
+                            $response = $model->paginate();
+                            break;
+                        case 'buscarLojas':
+                            # code...
+                            $response = $model->paginate();
+                            break;
+                        case 'addItemCarrinho':
+                            # code...
+                            $response = $this->addCarrinho($model, $data);
+                            break;
+                        case 'removerItemCarrinho':
+                            # code...
+                            $response = $this->remCarrinho($model, $data);
+                            break;
+                        case 'limparCarrinho':
+                            # code...
+                            $response = $this->limparCarrinho($model, $data);
+                            break;
+
                         default:
                             # code...
                             $response = returnVoid($data, 400);
@@ -357,9 +404,7 @@ class Operations extends ResourceController
         return $response;
     }
 
-   
-
-    private function newAgendamento($model, $data, $db, $auditoria)
+    private function newAgendamento($model, $data, $db, $auditoria, $isEmergencia = false)
     {
         helper('funcao');
 
@@ -373,6 +418,8 @@ class Operations extends ResourceController
             'servico_entrega' => $data['servico_entrega'],
             'categoria' => $data['categoria'],
             'criadopor' => $data['criadopor'],
+            'address' => isset($data['address']) ? $data['address'] : '',
+            'gps' => isset($data['gps']) ? $data['gps'] : '',
             'table' => $data['table'],
             /*  'estado' => 0,
             'activo' => 1, */
@@ -419,6 +466,12 @@ class Operations extends ResourceController
         return $agenda;
     }
 
+    private function addAgendaImagem($model, $data)
+    {
+        $foto = $this->request->getFile('imagem');
+        return cadastrocomumafoto($model, $data, $this->db, $this->auditoriaModel, $foto, 'path');
+    }
+
     private function addAgendamentoItem($model, $data, $servico, $agenda)
     {
         $itemRow = $this->db->query("SELECT * FROM `servicos` WHERE id = $servico")->getRow(0);
@@ -435,6 +488,21 @@ class Operations extends ResourceController
             'qntidade' => 1,
             'table' => 'itemfactura',
         ];
+
+        if ($itemRow->id == 2) {
+            $itemData = [
+                'factura' => $factura->id,
+                'itemId' => $servico,
+                'valor' => isset($data['preco']) ? $data['preco'] : $itemRow->valor,
+                'criadopor' => $data['criadopor'],
+                'nome' => $itemRow->nome,
+                'conta' => $data['conta'],
+                'qntidade' => 1,
+                'table' => 'itemfactura',
+                'distancia' => $data['distancia'],
+                'gps' => $data['gps'],
+            ];
+        }
 
         return cadastronormal($model, $itemData, $this->db, $this->auditoriaModel);
     }
@@ -552,6 +620,92 @@ class Operations extends ResourceController
                 return $this->respond($output, 401);
             }
         }
+    }
+
+    private function getProducts($model, $where){
+        helper('funcao');
+        $where = cleanarray($where);
+
+        if(empty($where)){
+            return  $$model->paginate();
+        }
+        
+        return  $model->where($where)->paginate();
+    }
+
+    private function addCarrinho($model, $data)
+    {
+        helper('funcao');
+
+        $cliente = $data['cliente'];
+        $procuto = $data['produto'];
+        if ($this->db->query("SELECT COUNT(*) total FROM $model->table WHERE cliente = $cliente AND produto = $procuto")->getRow(0)->total == 1) {
+            $item = $model->where([
+                'produto' => $procuto,
+                'cliente' => $cliente
+            ])->first();
+
+            $data = [
+                'id' => $item->id,
+                'quantidade' => ((int) $item->id + (int) $item->id),
+                'total' => ((int) $item->total + (int) $item->id)
+            ];
+
+            $resposta = updatenomal($model, $data, $this->auditoriaModel);
+
+        }else{
+            $item = $this->produtoModel->where('id', $procuto)->first();
+            $data = [
+                'cliente' => $cliente, 
+                'token' => null, 
+                'produto' => $item->id, 
+                'quantidade' => 1, 
+                'preco' => $item->preco, 
+                'total' => $item->preco
+            ];
+
+            $resposta = cadastronormal($model, $data, $this->db, $this->auditoriaModel);
+        }
+
+        return $resposta;
+    }
+
+    private function remCarrinho($model, $data)
+    {
+        helper('funcao');
+
+        $cliente = $data['cliente'];
+        $procuto = $data['produto'];
+        if ($this->db->query("SELECT COUNT(*) total FROM $model->table WHERE (cliente = $cliente AND produto = $procuto) AND quantidade > 0")->getRow(0)->total == 1) {
+            $item = $model->where([
+                'produto' => $procuto,
+                'cliente' => $cliente
+            ])->first();
+
+            $data = [
+                'id' => $item->id,
+                'quantidade' => ((int) $item->id - (int) $item->id),
+                'total' => ((int) $item->total - (int) $item->id)
+            ];
+
+            $resposta = updatenomal($model, $data, $this->auditoriaModel);
+        }else{
+            daletarnormal($data, $this->db, $model, $this->auditoriaModel);
+            $resposta = returnVoid($data, 401, "Item não encontrado!");
+        }
+
+        return $resposta;
+    }
+
+    private function limparCarrinho($model, $data)
+    {
+        helper('funcao');
+
+        $cliente = $data['cliente'];
+
+        $this->db->query("DELETE FROM $model->table WHERE cliente = $cliente");
+
+        return;
     }
 
     private function eliminar($id)
@@ -783,6 +937,8 @@ class Operations extends ResourceController
         switch ($table) {
             case 'agenda':
                 return $this->agendaModel;
+            case 'agendaimagem':
+                return $this->agendaimagemModel;
             case 'anofabrico':
                 return $this->anofabricoModel;
             case 'auditoria':
@@ -793,6 +949,8 @@ class Operations extends ResourceController
                 return $this->contaModel;
             case 'endereco':
                 return $this->enderecoModel;
+            case 'emergencia':
+                return $this->emergenciaModel;
             case 'factura':
                 return $this->facturaModel;
             case 'gestaoviatura':
@@ -825,6 +983,16 @@ class Operations extends ResourceController
                 return $this->utilizadorModel;
             case 'viatura':
                 return $this->viaturaModel;
+
+            //Eu ainda nao tratei dessa parte do app
+            case 'loja':
+                return $this->lojaModel;
+            case 'categoria':
+                return $this->categoriaModel;
+            case 'produto':
+                return $this->produtoModel;
+            case 'carrinho':
+                return $this->carrinhoModel;
             default:
                 return false;
         }

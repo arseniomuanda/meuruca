@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ItemfacturaModel extends Model
+class AgendaimagemModel extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'itemfacturas';
+	protected $table                = 'agendaimages';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['factura', 'valor', 'criadopor', 'nome', 'conta', 'qntidade', 'itemId', 'gps', 'distancia'];
+	protected $allowedFields        = ['path', 'agenda', 'descricao'];
 
 	// Dates
 	protected $useTimestamps        = false;
