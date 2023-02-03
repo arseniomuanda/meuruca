@@ -11,6 +11,9 @@ use App\Models\AuditoriaModel;
 
 class Pessoas extends ResourceController
 {
+    protected $model;
+protected $db;
+protected $auditoria;
     public function __construct()
     {
         // headers

@@ -33,9 +33,46 @@ use App\Models\UtilizadorModel;
 use App\Models\ViaturaModel;
 use App\Models\SeguroModel;
 use App\Models\SinistroModel;
+use PHP_CodeSniffer\Reports\Code;
+use phpDocumentor\Reflection\Types\Array_;
+
+use function PHPSTORM_META\type;
 
 class Operations extends ResourceController
 {
+    protected $agendaModel;
+    protected $anofabricoModel;
+    protected $auditoriaModel;
+    protected $contactoModel;
+    protected $contaModel;
+    protected $enderecoModel;
+    protected $facturaModel;
+    protected $gestaoviaturaModel;
+    protected $itemfacturaModel;
+    protected $marcaModel;
+    protected $modeloModel;
+    protected $olegestaoviaturaModel;
+    protected $proprietarioModel;
+    protected $tipocontaModel;
+    protected $tipoitemModel;
+    protected $utilizacaoModel;
+    protected $utilizadorModel;
+    protected $viaturaModel;
+    protected $servicoModel;
+    protected $prestadorModel;
+    protected $seguroModel;
+    protected $sinistroModel;
+    protected $agendaimagemModel;
+    protected $emergenciaModel;
+
+    protected $lojaModel;
+    protected $categoriaModel;
+    protected $produtoModel;
+    protected $carrinhoModel;
+
+    protected $db;
+    protected $protect;
+
     public function __construct()
     {
         // headers
@@ -102,27 +139,36 @@ class Operations extends ResourceController
      */
     public function index()
     {
-        $secret_key = $this->protect->privateKey();
+        try {
+            $secret_key = $this->protect->privateKey();
 
-        $token = null;
+            $token = null;
 
-        $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
 
-        if (!$authHeader) {
-            return null;
-        }
+            if (!$authHeader) {
+                return null;
+            }
 
-        $arr = explode(" ", $authHeader);
+            $arr = explode(" ", $authHeader);
 
-        $token = $arr[1];
-        $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
-        if ($token_validate < 1)
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+            if ($token_validate < 1)
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ]);
+        } catch (\Throwable $th) {
             return $this->respond([
                 'message' => 'Access denied',
                 'status' => 401,
                 'error' => true,
                 'type' => "Token não encontrado!"
             ]);
+        }
 
         if ($token) {
             try {
@@ -133,6 +179,9 @@ class Operations extends ResourceController
 
                     helper('funcao');
                     $data = $this->request->getPost();
+                    $data['proprietario'] = $decoded->data->proprietario;
+                    $data['criadopor'] = $decoded->data->id;
+
                     $option = $this->request->getPost('option');
                     if (isset($data['table']))
                         $model = $this->chooseModel($data['table']);
@@ -148,6 +197,13 @@ class Operations extends ResourceController
                         case 'insert':
                             # code...
                             $response = cadastronormal($model, $data, $this->db, $this->auditoriaModel);
+                            /* Alem de selecionar a model tenho tambem de selecionar o clear arrey */
+                            break;
+                        case 'insertImg':
+                            # code...
+                            //Especialmente para codastrar imagens os productos
+                            $foto = $this->request->getFile('imagem');
+                            $response = cadastrocomumafoto($model, $data, $this->db, $this->auditoriaModel, $foto, 'imagem');
                             /* Alem de selecionar a model tenho tambem de selecionar o clear arrey */
                             break;
                         case 'update':
@@ -242,7 +298,7 @@ class Operations extends ResourceController
                             break;
                         case 'showUserCar':
                             # code...
-                            $response = $this->showUserCar($this->db, $data['proprietario']);
+                            $response = $this->showUserCar($this->db, $data['proprietario'], $model);
                             break;
                         case 'getAgendaNotifications':
                             # code...
@@ -283,7 +339,6 @@ class Operations extends ResourceController
                             # code...
                             $response = $this->limparCarrinho($model, $data);
                             break;
-
                         default:
                             # code...
                             $response = returnVoid($data, 400);
@@ -294,11 +349,99 @@ class Operations extends ResourceController
                     else
                         $code = isset($response->code) ? $response->code : 200;
 
+                    return $this->respond($response, $code);
+                }
+            } catch (\Exception $e) {
+                $output = [
+                    'message' => 'Access denied ',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => $e->getMessage()
+                ];
+
+                return $this->respond($output, 401);
+            }
+        }
+    }
+
+
+    public function checkOut()
+    {
+
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+            if ($token_validate < 1)
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ]);
+        } catch (\Throwable $th) {
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ]);
+        }
+
+        if ($token) {
+            try {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                // return $this->respond($decoded);
+                // Access is granted. Add code of the operation here
+                if ($decoded) {
+
+                    helper('funcao');
+                    $user = $this->request->getPost();
+                    $decoded->data->proprietario;
+                    $decoded->data->id;
+
+                    $data = json_decode(file_get_contents("php://input"));
+                    helper('funcao');
+
+                    $factura = cadastronormal($this->facturaModel, [
+                        'proprietario' => $decoded->data->proprietario,
+                        'criadopor' => $decoded->data->id,
+                        'datafactura' => date('Y-m-d'),
+                        'conta' => $decoded->data->conta,
+                    ], $this->db, $this->auditoriaModel);
+
+                    // return $this->respond(
+                    //     data: [
+                    //         'token' => $decoded,
+                    //         'formData' => $data
+                    //     ],
+                    //     status: 200
+                    // );
+
+                    $idFactura = $factura['id'];
+
+                    foreach ($data as $value) {
+                        $itemFactura = [
+                            'factura' => $idFactura,
+                            'valor' => isset($value->preco) ? $value->preco : null,
+                            'criadopor' => $decoded->data->id,
+                            'nome' => isset($value->nome) ? $value->nome : null,
+                            'conta' => $decoded->data->conta,
+                            'qntidade' => isset($value->quantidade) ? $value->quantidade : null,
+                            'itemId' => isset($value->id) ? $value->id : null,
+                        ];
+                        cadastronormal($this->itemfacturaModel, $itemFactura, $this->db, $this->auditoriaModel);
+                    }
                     $data = [
-                        'data' => $response,
-                        'code' => $code
+                        'pagamento' => $this->facturaModel->where('id', $idFactura)->first(),
+                        'itens' => $this->itemfacturaModel->where('factura', $idFactura)->paginate()
                     ];
-                    return $this->respond($data);
+
+                    return $this->respond(data: $data);
                 }
             } catch (\Exception $e) {
                 $output = [
@@ -397,11 +540,42 @@ class Operations extends ResourceController
         return $response;
     }
 
-    private function showUserCar($db, $user)
+    private function showUserCar($db, $user, $model)
     {
         $data = $db->query("SELECT viaturas.*, marcas.nome AS marca, modelos.nome AS modelo, ano_fabricos.nome AS ano FROM `viaturas` INNER JOIN ano_fabricos ON viaturas.ano=ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo=modelos.id INNER JOIN marcas ON modelos.marca = marcas.id WHERE proprietario = $user");
         $response = $data->getResult();
-        return $response;
+
+        $row = array();
+        foreach ($response as $value) {
+
+            $id = $value->id;
+            $proprietario = $value->proprietario;
+
+            $result = [
+                "id" => $value->id,
+                "matricula" => $value->matricula,
+                "created_at" => $value->created_at,
+                "updated_at" => $value->updated_at,
+                "deleted_at" => $value->deleted_at,
+                "proprietario" => $value->proprietario,
+                "ano" => $value->ano,
+                "descricao" => $value->descricao,
+                "imagem" => $value->imagem,
+                "marca" => $value->marca,
+                "modelo" => $value->modelo,
+
+                'agenda' => $db->query("SELECT agendas.*, viaturas.matricula, viaturas.imagem imagemViatura, modelos.nome modeloViatura, marcas.nome marcaViatura, ano_fabricos.nome anoFabrico, prestadors.nome nomePrestador, prestadors.telefone telefonePrestador, prestadors.email emailPrestador FROM agendas INNER JOIN viaturas ON agendas.viatura = viaturas.id INNER JOIN ano_fabricos ON viaturas.ano=ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo = modelos.id INNER JOIN marcas ON modelos.marca = marcas.id LEFT JOIN prestadors ON agendas.prestador = prestadors.id WHERE agendas.estado <> 1 AND viaturas.id = $id AND viaturas.proprietario = $proprietario ORDER BY agendas.inicio ASC")->getResult(),
+                'gestao' => $gestVia = $db->query("SELECT * FROM `gestao_viaturas` INNER JOIN viaturas ON gestao_viaturas.viatura = viaturas.id WHERE viaturas.id = $id AND viaturas.proprietario = $proprietario ORDER BY gestao_viaturas.id DESC")->getRow(0),
+                'previsao' => [
+                    nextManutencao($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0, $gestVia->periodo_de_revisao ?? 5000),
+                ]
+
+            ];
+
+            array_push($row, $result);
+        }
+
+        return $row;
     }
 
     private function newAgendamento($model, $data, $db, $auditoria, $isEmergencia = false)
@@ -622,14 +796,15 @@ class Operations extends ResourceController
         }
     }
 
-    private function getProducts($model, $where){
+    private function getProducts($model, $where)
+    {
         helper('funcao');
         $where = cleanarray($where);
 
-        if(empty($where)){
-            return  $$model->paginate();
+        if (empty($where)) {
+            return  $model->paginate();
         }
-        
+
         return  $model->where($where)->paginate();
     }
 
@@ -652,15 +827,14 @@ class Operations extends ResourceController
             ];
 
             $resposta = updatenomal($model, $data, $this->auditoriaModel);
-
-        }else{
+        } else {
             $item = $this->produtoModel->where('id', $procuto)->first();
             $data = [
-                'cliente' => $cliente, 
-                'token' => null, 
-                'produto' => $item->id, 
-                'quantidade' => 1, 
-                'preco' => $item->preco, 
+                'cliente' => $cliente,
+                'token' => null,
+                'produto' => $item->id,
+                'quantidade' => 1,
+                'preco' => $item->preco,
                 'total' => $item->preco
             ];
 
@@ -689,7 +863,7 @@ class Operations extends ResourceController
             ];
 
             $resposta = updatenomal($model, $data, $this->auditoriaModel);
-        }else{
+        } else {
             daletarnormal($data, $this->db, $model, $this->auditoriaModel);
             $resposta = returnVoid($data, 401, "Item não encontrado!");
         }
@@ -983,8 +1157,9 @@ class Operations extends ResourceController
                 return $this->utilizadorModel;
             case 'viatura':
                 return $this->viaturaModel;
-
-            //Eu ainda nao tratei dessa parte do app
+            case 'produtos':
+                return $this->produtoModel;
+                //Eu ainda nao tratei dessa parte do app
             case 'loja':
                 return $this->lojaModel;
             case 'categoria':

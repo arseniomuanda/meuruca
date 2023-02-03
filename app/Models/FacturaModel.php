@@ -14,7 +14,7 @@ class FacturaModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['agenda', 'proprietario', 'criadopor', 'datafactura', 'conta', 'estado', 'hash_factura', 'hash_recibo', 'final', 'pago'];
+	protected $allowedFields        = ['proprietario', 'criadopor', 'datafactura', 'conta', 'estado', 'hash_factura', 'hash_recibo', 'final', 'pago'];
 
 	// Dates
 	protected $useTimestamps        = false;

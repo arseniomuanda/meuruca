@@ -11,10 +11,18 @@ use App\Models\AuditoriaModel;
 use App\Models\ContaModel;
 use App\Models\ProprietarioModel;
 use App\Models\UtilizadorModel;
+use phpDocumentor\Reflection\Types\This;
 
 class Login extends ResourceController
 {
+    protected $db;
+    protected $utilizadorModel;
+    protected $auditoriaModel;
+    protected $proprietarioModel;
+    protected $contaModel;
     protected $model;
+    protected $session;
+
     public function __construct()
     {
         // headers
@@ -82,12 +90,23 @@ class Login extends ResourceController
         return $data;
     }
 
+    private function validar_admin($email)
+    {
+        $query = $this->db->query("SELECT COUNT(*) AS total FROM utilizadors WHERE email = '$email'")->getRow(0)->total;
+        if ($query > 0) {
+            $data = $this->db->query("SELECT * FROM utilizadors WHERE email = '$email'")->getRow(0);
+        } else {
+            $data = null;
+        }
+        return $data;
+    }
+
     public function index()
     {
         helper('funcao');
         $email      = $this->request->getPost('email');
         $password   = $this->request->getPost('password');
-
+        
         $user       = $this->validar_login($email);
         if (!is_null($user)) {
             if (password_verify($password, $user->password)) {
@@ -109,7 +128,7 @@ class Login extends ResourceController
                 $audience_claim = 'THE_AUDIENCE';
                 $issuedat_claim = time();
                 $notbefore_claim = $issuedat_claim + 0;
-                $expire_claim = $issuedat_claim + 89000;
+                $expire_claim = $issuedat_claim + 3600 * 24;
 
                 $token = [
                     "iss"  => $issuer_claim,
@@ -121,7 +140,8 @@ class Login extends ResourceController
                         'acesso'    => 1, // Este acesso vai ser actualizado para vir da base de dados
                         'email'     => $email,
                         'id'        => $user->id,
-                        'conta'     => $user->conta
+                        'conta'     => $user->conta,
+                        'proprietario'=> $user->proprietario
                     ]
                 ];
 
@@ -139,7 +159,6 @@ class Login extends ResourceController
                 ]);
 
                 $data = [
-                    'code'    => 200,
                     'message'   => 'Login successfully',
                     'token'     => $token,
                     'expireAt'  => date('Y-m-d H:i:s', $expire_claim),
@@ -148,6 +167,7 @@ class Login extends ResourceController
                     'id'        => $user->id,
                     'username'  => $user->username,
                     'profilename' => $user->porfilename,
+                    'telefone' => $user->telefone,
                     'proprietario' => $user->proprietario,
                     'conta'     => $user->conta,
                     'logado'        => true
@@ -158,7 +178,6 @@ class Login extends ResourceController
                 return $this->respond($data, 200);
             } else {
                 $data = [
-                    'code'    => 401,
                     'message'   => 'Palavra pass errada!'
                 ];
 
@@ -166,7 +185,97 @@ class Login extends ResourceController
             }
         } else {
             $data = [
-                'code'    => 401,
+                'message'   => 'Email não encontrado!',
+            ];
+
+            return $this->respond($data, 401);
+        }
+    }
+
+    public function admin()
+    {
+        helper('funcao');
+        $email      = $this->request->getPost('email');
+        $password   = $this->request->getPost('password');
+
+        $user       = $this->validar_admin($email);
+        if (!is_null($user)) {
+            if (password_verify($password, $user->password) && $user->acesso > 1) {
+
+                $id = $user->id;
+                $dataLigin = date("Y-m-d H:i:s");
+
+                $this->auditoriaModel->save([
+                    'accao' => 'Login',
+                    'processo' => 'Login',
+                    'registo' => $user->id,
+                    'utilizadors' => $user->id,
+                    'dataAcao' => date('Y-m-d'),
+                    'dataExpiracao' => date("Y-m-d H:i:s'", strtotime("+2 years", strtotime(date("Y-m-d H:i:s")))),
+                ]);
+
+                $secret_key = $this->privateKey();
+                $issuer_claim = 'THE_CLAIN';
+                $audience_claim = 'THE_AUDIENCE';
+                $issuedat_claim = time();
+                $notbefore_claim = $issuedat_claim + 0;
+                $expire_claim = $issuedat_claim + 3600 * 24;
+
+                $token = [
+                    "iss"  => $issuer_claim,
+                    "aud"  => $audience_claim,
+                    "iat"  => $issuedat_claim,
+                    "nbf"  => $notbefore_claim,
+                    "exp"  => $expire_claim,
+                    "data" => [
+                        'acesso'    => 1, // Este acesso vai ser actualizado para vir da base de dados
+                        'email'     => $email,
+                        'id'        => $user->id,
+                        'conta'     => 1,
+                        'proprietario' => 1
+                    ]
+                ];
+
+                // Gerar Token
+                $token = JWT::encode($token, $secret_key);
+
+                $this->db->query("UPDATE `utilizadors` SET `ultimoAcesso`= '$dataLigin',  api_token = '$token' WHERE id = $id");
+                $this->auditoriaModel->save([
+                    'accao' => 'Reset',
+                    'processo' => 'Reset da palavra pass',
+                    'registo' => $user->id,
+                    'utilizadors' => $user->id,
+                    'dataAcao' => date('Y-m-d'),
+                    'dataExpiracao' => date("Y-m-d H:i:s'", strtotime("+2 years", strtotime(date("Y-m-d H:i:s")))),
+                ]);
+
+                $data = [
+                    'message'   => 'Login successfully',
+                    'token'     => $token,
+                    'expireAt'  => date('Y-m-d H:i:s', $expire_claim),
+                    'now'       => date('Y-m-d H:i:s'),
+                    'email'     => $email,
+                    'id'        => $user->id,
+                    'username'  => $user->username,
+                    'profilename' => $user->nome,
+                    'telefone' => $user->telefone,
+                    'proprietario' => 1,
+                    'conta'     => 1,
+                    'logado'        => true
+                ];
+
+                $this->session->set($data);
+
+                return $this->respond($data, 200);
+            } else {
+                $data = [
+                    'message'   => 'Palavra pass errada!'
+                ];
+
+                return $this->respondNoContent(401);
+            }
+        } else {
+            $data = [
                 'message'   => 'Email não encontrado!',
             ];
 
@@ -222,7 +331,7 @@ class Login extends ResourceController
         // return $this->respond($user);
 
 
-        if (strtotime(date('Y-m-d H:i:s')) > strtotime(date($user->api_token_date))){
+        if (strtotime(date('Y-m-d H:i:s')) > strtotime(date($user->api_token_date))) {
             $data1 = [
                 'id' => $user->id,
                 'reset_token' => md5("12345678910" . date('d-m-Y') . $data['email']),
@@ -255,7 +364,7 @@ class Login extends ResourceController
 
         $data = $this->request->getPost();
         if ($this->existEmail($data['email']))
-            return $this->respond(returnVoid($data, 'Email Já Existente!'));
+            return $this->respond(['message'=>'Email existente!'],403);
         #criacao da conta
         /* $conta = $this->contaModel->save($data); */
         $conta = cadastronormal($this->contaModel, $data, $this->db, $this->auditoriaModel);
@@ -290,8 +399,8 @@ class Login extends ResourceController
 
         $user = cadastronormal($this->utilizadorModel, $data, $this->db, $this->auditoriaModel);
         if ($user['code'] !== 200) {
-            daletarespecial($proprietario['id'], $data['criadopor'], $this->db, $this->proprietarioModel, $this->auditoriaModel);
-            daletarespecial($conta['id'], $data['criadopor'], $this->db, $this->contaModel, $this->auditoriaModel);
+            daletarespecial($proprietario['id'], 1, $this->db, $this->proprietarioModel, $this->auditoriaModel);
+            daletarespecial($conta['id'], 1, $this->db, $this->contaModel, $this->auditoriaModel);
             $data['user'] = $user;
             return $this->respond(returnVoid($data, (int) 400), 400);
         }
