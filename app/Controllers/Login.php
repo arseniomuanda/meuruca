@@ -228,7 +228,7 @@ class Login extends ResourceController
                     "nbf"  => $notbefore_claim,
                     "exp"  => $expire_claim,
                     "data" => [
-                        'acesso'    => 1, // Este acesso vai ser actualizado para vir da base de dados
+                        'acesso'    => $user->acesso, // Este acesso vai ser actualizado para vir da base de dados
                         'email'     => $email,
                         'id'        => $user->id,
                         'conta'     => 1,
@@ -257,7 +257,7 @@ class Login extends ResourceController
                     'email'     => $email,
                     'id'        => $user->id,
                     'username'  => $user->username,
-                    'profilename' => $user->nome,
+                    'name' => $user->nome,
                     'telefone' => $user->telefone,
                     'proprietario' => 1,
                     'conta'     => 1,

@@ -33,8 +33,6 @@ use App\Models\UtilizadorModel;
 use App\Models\ViaturaModel;
 use App\Models\SeguroModel;
 use App\Models\SinistroModel;
-use PHP_CodeSniffer\Reports\Code;
-use phpDocumentor\Reflection\Types\Array_;
 
 use function PHPSTORM_META\type;
 
@@ -277,9 +275,9 @@ class Operations extends ResourceController
                             # code...
                             $response = $model->where('modelo', $data['modelo'])->paginate();
                             break;
-                        case 'showSevices':
+                        case 'showPestadores':
                             # code...
-                            $response = $this->getServices($this->db, $model, $data['prestador'], $data['categoria']);
+                            $response = $this->getPrestadores($this->db, $model);
                             break;
                         case 'newAgendamento':
                             # code...
@@ -413,14 +411,6 @@ class Operations extends ResourceController
                         'datafactura' => date('Y-m-d'),
                         'conta' => $decoded->data->conta,
                     ], $this->db, $this->auditoriaModel);
-
-                    // return $this->respond(
-                    //     data: [
-                    //         'token' => $decoded,
-                    //         'formData' => $data
-                    //     ],
-                    //     status: 200
-                    // );
 
                     $idFactura = $factura['id'];
 
@@ -618,7 +608,7 @@ class Operations extends ResourceController
 
                     $itemData = [
                         'factura' => $factura['id'],
-                        'valor' => isset($data['preco']) ? $data['preco'] : $itemRow->valor,
+                        'valor' => isset($data['preco_distancia']) ? $data['preco_distancia'] : $itemRow->valor,
                         'criadopor' => $data['criadopor'],
                         'nome' => $itemRow->nome,
                         'conta' => $data['conta'],
@@ -971,11 +961,64 @@ class Operations extends ResourceController
         ];
     }
 
-    private function getServices($db, $model, $prestado, $categoria)
+
+
+
+    /**
+     * Lista de todos os prestadores de servili e seus serviços
+     * os pretadores têm categoria:
+     *  1 -  Lavagem, 
+     *  2 - Manutenção,
+     *  3 - Hibrido
+     * 
+     * Cada serciço pode ser:
+     *  1 - Lavagem
+     *  2 - Manutenção
+     */
+    private function getPrestadores($db, $model)
     {
         helper('funcao');
         /* Doravante a categoria 1 será relacionada a lavangem de carros, categoria 2 será para manutencão e repareçao */
-        $response = $db->query("SELECT * FROM $model->table WHERE categoria = $categoria AND prestador = $prestado")->getResult();
+        $response = $db->query("SELECT * FROM $model->table")->getResult();
+
+        $row = array();
+        foreach ($response as $value) {
+
+            $id = $value->id;
+
+            $result = [
+                'id' =>  $id,
+                'nome' =>  $value->nome,
+                'nif' =>  $value->nif,
+                'email' =>  $value->email,
+                'telefone' =>  $value->telefone,
+                'endereco' =>  $value->endereco,
+                'criadopor' =>  $value->criadopor,
+                'foto' => $value->foto,
+                'site' =>  $value->site,
+                'androidlink' => $value->androidlink,
+                'ioslink' => $value->ioslink,
+                'created_at' =>  $value->created_at,
+                'updated_at' =>  $value->updated_at,
+                'deleted_at' => $value->deleted_at,
+                'gps_latitude' => $value->gps_latitude,
+                'gps_longitude' =>  $value->gps_longitude,
+                'w3w' => $value->w3w,
+                'country' =>  $value->country,
+                'provincia' =>  $value->provincia,
+                'municipio' => $value->municipio,
+                'distrito' => $value->distrito,
+                'comuna' => $value->comuna,
+                'bairro' => $value->bairro,
+                'n_casa' => $value->n_casa,
+                'services' => $db->query("SELECT * FROM servicos WHERE prestador = $id AND prestador <> 2")->getResult(),
+            ];
+
+            array_push($row, $result);
+        }
+
+        return $row;
+
         return $response;
     }
 

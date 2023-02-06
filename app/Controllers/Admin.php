@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\AuditoriaModel;
 use App\Models\ContaModel;
+use App\Models\ProdutoModel;
 use App\Models\ProprietarioModel;
 use App\Models\UtilizadorModel;
 use CodeIgniter\RESTful\ResourceController;
@@ -21,6 +22,7 @@ class Admin extends ResourceController
     protected $contaModel;
     protected $session;
     protected $protect;
+    protected $produtoModel;
 
 
     public function __construct()
@@ -38,6 +40,7 @@ class Admin extends ResourceController
             if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
                 // may also be using PUT, PATCH, HEAD etc
                 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+                header("Access-Control-Request-Headers: Content-Type, Authorization");
             }
 
             if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
@@ -51,6 +54,7 @@ class Admin extends ResourceController
         $this->utilizadorModel = new UtilizadorModel();
         $this->auditoriaModel = new AuditoriaModel();
         $this->proprietarioModel = new ProprietarioModel();
+        $this->produtoModel = new ProdutoModel();
         $this->contaModel = new ContaModel();
 
         $this->session = Services::session();
@@ -58,7 +62,8 @@ class Admin extends ResourceController
     }
 
 
-    public function getDashboard(){
+    public function getDashboard()
+    {
         try {
             $secret_key = $this->protect->privateKey();
             $token = null;
@@ -75,24 +80,24 @@ class Admin extends ResourceController
                     'type' => "Token não encontrado!"
                 ]);
 
-            if ($token){
+            if ($token) {
                 $decoded = JWT::decode($token, $secret_key, array('HS256'));
                 if ($decoded) {
-                    if($decoded->data->acesso > 1){
+                    if ($decoded->data->acesso > 1) {
                         return $this->respond([
-                            'clientes',
-                            'lojas',
-                            'prestadores',
-                            'serviços',
-                            'carros',
-                            'modelos',
-                            'marcas',
-                            'anos',
+                            'clientes' => $this->db->query("SELECT COUNT(*) total FROM proprietarios")->getRow(0)->total,
+                            'lojas' => $this->db->query("SELECT COUNT(*) total FROM lojas")->getRow(0)->total,
+                            'prestadores' => $this->db->query("SELECT COUNT(*) total FROM prestadors")->getRow(0)->total,
+                            'servicos' => $this->db->query("SELECT COUNT(*) total FROM servicos")->getRow(0)->total,
+                            'produtos' => $this->db->query("SELECT COUNT(*) total FROM produtos")->getRow(0)->total,
+                            'viaturas' => $this->db->query("SELECT COUNT(*) total FROM viaturas")->getRow(0)->total,
+                            'modelos' => $this->db->query("SELECT COUNT(*) total FROM modelos")->getRow(0)->total,
+                            'marcas' => $this->db->query("SELECT COUNT(*) total FROM marcas")->getRow(0)->total,
+                            'anos' => $this->db->query("SELECT COUNT(*) total FROM ano_fabricos")->getRow(0)->total,
                         ]);
                     }
                 }
             }
-
         } catch (\Throwable $th) {
             return $this->respond([
                 'message' => 'Access denied',
@@ -100,6 +105,60 @@ class Admin extends ResourceController
                 'error' => true,
                 'type' => "Token não encontrado!"
             ]);
+        }
+    }
+
+    public function saveProduto($id = null)
+    {
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+                        $data = $this->request->getPost();
+                        $data['criadopor'] = $decoded->data->id;
+                        $foto = $this->request->getFile('imagem');
+                        $data = cleanarray($data);
+                        if(is_null($id)){
+                            $resposta = cadastrocomumafoto($this->produtoModel, $data, $this->db, $this->auditoriaModel, $foto, 'imagem');
+                        }else {
+                            $data['id'] = $id;
+                            $resposta = updatecomumafoto($this->produtoModel, $data, $this->db, $this->auditoriaModel, 'Produto', $this->produtoModel->table, $foto, 'imagem');
+                        }
+                        
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
         }
     }
 }
