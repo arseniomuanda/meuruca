@@ -310,12 +310,7 @@ class Operations extends ResourceController
                             //ainda nao trabalhei nessas funçoes
                         case 'buscarProdutos':
                             # code...
-                            $where = [
-                                'categoria' => $this->request->getPost('categoria'),
-                                'loja' => $this->request->getPost('loja')
-                            ];
-
-                            $response = $this->getProducts($model, $where);
+                            $response = $this->getProducts();
                             break;
                         case 'buscarCategorias':
                             # code...
@@ -602,6 +597,9 @@ class Operations extends ResourceController
             ];
 
             $factura = cadastronormal($this->facturaModel, $facturaData, $this->db, $auditoria);
+            
+            $this->db->query("UPDATE `agendas` SET `factura` = ". $factura['id'] . " WHERE `id` = " . $agenda['id']);
+
             if ($factura['code'] == 200) {
                 if ($data['servico_entrega'] == 1) {
                     $itemRow = $this->db->query("SELECT * FROM `servicos` WHERE prestador = 0")->getRow(0);
@@ -786,16 +784,9 @@ class Operations extends ResourceController
         }
     }
 
-    private function getProducts($model, $where)
+    private function getProducts()
     {
-        helper('funcao');
-        $where = cleanarray($where);
-
-        if (empty($where)) {
-            return  $model->paginate();
-        }
-
-        return  $model->where($where)->paginate();
+        return  $this->db->query("SELECT produtos.*, ano_fabricos.nome ano, modelos.nome modelo, marcas.nome marca, lojas.nome as loja FROM `produtos` INNER JOIN lojas ON produtos.loja = lojas.id INNER JOIN ano_fabricos ON produtos.ano = ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo = modelos.id INNER JOIN marcas ON modelos.marca = marcas.id")->getResult();
     }
 
     private function addCarrinho($model, $data)

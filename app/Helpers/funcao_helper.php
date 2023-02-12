@@ -615,3 +615,22 @@ function newGuid()
 
     return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 }
+
+function eliminarPedido($id, $auditoria, $criadopor)
+{
+    $db = Config\Database::connect();
+
+    $auditoria->save([
+        'accao' => 'Reset',
+        'processo' => 'Reset da palavra pass',
+        'registo' => $id,
+        'utilizador' => $criadopor,
+        'dataAcao' => date('Y-m-d'),
+        'dataExpiracao' => date("Y-m-d H:i:s", strtotime("+2 years", strtotime(date("Y-m-d H:i:s")))),
+    ]);
+
+    $db->query("DELETE FROM itemfacturas WHERE factura = $id");
+    $response = $db->query("DELETE FROM facturas WHERE id = $id");
+
+    return $response;
+}
