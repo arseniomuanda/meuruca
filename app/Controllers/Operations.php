@@ -188,8 +188,7 @@ class Operations extends ResourceController
                     switch ($option) {
                         case 'newCar':
                             # code...
-                            $foto = $this->request->getFile('imagem');
-                            $response = cadastrocomumafoto($model, $data, $this->db, $this->auditoriaModel, $foto, 'imagem');
+                            $response = cadastronormal($model, $data, $this->db, $this->auditoriaModel);
                             /* Alem de selecionar a model tenho tambem de selecionar o clear arrey */
                             break;
                         case 'insert':
@@ -426,7 +425,7 @@ class Operations extends ResourceController
                         'itens' => $this->itemfacturaModel->where('factura', $idFactura)->paginate()
                     ];
 
-                    return $this->respond(data: $data);
+                    return $this->respond($data);
                 }
             } catch (\Exception $e) {
                 $output = [
@@ -597,8 +596,8 @@ class Operations extends ResourceController
             ];
 
             $factura = cadastronormal($this->facturaModel, $facturaData, $this->db, $auditoria);
-            
-            $this->db->query("UPDATE `agendas` SET `factura` = ". $factura['id'] . " WHERE `id` = " . $agenda['id']);
+
+            $this->db->query("UPDATE `agendas` SET `factura` = " . $factura['id'] . " WHERE `id` = " . $agenda['id']);
 
             if ($factura['code'] == 200) {
                 if ($data['servico_entrega'] == 1) {

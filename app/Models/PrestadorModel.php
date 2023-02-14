@@ -14,7 +14,7 @@ class PrestadorModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nome', 'nif', 'email', 'telefone', 'endereco', 'criadopor', 'foto', 'site', 'androidlink', 'ioslink', 'w3w', 'gps_longitude', 'gps_latitude'];
+	protected $allowedFields        = ['nome', 'nif', 'email', 'telefone', 'endereco', 'criadopor', 'foto', 'site', 'androidlink', 'ioslink', 'gps_latitude', 'gps_longitude', 'w3w', 'country', 'provincia', 'municipio', 'distrito', 'comuna', 'bairro', 'n_casa', 'tipo'];
 
 	// Dates
 	protected $useTimestamps        = false;

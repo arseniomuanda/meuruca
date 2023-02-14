@@ -2,15 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Models\AgendaModel;
 use App\Models\AuditoriaModel;
 use App\Models\ContaModel;
+use App\Models\FacturaModel;
+use App\Models\ItemfacturaModel;
+use App\Models\PrestadorModel;
 use App\Models\ProdutoModel;
 use App\Models\ProprietarioModel;
+use App\Models\ServicoModel;
 use App\Models\UtilizadorModel;
 use CodeIgniter\RESTful\ResourceController;
 use Config\Database;
 use Config\Services;
 use Firebase\JWT\JWT;
+use phpDocumentor\Reflection\Types\This;
 
 class Admin extends ResourceController
 {
@@ -23,6 +29,11 @@ class Admin extends ResourceController
     protected $session;
     protected $protect;
     protected $produtoModel;
+    protected $agendaModel;
+    protected $facturaModel;
+    protected $itemfacturaModel;
+    protected $prestadorModel;
+    protected $servicoModel;
 
 
     public function __construct()
@@ -51,11 +62,16 @@ class Admin extends ResourceController
         }
 
         $this->db = Database::connect();
+        $this->agendaModel = new AgendaModel();
         $this->utilizadorModel = new UtilizadorModel();
         $this->auditoriaModel = new AuditoriaModel();
         $this->proprietarioModel = new ProprietarioModel();
         $this->produtoModel = new ProdutoModel();
         $this->contaModel = new ContaModel();
+        $this->facturaModel = new FacturaModel();
+        $this->itemfacturaModel = new ItemfacturaModel();
+        $this->prestadorModel = new PrestadorModel();
+        $this->servicoModel = new ServicoModel();
 
         $this->session = Services::session();
         $this->protect = new Login();
@@ -140,13 +156,13 @@ class Admin extends ResourceController
                         $data['criadopor'] = $decoded->data->id;
                         $foto = $this->request->getFile('imagem');
                         $data = cleanarray($data);
-                        if(is_null($id)){
+                        if (is_null($id)) {
                             $resposta = cadastrocomumafoto($this->produtoModel, $data, $this->db, $this->auditoriaModel, $foto, 'imagem');
-                        }else {
+                        } else {
                             $data['id'] = $id;
                             $resposta = updatecomumafoto($this->produtoModel, $data, $this->db, $this->auditoriaModel, 'Produto', $this->produtoModel->table, $foto, 'imagem');
                         }
-                        
+
                         return $this->respond($resposta);
                     }
                 }
@@ -192,7 +208,7 @@ class Admin extends ResourceController
                         helper('funcao');
                         $data = $this->request->getPost();
                         $data['criadopor'] = $decoded->data->id;
-                        
+
                         $resposta = eliminarPedido($id, $this->auditoriaModel, $decoded->data->id);
 
                         return $this->respond($resposta);
@@ -239,7 +255,346 @@ class Admin extends ResourceController
                     if ($decoded->data->acesso > 1) {
                         helper('funcao');
                         $resposta = $this->db->query("SELECT viaturas.*, modelos.nome modelo, marcas.nome marca, ano_fabricos.nome ano FROM viaturas INNER JOIN ano_fabricos ON viaturas.ano = ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo = modelos.id INNER JOIN marcas ON modelos.marca = marcas.id WHERE proprietario = $id")->getResult();
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function newAgendamento()
+    {
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+                        $factura = null;
+                        $agendaData = [
+                            'proprietario' => $this->request->getPost('proprietario'),
+                            'inicio' => $this->request->getPost('inicio'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'viatura' => $this->request->getPost('viatura'),
+                            'prestador' => $this->request->getPost('prestador'),
+                            'is_domicilio' => $this->request->getPost('is_domicilio'),
+                            'servico_entrega' => $this->request->getPost('servico_entrega'),
+                            'categoria' => $this->request->getPost('categoria'),
+                            'criadopor' => $decoded->data->id,
+                            'endereco' => $this->request->getPost('endereco') ? $this->request->getPost('endereco') : '',
+                            'latitude' => $this->request->getPost('latitude') ? $this->request->getPost('latitude') : '',
+                            'longitude' => $this->request->getPost('longitude') ? $this->request->getPost('longitude') : '',
+                            'table' => 'agenda',
+                        ];
+
+                        $agendaData = cleanarray($agendaData);
+
+                        $agenda = cadastronormal($this->agendaModel, $agendaData, $this->db, $this->auditoriaModel);
+
+                        if ($agenda['code'] == 200) {
+                            $facturaData = [
+                                'agenda' => $agenda['id'],
+                                'proprietario' => $this->request->getPost('proprietario'),
+                                'criadopor' => $decoded->data->id,
+                                'datafactura' => date('Y-m-d'),
+                                'conta' => $decoded->data->conta,
+                                'table' => 'factura',
+                            ];
+
+                            $factura = cadastronormal($this->facturaModel, $facturaData, $this->db, $this->auditoriaModel);
+
+                            $this->db->query("UPDATE `agendas` SET `factura` = " . $factura['id'] . " WHERE `id` = " . $agenda['id']);
+
+                            $servico_entrega = $this->request->getPost('servico_entrega');
+                            $is_domicilio = $this->request->getPost('is_domicilio');
+
+                            if ($factura['code'] == 200) {
+                                if (($servico_entrega == 1) || ($is_domicilio==1)) {
+                                    $itemRow = $this->db->query("SELECT * FROM `servicos` WHERE prestador = 2 AND categoria = 3")->getRow(0);
+
+                                    $itemData = [
+                                        'factura' => $factura['id'],
+                                        'valor' => $this->request->getPost('preco_distancia') ? $this->request->getPost('preco_distancia') : $itemRow->valor,
+                                        'criadopor' => $decoded->data->id,
+                                        'nome' => $itemRow->nome,
+                                        'conta' => $decoded->data->conta,
+                                        'qntidade' => 1,
+                                        'table' => 'itemfactura',
+                                    ];
+
+                                    cadastronormal($this->itemfacturaModel, $itemData, $this->db, $this->auditoriaModel);
+                                }/*  else {
+                    daletarnormal($factura, $db, $this->facturaModel, $auditoria);
+                    daletarnormal($agenda, $db, $this->agendaModel, $auditoria);
+                } */
+                            } else {
+                                daletarnormal($factura, $this->db, $this->facturaModel, $this->auditoriaModel);
+                                daletarnormal($agenda, $this->db, $this->agendaModel, $this->auditoriaModel);
+                            }
+                        }
+
+                        return $this->respond($agenda);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function newPrestador()
+    {
+    
+        try {
+            
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            
+            if (!$authHeader) return null;
+            
+            
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+        
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+
+                        $foto = $this->request->getFile('foto');
                         
+                        $data = [
+                            
+                            'nome' => $this->request->getPost('nome'), 
+                            'nif' => $this->request->getPost('nif'), 
+                            'email' => $this->request->getPost('email'), 
+                            'telefone' => $this->request->getPost('telefone'), 
+                            'endereco' => $this->request->getPost('endereco'), 
+                            'criadopor' => $this->request->getPost('criadopor'), 
+                            'site' => $this->request->getPost('site'), 
+                            'androidlink' => $this->request->getPost('androidlink'), 
+                            'ioslink' => $this->request->getPost('ioslink'), 
+                            'gps_latitude' => $this->request->getPost('gps_latitude'), 
+                            'gps_longitude' => $this->request->getPost('gps_longitude'), 
+                            'w3w' => $this->request->getPost('w3w'), 
+                            'country' => $this->request->getPost('country'), 
+                            'provincia' => $this->request->getPost('provincia'), 
+                            'municipio' => $this->request->getPost('municipio'), 
+                            'distrito' => $this->request->getPost('distrito'), 
+                            'comuna' => $this->request->getPost('comuna'), 
+                            'bairro' => $this->request->getPost('bairro'), 
+                            'n_casa' => $this->request->getPost('n_casa'), 
+                            'tipo' => $this->request->getPost('tipo'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = cadastrocomumafoto($this->prestadorModel, $data, $this->db, $this->auditoriaModel, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+
+    public function editPrestador($id)
+    {
+    
+        try {
+            
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            
+            if (!$authHeader) return null;
+            
+            
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+        
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+
+                        $foto = $this->request->getFile('foto');
+                        
+                        $data = [
+                            'id' => $id,
+                            'nome' => $this->request->getPost('nome'), 
+                            'nif' => $this->request->getPost('nif'), 
+                            'email' => $this->request->getPost('email'), 
+                            'telefone' => $this->request->getPost('telefone'), 
+                            'endereco' => $this->request->getPost('endereco'), 
+                            'criadopor' => $this->request->getPost('criadopor'), 
+                            'site' => $this->request->getPost('site'), 
+                            'androidlink' => $this->request->getPost('androidlink'), 
+                            'ioslink' => $this->request->getPost('ioslink'), 
+                            'gps_latitude' => $this->request->getPost('gps_latitude'), 
+                            'gps_longitude' => $this->request->getPost('gps_longitude'), 
+                            'w3w' => $this->request->getPost('w3w'), 
+                            'country' => $this->request->getPost('country'), 
+                            'provincia' => $this->request->getPost('provincia'), 
+                            'municipio' => $this->request->getPost('municipio'), 
+                            'distrito' => $this->request->getPost('distrito'), 
+                            'comuna' => $this->request->getPost('comuna'), 
+                            'bairro' => $this->request->getPost('bairro'), 
+                            'n_casa' => $this->request->getPost('n_casa'), 
+                            'tipo' => $this->request->getPost('tipo'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = updatecomumafoto($this->prestadorModel, $data, $this->db, $this->auditoriaModel, 'Prestador', $this->prestadorModel->table, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function newServico()
+    {
+    
+        try {
+            
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            
+            if (!$authHeader) return null;
+            
+            
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+        
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+
+                        $foto = $this->request->getFile('foto');
+
+                        $data = [
+                            'prestador' => $this->request->getPost('prestador'), 
+                            'nome' => $this->request->getPost('nome'), 
+                            'valor' => $this->request->getPost('valor'),'
+                            descricao' => $this->request->getPost('escricao'), 
+                            'is_aprovado' => $this->request->getPost('is_aprovado'), 
+                            'is_domicilio' => $this->request->getPost('is_domicilio'), 
+                            'categoria' => $this->request->getPost('categoria'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = cadastronormal($this->servicoModel, $data, $this->db, $this->auditoriaModel);
+
                         return $this->respond($resposta);
                     }
                 }

@@ -14,7 +14,7 @@ class AgendaModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['ticket', 'inicio', 'fim', 'descricao', 'activo', 'estado', 'nome_item', 'viatura', 'prestador', 'is_domicilio', 'servico_entrega', 'categoria'];
+	protected $allowedFields        = ['ticket', 'inicio', 'fim', 'descricao', 'activo', 'estado', 'nome_item', 'viatura', 'prestador', 'is_domicilio', 'servico_entrega', 'categoria', 'endereco', 'latitude', 'longitude'];
 
 	// Dates
 	protected $useTimestamps        = false;

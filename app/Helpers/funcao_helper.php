@@ -558,7 +558,8 @@ function nextManutencao(
     return [
         'dias' => datadiff($resultado),
         'data' => $resultado,
-        'mensagem' => 'O meu ruca sugere uma manutencão em ' . $resultado
+        'mensagem' => 'O meu ruca sugere uma manutencão em ' . $resultado,
+        'pecas' => 'Formas em desenvolvimento'
     ];
 }
 
