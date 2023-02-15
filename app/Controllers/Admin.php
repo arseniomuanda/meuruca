@@ -178,7 +178,7 @@ class Admin extends ResourceController
         }
     }
 
-    public function deletPedido($id = null)
+    public function deletPedido($id)
     {
         try {
             $secret_key = $this->protect->privateKey();
@@ -338,7 +338,7 @@ class Admin extends ResourceController
                             $is_domicilio = $this->request->getPost('is_domicilio');
 
                             if ($factura['code'] == 200) {
-                                if (($servico_entrega == 1) || ($is_domicilio==1)) {
+                                if (($servico_entrega == 1) || ($is_domicilio == 1)) {
                                     $itemRow = $this->db->query("SELECT * FROM `servicos` WHERE prestador = 2 AND categoria = 3")->getRow(0);
 
                                     $itemData = [
@@ -353,12 +353,12 @@ class Admin extends ResourceController
 
                                     cadastronormal($this->itemfacturaModel, $itemData, $this->db, $this->auditoriaModel);
                                 }/*  else {
-                    daletarnormal($factura, $db, $this->facturaModel, $auditoria);
-                    daletarnormal($agenda, $db, $this->agendaModel, $auditoria);
+                    deletarnormal($factura, $db, $this->facturaModel, $auditoria);
+                    deletarnormal($agenda, $db, $this->agendaModel, $auditoria);
                 } */
                             } else {
-                                daletarnormal($factura, $this->db, $this->facturaModel, $this->auditoriaModel);
-                                daletarnormal($agenda, $this->db, $this->agendaModel, $this->auditoriaModel);
+                                deletarnormal($factura, $this->db, $this->facturaModel, $this->auditoriaModel);
+                                deletarnormal($agenda, $this->db, $this->agendaModel, $this->auditoriaModel);
                             }
                         }
 
@@ -379,19 +379,19 @@ class Admin extends ResourceController
 
     public function newPrestador()
     {
-    
+
         try {
-            
+
             $secret_key = $this->protect->privateKey();
             $token = null;
             $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
-            
+
             if (!$authHeader) return null;
-            
-            
+
+
             $arr = explode(" ", $authHeader);
             $token = $arr[1];
-        
+
             $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
 
             if ($token_validate < 1) {
@@ -414,28 +414,28 @@ class Admin extends ResourceController
 
 
                         $foto = $this->request->getFile('foto');
-                        
+
                         $data = [
-                            
-                            'nome' => $this->request->getPost('nome'), 
-                            'nif' => $this->request->getPost('nif'), 
-                            'email' => $this->request->getPost('email'), 
-                            'telefone' => $this->request->getPost('telefone'), 
-                            'endereco' => $this->request->getPost('endereco'), 
-                            'criadopor' => $this->request->getPost('criadopor'), 
-                            'site' => $this->request->getPost('site'), 
-                            'androidlink' => $this->request->getPost('androidlink'), 
-                            'ioslink' => $this->request->getPost('ioslink'), 
-                            'gps_latitude' => $this->request->getPost('gps_latitude'), 
-                            'gps_longitude' => $this->request->getPost('gps_longitude'), 
-                            'w3w' => $this->request->getPost('w3w'), 
-                            'country' => $this->request->getPost('country'), 
-                            'provincia' => $this->request->getPost('provincia'), 
-                            'municipio' => $this->request->getPost('municipio'), 
-                            'distrito' => $this->request->getPost('distrito'), 
-                            'comuna' => $this->request->getPost('comuna'), 
-                            'bairro' => $this->request->getPost('bairro'), 
-                            'n_casa' => $this->request->getPost('n_casa'), 
+
+                            'nome' => $this->request->getPost('nome'),
+                            'nif' => $this->request->getPost('nif'),
+                            'email' => $this->request->getPost('email'),
+                            'telefone' => $this->request->getPost('telefone'),
+                            'endereco' => $this->request->getPost('endereco'),
+                            'criadopor' => $this->request->getPost('criadopor'),
+                            'site' => $this->request->getPost('site'),
+                            'androidlink' => $this->request->getPost('androidlink'),
+                            'ioslink' => $this->request->getPost('ioslink'),
+                            'gps_latitude' => $this->request->getPost('gps_latitude'),
+                            'gps_longitude' => $this->request->getPost('gps_longitude'),
+                            'w3w' => $this->request->getPost('w3w'),
+                            'country' => $this->request->getPost('country'),
+                            'provincia' => $this->request->getPost('provincia'),
+                            'municipio' => $this->request->getPost('municipio'),
+                            'distrito' => $this->request->getPost('distrito'),
+                            'comuna' => $this->request->getPost('comuna'),
+                            'bairro' => $this->request->getPost('bairro'),
+                            'n_casa' => $this->request->getPost('n_casa'),
                             'tipo' => $this->request->getPost('tipo'),
                             'criadopor' => $decoded->data->id
                         ];
@@ -462,19 +462,17 @@ class Admin extends ResourceController
 
     public function editPrestador($id)
     {
-    
+
         try {
-            
             $secret_key = $this->protect->privateKey();
             $token = null;
             $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
-            
+
             if (!$authHeader) return null;
-            
-            
+
             $arr = explode(" ", $authHeader);
             $token = $arr[1];
-        
+
             $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
 
             if ($token_validate < 1) {
@@ -486,7 +484,6 @@ class Admin extends ResourceController
                 ], 403);
             }
 
-
             if ($token) {
                 $decoded = JWT::decode($token, $secret_key, array('HS256'));
 
@@ -497,28 +494,28 @@ class Admin extends ResourceController
 
 
                         $foto = $this->request->getFile('foto');
-                        
+
                         $data = [
                             'id' => $id,
-                            'nome' => $this->request->getPost('nome'), 
-                            'nif' => $this->request->getPost('nif'), 
-                            'email' => $this->request->getPost('email'), 
-                            'telefone' => $this->request->getPost('telefone'), 
-                            'endereco' => $this->request->getPost('endereco'), 
-                            'criadopor' => $this->request->getPost('criadopor'), 
-                            'site' => $this->request->getPost('site'), 
-                            'androidlink' => $this->request->getPost('androidlink'), 
-                            'ioslink' => $this->request->getPost('ioslink'), 
-                            'gps_latitude' => $this->request->getPost('gps_latitude'), 
-                            'gps_longitude' => $this->request->getPost('gps_longitude'), 
-                            'w3w' => $this->request->getPost('w3w'), 
-                            'country' => $this->request->getPost('country'), 
-                            'provincia' => $this->request->getPost('provincia'), 
-                            'municipio' => $this->request->getPost('municipio'), 
-                            'distrito' => $this->request->getPost('distrito'), 
-                            'comuna' => $this->request->getPost('comuna'), 
-                            'bairro' => $this->request->getPost('bairro'), 
-                            'n_casa' => $this->request->getPost('n_casa'), 
+                            'nome' => $this->request->getPost('nome'),
+                            'nif' => $this->request->getPost('nif'),
+                            'email' => $this->request->getPost('email'),
+                            'telefone' => $this->request->getPost('telefone'),
+                            'endereco' => $this->request->getPost('endereco'),
+                            'criadopor' => $this->request->getPost('criadopor'),
+                            'site' => $this->request->getPost('site'),
+                            'androidlink' => $this->request->getPost('androidlink'),
+                            'ioslink' => $this->request->getPost('ioslink'),
+                            'gps_latitude' => $this->request->getPost('gps_latitude'),
+                            'gps_longitude' => $this->request->getPost('gps_longitude'),
+                            'w3w' => $this->request->getPost('w3w'),
+                            'country' => $this->request->getPost('country'),
+                            'provincia' => $this->request->getPost('provincia'),
+                            'municipio' => $this->request->getPost('municipio'),
+                            'distrito' => $this->request->getPost('distrito'),
+                            'comuna' => $this->request->getPost('comuna'),
+                            'bairro' => $this->request->getPost('bairro'),
+                            'n_casa' => $this->request->getPost('n_casa'),
                             'tipo' => $this->request->getPost('tipo'),
                             'criadopor' => $decoded->data->id
                         ];
@@ -544,19 +541,19 @@ class Admin extends ResourceController
 
     public function newServico()
     {
-    
+
         try {
-            
+
             $secret_key = $this->protect->privateKey();
             $token = null;
             $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
-            
+
             if (!$authHeader) return null;
-            
-            
+
+
             $arr = explode(" ", $authHeader);
             $token = $arr[1];
-        
+
             $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
 
             if ($token_validate < 1) {
@@ -577,16 +574,13 @@ class Admin extends ResourceController
                     if ($decoded->data->acesso > 1) {
                         helper('funcao');
 
-
-                        $foto = $this->request->getFile('foto');
-
                         $data = [
-                            'prestador' => $this->request->getPost('prestador'), 
-                            'nome' => $this->request->getPost('nome'), 
-                            'valor' => $this->request->getPost('valor'),'
-                            descricao' => $this->request->getPost('escricao'), 
-                            'is_aprovado' => $this->request->getPost('is_aprovado'), 
-                            'is_domicilio' => $this->request->getPost('is_domicilio'), 
+                            'prestador' => $this->request->getPost('prestador'),
+                            'nome' => $this->request->getPost('nome'),
+                            'valor' => $this->request->getPost('valor'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'is_aprovado' => $this->request->getPost('is_aprovado'),
+                            'is_domicilio' => $this->request->getPost('is_domicilio'),
                             'categoria' => $this->request->getPost('categoria'),
                             'criadopor' => $decoded->data->id
                         ];
@@ -594,6 +588,125 @@ class Admin extends ResourceController
                         $data = cleanarray($data);
 
                         $resposta = cadastronormal($this->servicoModel, $data, $this->db, $this->auditoriaModel);
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function editServico(int $id)
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+                        $data = [
+                            'id' => $id,
+                            'prestador' => $this->request->getPost('prestador'),
+                            'nome' => $this->request->getPost('nome'),
+                            'valor' => $this->request->getPost('valor'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'is_aprovado' => $this->request->getPost('is_aprovado'),
+                            'is_domicilio' => $this->request->getPost('is_domicilio'),
+                            'categoria' => $this->request->getPost('categoria'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = updatenomal($this->servicoModel, $data, $this->auditoriaModel);
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function deletServico($id)
+    {
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+                        $data = $this->request->getPost();
+                        $data['criadopor'] = $decoded->data->id;
+
+                        $data = [
+                            'id' => $id,
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $resposta = deletarnormal($data ,$this->db, $this->servicoModel, $this->auditoriaModel);
 
                         return $this->respond($resposta);
                     }

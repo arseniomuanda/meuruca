@@ -163,7 +163,7 @@ function cadastrocomduasfotos($model, $data, $db, $auditoria, $precesso, $tabela
     ];
 }
 
-function daletarnormal($data, $db, $model, $auditoria)
+function deletarnormal($data, $db, $model, $auditoria)
 {
     $query = $db->query("DELETE FROM $model->table WHERE `id` = " . $data['id']);
     if ($query) {

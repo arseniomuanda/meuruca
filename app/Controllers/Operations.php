@@ -209,7 +209,7 @@ class Operations extends ResourceController
                             break;
                         case 'delete':
                             # code...
-                            $response = daletarnormal($data, $this->db, $model, $this->auditoriaModel);
+                            $response = deletarnormal($data, $this->db, $model, $this->auditoriaModel);
                             break;
                         case 'deleteItemAgenda':
                             # code...
@@ -615,12 +615,12 @@ class Operations extends ResourceController
 
                     cadastronormal($this->itemfacturaModel, $itemData, $db, $auditoria);
                 }/*  else {
-                    daletarnormal($factura, $db, $this->facturaModel, $auditoria);
-                    daletarnormal($agenda, $db, $this->agendaModel, $auditoria);
+                    deletarnormal($factura, $db, $this->facturaModel, $auditoria);
+                    deletarnormal($agenda, $db, $this->agendaModel, $auditoria);
                 } */
             } else {
-                daletarnormal($factura, $db, $this->facturaModel, $auditoria);
-                daletarnormal($agenda, $db, $this->agendaModel, $auditoria);
+                deletarnormal($factura, $db, $this->facturaModel, $auditoria);
+                deletarnormal($agenda, $db, $this->agendaModel, $auditoria);
             }
         }
 
@@ -844,7 +844,7 @@ class Operations extends ResourceController
 
             $resposta = updatenomal($model, $data, $this->auditoriaModel);
         } else {
-            daletarnormal($data, $this->db, $model, $this->auditoriaModel);
+            deletarnormal($data, $this->db, $model, $this->auditoriaModel);
             $resposta = returnVoid($data, 401, "Item não encontrado!");
         }
 
@@ -887,7 +887,7 @@ class Operations extends ResourceController
                     $actor =  $decoded->data->user->id;
                     helper('funcao');
 
-                    $data = daletarnormal($id, $this->db, 'escola', $actor, $this->auditoriaModel, 'Escola');
+                    $data = deletarnormal($id, $this->db, 'escola', $actor, $this->auditoriaModel, 'Escola');
                     return $this->respond($data);
                 }
             } catch (\Exception $e) {
