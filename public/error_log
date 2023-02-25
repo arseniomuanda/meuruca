@@ -292,3 +292,12 @@ Stack trace:
 [12-Jul-2022 09:44:34 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
 [12-Jul-2022 09:47:54 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
 [12-Jul-2022 10:07:49 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/arpetic/meuruca/app/Helpers/funcao_helper.php on line 556
+[13-Feb-2023 22:43:05 Africa/Luanda] PHP Fatal error:  Uncaught ErrorException: print_r(): Property access is not allowed yet in /home/meuruca/api.meuruca.ao/app/Views/errors/html/error_exception.php:100
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r(): Prop...', '/home/meuruca/a...', 100, Array)
+#1 /home/meuruca/api.meuruca.ao/app/Views/errors/html/error_exception.php(100): print_r(Object(App\Controllers\Login), true)
+#2 /home/meuruca/api.meuruca.ao/vendor/codeigniter4/framework/system/Debug/Exceptions.php(281): include('/home/meuruca/a...')
+#3 /home/meuruca/api.meuruca.ao/vendor/codeigniter4/framework/system/Debug/Exceptions.php(147): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Database\Exceptions\DatabaseException), 500)
+#4 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+#5 {main}
+  thrown in /home/meuruca/api.meuruca.ao/app/Views/errors/html/error_exception.php on line 100

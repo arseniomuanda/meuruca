@@ -4,9 +4,13 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use Config\Database;
 
 class Home extends ResourceController
 {
+	protected $login;
+	protected $db;
+
 	public function __construct()
 	{
 		// headers
@@ -32,11 +36,27 @@ class Home extends ResourceController
 		}
 
 		$this->login = new Login();
+		$this->db = Database::connect();
+	}
+
+	public function websiteresume()
+	{
+		return $this->respond([
+			'clientes' => $this->db->query("SELECT COUNT(*) total FROM proprietarios")->getRow(0)->total,
+			'lojas' => $this->db->query("SELECT COUNT(*) total FROM lojas")->getRow(0)->total,
+			'prestadores' => $this->db->query("SELECT COUNT(*) total FROM prestadors")->getRow(0)->total,
+			'servicos' => $this->db->query("SELECT COUNT(*) total FROM servicos")->getRow(0)->total,
+			'produtos' => $this->db->query("SELECT COUNT(*) total FROM produtos")->getRow(0)->total,
+			'viaturas' => $this->db->query("SELECT COUNT(*) total FROM viaturas")->getRow(0)->total,
+			'modelos' => $this->db->query("SELECT COUNT(*) total FROM modelos")->getRow(0)->total,
+			'marcas' => $this->db->query("SELECT COUNT(*) total FROM marcas")->getRow(0)->total,
+			'anos' => $this->db->query("SELECT COUNT(*) total FROM ano_fabricos")->getRow(0)->total,
+		]);;
 	}
 
 	public function index()
 	{
-		$data = json_decode(file_get_contents("php://input"));
+		$data = $this->request->getVar();
 		return $this->respond([
 			'Created_at' => "2022-03-29",
 			'Time' => date('Y-m-d H:i:s'),

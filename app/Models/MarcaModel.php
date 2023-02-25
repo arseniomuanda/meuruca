@@ -14,7 +14,7 @@ class MarcaModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nome', 'descicao'];
+	protected $allowedFields        = ['nome', 'descricao', 'foto'];
 
 	// Dates
 	protected $useTimestamps        = false;

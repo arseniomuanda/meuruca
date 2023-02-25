@@ -14,7 +14,7 @@ class GestaoviaturaModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['km_actual', 'km_diaria_dias_semana', 'km_diaria_final_semana', 'data_ultima_revisao', 'km_na_ultima_revisao', 'viatura', 'tipo_oleo', ''];
+	protected $allowedFields        = ['km_actual', 'km_diaria_dias_semana', 'km_diaria_final_semana', 'data_ultima_revisao', 'km_na_ultima_revisao', 'viatura', 'tipo_oleo', 'pecas_trocadas', 'periodo_de_revisao'];
 
 	// Dates
 	protected $useTimestamps        = false;

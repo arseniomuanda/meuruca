@@ -11,7 +11,6 @@ use App\Models\AuditoriaModel;
 use App\Models\ContaModel;
 use App\Models\ProprietarioModel;
 use App\Models\UtilizadorModel;
-use phpDocumentor\Reflection\Types\This;
 
 class Login extends ResourceController
 {
@@ -337,7 +336,7 @@ class Login extends ResourceController
                 'reset_token' => md5("12345678910" . date('d-m-Y') . $data['email']),
                 'criadopor' => $user->id,
             ];
-            updatenomal($this->utilizadorModel, $data1, $this->auditoriaModel);
+            updatenormal($this->utilizadorModel, $data1, $this->auditoriaModel);
             return $this->respond(returnVoid($data, 404, "Token Expirado!"));
         }
 
@@ -351,7 +350,7 @@ class Login extends ResourceController
                     'password' => $newPassWord,
                     'criadopor' => $user->id,
                 ];
-                $resposta = updatenomal($this->utilizadorModel, $data, $this->auditoriaModel);
+                $resposta = updatenormal($this->utilizadorModel, $data, $this->auditoriaModel);
                 return $this->respond($resposta, 200);
             }
         }

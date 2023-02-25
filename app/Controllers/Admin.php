@@ -3,10 +3,13 @@
 namespace App\Controllers;
 
 use App\Models\AgendaModel;
+use App\Models\AnofabricoModel;
 use App\Models\AuditoriaModel;
 use App\Models\ContaModel;
 use App\Models\FacturaModel;
 use App\Models\ItemfacturaModel;
+use App\Models\MarcaModel;
+use App\Models\ModeloModel;
 use App\Models\PrestadorModel;
 use App\Models\ProdutoModel;
 use App\Models\ProprietarioModel;
@@ -34,6 +37,9 @@ class Admin extends ResourceController
     protected $itemfacturaModel;
     protected $prestadorModel;
     protected $servicoModel;
+    protected $marcaModel;
+    protected $modeloModel;
+    protected $anoModel;
 
 
     public function __construct()
@@ -72,6 +78,9 @@ class Admin extends ResourceController
         $this->itemfacturaModel = new ItemfacturaModel();
         $this->prestadorModel = new PrestadorModel();
         $this->servicoModel = new ServicoModel();
+        $this->marcaModel = new MarcaModel();
+        $this->modeloModel = new ModeloModel();
+        $this->anoModel = new AnofabricoModel();
 
         $this->session = Services::session();
         $this->protect = new Login();
@@ -460,6 +469,72 @@ class Admin extends ResourceController
     }
 
 
+    public function editAgendamento($id)
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+
+                        $agendaData = [
+                            'id' => $id,
+                            'proprietario' => $this->request->getPost('proprietario'),
+                            'inicio' => $this->request->getPost('data_pedido'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'criadopor' => $decoded->data->id,
+                            'table' => 'agenda',
+                        ];
+
+                        $agendaData = cleanarray($agendaData);
+
+                        //return $this->respond($agendaData);
+
+                        $resposta = updatenormal($this->agendaModel, $agendaData, $this->auditoriaModel);
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+
     public function editPrestador($id)
     {
 
@@ -604,6 +679,385 @@ class Admin extends ResourceController
         }
     }
 
+    public function newMarca()
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+                        $foto = $this->request->getFile('foto');
+
+                        $data = [
+                            'nome' => $this->request->getPost('nome'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = cadastrocomumafoto($this->marcaModel, $data, $this->db, $this->auditoriaModel, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function editMarca($id)
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+                        $foto = $this->request->getFile('foto');
+
+                        $data = [
+                            'id' => $id,
+                            'nome' => $this->request->getPost('nome'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = updatecomumafoto($this->marcaModel, $data, $this->db, $this->auditoriaModel, 'Marca', $this->marcaModel->table, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function newModelo()
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+                        $foto = $this->request->getFile('foto');
+
+                        $data = [
+                            'nome' => $this->request->getPost('nome'),
+                            'marca' => $this->request->getPost('marca'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = cadastrocomumafoto($this->modeloModel, $data, $this->db, $this->auditoriaModel, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function editModelo($id)
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+                        $foto = $this->request->getFile('foto');
+
+                        $data = [
+                            'id' => $id,
+                            'nome' => $this->request->getPost('nome'),
+                            'marca' => $this->request->getPost('marca'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = updatecomumafoto($this->modeloModel, $data, $this->db, $this->auditoriaModel, 'Modelo', $this->modeloModel->table, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function newAno()
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+                        $foto = $this->request->getFile('foto');
+
+                        $data = [
+                            'nome' => $this->request->getPost('nome'),
+                            'modelo' => $this->request->getPost('modelo'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = cadastrocomumafoto($this->anoModel, $data, $this->db, $this->auditoriaModel, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function editAno($id)
+    {
+
+        try {
+
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+
+            if (!$authHeader) return null;
+
+
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+
+                        $foto = $this->request->getFile('foto');
+
+                        $data = [
+                            'id' => $id,
+                            'nome' => $this->request->getPost('nome'),
+                            'modelo' => $this->request->getPost('modelo'),
+                            'descricao' => $this->request->getPost('descricao'),
+                            'criadopor' => $decoded->data->id
+                        ];
+
+                        $data = cleanarray($data);
+
+                        $resposta = updatecomumafoto($this->anoModel, $data, $this->db, $this->auditoriaModel, 'Modelo', $this->anoModel->table, $foto, 'foto');
+
+                        return $this->respond($resposta);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
     public function editServico(int $id)
     {
 
@@ -653,7 +1107,7 @@ class Admin extends ResourceController
 
                         $data = cleanarray($data);
 
-                        $resposta = updatenomal($this->servicoModel, $data, $this->auditoriaModel);
+                        $resposta = updatenormal($this->servicoModel, $data, $this->auditoriaModel);
 
                         return $this->respond($resposta);
                     }
@@ -706,7 +1160,7 @@ class Admin extends ResourceController
                             'criadopor' => $decoded->data->id
                         ];
 
-                        $resposta = deletarnormal($data ,$this->db, $this->servicoModel, $this->auditoriaModel);
+                        $resposta = deletarnormal($data, $this->db, $this->servicoModel, $this->auditoriaModel);
 
                         return $this->respond($resposta);
                     }

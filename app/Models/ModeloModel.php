@@ -14,7 +14,7 @@ class ModeloModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nome', 'marca', 'descricao'];
+	protected $allowedFields        = ['nome', 'marca', 'descricao', 'foto'];
 
 	// Dates
 	protected $useTimestamps        = false;

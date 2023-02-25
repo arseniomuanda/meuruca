@@ -14,7 +14,7 @@ class AnofabricoModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nome', 'modelo'];
+	protected $allowedFields        = ['nome', 'modelo', 'descricao', 'foto'];
 
 	// Dates
 	protected $useTimestamps        = false;

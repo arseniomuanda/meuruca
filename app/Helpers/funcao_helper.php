@@ -266,7 +266,7 @@ function deletecomumafoto($id, $db, $table, $actor, $auditoria, $precesso, $tabe
     return false;
 }
 
-function updatenomal($model, $data, $auditoria)
+function updatenormal($model, $data, $auditoria)
 {
     $query = $model->save($data);
 

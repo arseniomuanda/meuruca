@@ -1,0 +1,165 @@
+ERROR - 2023-02-24 12:44:58 --> Email: sendWithSmtp throwed fgets(): SSL: Connection reset by peer
+ERROR - 2023-02-24 12:46:56 --> Email: sendWithSmtp throwed fgets(): SSL: Connection reset by peer
+ERROR - 2023-02-24 12:53:18 --> Email: sendWithSmtp throwed fgets(): SSL: Connection reset by peer
+ERROR - 2023-02-24 13:01:41 --> Email: sendWithSmtp throwed fgets(): SSL: Connection reset by peer
+CRITICAL - 2023-02-24 15:55:14 --> Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 19)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Contact.php(19): header('Access-Control-...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(907): App\Controllers\Contact->__construct()
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2023-02-24 15:55:14 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-02-24 15:56:08 --> Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 19)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Contact.php(19): header('Access-Control-...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(907): App\Controllers\Contact->__construct()
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2023-02-24 15:56:08 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-02-24 15:57:10 --> Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 19)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Contact.php(19): header('Access-Control-...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(907): App\Controllers\Contact->__construct()
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2023-02-24 15:57:10 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-02-24 15:57:33 --> Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 19)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Contact.php(19): header('Access-Control-...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(907): App\Controllers\Contact->__construct()
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2023-02-24 15:57:33 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2023-02-24 15:58:14 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known
+ERROR - 2023-02-24 16:01:09 --> Email: sendWithSmtp throwed fsockopen(): php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known
+ERROR - 2023-02-24 16:03:10 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown
+ERROR - 2023-02-24 16:03:12 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown
+ERROR - 2023-02-24 16:03:22 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown
+ERROR - 2023-02-24 16:03:25 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown
+CRITICAL - 2023-02-24 16:05:37 --> Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 19)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Contact.php(19): header('Access-Control-...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(907): App\Controllers\Contact->__construct()
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2023-02-24 16:05:37 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-02-24 16:06:12 --> Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 19)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Contact.php(19): header('Access-Control-...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(907): App\Controllers\Contact->__construct()
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#7 {main}
+CRITICAL - 2023-02-24 16:06:12 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 500 In...', true, 500)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(ErrorException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-02-24 16:15:29 --> Undefined property: CodeIgniter\Email\Email::$error_log
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Contact.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', '/Users/arseniom...', 35)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Contact->sendMail()
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Contact))
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#6 {main}
+CRITICAL - 2023-02-24 16:33:43 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 404 No...', true, 404)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Exceptions\PageNotFoundException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-02-24 16:36:32 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 404 No...', true, 404)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Exceptions\PageNotFoundException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2023-02-24 16:37:11 --> Uncaught ErrorException: Cannot modify header information - headers already sent by (output started at /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Config/Events.php:35) in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php:137
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Cannot modify h...', '/Users/arseniom...', 137)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Debug/Exceptions.php(137): header('HTTP/1.1 404 No...', true, 404)
+#2 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Exceptions\PageNotFoundException))
+#3 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2023-02-24 16:39:00 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown
+ERROR - 2023-02-24 16:39:44 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown
+ERROR - 2023-02-24 16:40:08 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown
+ERROR - 2023-02-24 16:40:15 --> Email: sendWithSmtp throwed fwrite(): SSL operation failed with code 1. OpenSSL Error messages:
+error:140D00CF:SSL routines:SSL_write:protocol is shutdown

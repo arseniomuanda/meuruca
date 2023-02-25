@@ -112,7 +112,7 @@ protected $auditoria;
         ];
 
         helper('funcao');
-        $data = updatenomal($this->model, $data, $this->auditoria, 'Pessoa');
+        $data = updatenormal($this->model, $data, $this->auditoria, 'Pessoa');
         return $this->respond($data);
     }
 

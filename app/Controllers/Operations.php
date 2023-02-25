@@ -205,7 +205,7 @@ class Operations extends ResourceController
                             break;
                         case 'update':
                             # code...
-                            $response = updatenomal($model, $data, $this->auditoriaModel);
+                            $response = updatenormal($model, $data, $this->auditoriaModel);
                             break;
                         case 'delete':
                             # code...
@@ -511,8 +511,8 @@ class Operations extends ResourceController
         ];
 
         updatecomumafoto($model, $utilizadorData, $this->db, $this->auditoriaModel, 'Utilizador', 'utilizadors', $foto, 'foto');
-        updatenomal($this->proprietarioModel, $proprietarioData, $this->auditoriaModel);
-        updatenomal($this->contaModel, $contaData, $this->auditoriaModel);
+        updatenormal($this->proprietarioModel, $proprietarioData, $this->auditoriaModel);
+        updatenormal($this->contaModel, $contaData, $this->auditoriaModel);
 
         return $this->userPorfile($user, $this->db, $proprietario);
     }
@@ -534,6 +534,7 @@ class Operations extends ResourceController
 
             $id = $value->id;
             $proprietario = $value->proprietario;
+            $gestVia = $db->query("SELECT * FROM `gestao_viaturas` INNER JOIN viaturas ON gestao_viaturas.viatura = viaturas.id WHERE viaturas.id = $id AND viaturas.proprietario = $proprietario ORDER BY gestao_viaturas.id DESC LIMIT 1")->getRow(0);
 
             $result = [
                 "id" => $value->id,
@@ -548,8 +549,35 @@ class Operations extends ResourceController
                 "marca" => $value->marca,
                 "modelo" => $value->modelo,
 
+                // 'km_actual' => $gestVia->km_actual ?? 0,
+                // 'km_diaria_dias_semana' => $gestVia->km_diaria_dias_semana ?? 0,
+                // 'km_diaria_final_semana' => $gestVia->km_diaria_final_semana ?? 0,
+                // 'data_ultima_revisao' => $gestVia->data_ultima_revisao ?? 0,
+                // 'km_na_ultima_revisao' => $gestVia->km_na_ultima_revisao ?? 0,
+                // 'periodo_de_revisao' => $gestVia->periodo_de_revisao ?? 0,
+
+
                 'agenda' => $db->query("SELECT agendas.*, viaturas.matricula, viaturas.imagem imagemViatura, modelos.nome modeloViatura, marcas.nome marcaViatura, ano_fabricos.nome anoFabrico, prestadors.nome nomePrestador, prestadors.telefone telefonePrestador, prestadors.email emailPrestador FROM agendas INNER JOIN viaturas ON agendas.viatura = viaturas.id INNER JOIN ano_fabricos ON viaturas.ano=ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo = modelos.id INNER JOIN marcas ON modelos.marca = marcas.id LEFT JOIN prestadors ON agendas.prestador = prestadors.id WHERE agendas.estado <> 1 AND viaturas.id = $id AND viaturas.proprietario = $proprietario ORDER BY agendas.inicio ASC")->getResult(),
-                'gestao' => $gestVia = $db->query("SELECT * FROM `gestao_viaturas` INNER JOIN viaturas ON gestao_viaturas.viatura = viaturas.id WHERE viaturas.id = $id AND viaturas.proprietario = $proprietario ORDER BY gestao_viaturas.id DESC")->getRow(0),
+                'gestao' =>  [
+                    "id" => $gestVia->id ?? '0',
+                    "viatura" => $gestVia->viatura ?? '0',
+                    "km_actual" => $gestVia->km_actual ?? '0',
+                    "periodo_de_revisao" => $gestVia->periodo_de_revisao ?? '0',
+                    "km_diaria_dias_semana" => $gestVia->km_diaria_dias_semana ?? '0',
+                    "km_diaria_final_semana" => $gestVia->km_diaria_final_semana ?? '0',
+                    "data_ultima_revisao" => $gestVia->data_ultima_revisao ?? '0',
+                    "km_na_ultima_revisao" => $gestVia->km_na_ultima_revisao ?? '0',
+                    "tipo_oleo" => $gestVia->tipo_oleo ?? '0',
+                    "pecas_trocadas" => $gestVia->pecas_trocadas ?? '0',
+                    "created_at" => $gestVia->created_at ?? '0',
+                    "updated_at" => $gestVia->updated_at ?? '0',
+                    "deleted_at" => $gestVia->deleted_at ?? '0',
+                    "matricula" => $gestVia->matricula ?? '0',
+                    "proprietario" => $gestVia->proprietario ?? '0',
+                    "ano" => $gestVia->ano ?? '0',
+                    "descricao" => $gestVia->descricao ?? '0',
+                    "imagem" => $gestVia->imagem ?? '0',
+                ],
                 'previsao' => [
                     nextManutencao($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0, $gestVia->periodo_de_revisao ?? 5000),
                 ]
@@ -767,7 +795,7 @@ class Operations extends ResourceController
                     ];
 
                     helper('funcao');
-                    $data = updatenomal($this->model, $data, $this->auditoriaModel, 'Escola');
+                    $data = updatenormal($this->model, $data, $this->auditoriaModel, 'Escola');
                     return $this->respond($data);
                 }
             } catch (\Exception $e) {
@@ -806,7 +834,7 @@ class Operations extends ResourceController
                 'total' => ((int) $item->total + (int) $item->id)
             ];
 
-            $resposta = updatenomal($model, $data, $this->auditoriaModel);
+            $resposta = updatenormal($model, $data, $this->auditoriaModel);
         } else {
             $item = $this->produtoModel->where('id', $procuto)->first();
             $data = [
@@ -842,7 +870,7 @@ class Operations extends ResourceController
                 'total' => ((int) $item->total - (int) $item->id)
             ];
 
-            $resposta = updatenomal($model, $data, $this->auditoriaModel);
+            $resposta = updatenormal($model, $data, $this->auditoriaModel);
         } else {
             deletarnormal($data, $this->db, $model, $this->auditoriaModel);
             $resposta = returnVoid($data, 401, "Item não encontrado!");
@@ -921,7 +949,7 @@ class Operations extends ResourceController
                     'password' => $newPassWord,
                     'criadopor' => $data['criadopor'],
                 ];
-                return updatenomal($model, $data2, $auditoria);
+                return updatenormal($model, $data2, $auditoria);
             }
         }
         return returnVoid($data, 400);
@@ -969,7 +997,7 @@ class Operations extends ResourceController
     {
         helper('funcao');
         /* Doravante a categoria 1 será relacionada a lavangem de carros, categoria 2 será para manutencão e repareçao */
-        $response = $db->query("SELECT * FROM $model->table")->getResult();
+        $response = $db->query("SELECT $model->table.* FROM $model->table INNER JOIN servicos ON $model->table.id = servicos.prestador WHERE $model->table.id != 2 GROUP BY $model->table.id")->getResult();
 
         $row = array();
         foreach ($response as $value) {
@@ -1001,7 +1029,8 @@ class Operations extends ResourceController
                 'comuna' => $value->comuna,
                 'bairro' => $value->bairro,
                 'n_casa' => $value->n_casa,
-                'services' => $db->query("SELECT * FROM servicos WHERE prestador = $id AND prestador <> 2")->getResult(),
+                'tipo' => $value->tipo,
+                'services' => $db->query("SELECT servicos.* FROM servicos WHERE prestador = $id")->getResult(),
             ];
 
             array_push($row, $result);
