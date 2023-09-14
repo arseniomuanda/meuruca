@@ -19,6 +19,7 @@ use CodeIgniter\RESTful\ResourceController;
 use Config\Database;
 use Config\Services;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use phpDocumentor\Reflection\Types\This;
 
 class Admin extends ResourceController
@@ -106,7 +107,7 @@ class Admin extends ResourceController
                 ]);
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
                 if ($decoded) {
                     if ($decoded->data->acesso > 1) {
                         return $this->respond([
@@ -133,6 +134,571 @@ class Admin extends ResourceController
         }
     }
 
+    public function gerarFacturaapi()
+    {
+        $factura = $this->request->getPost('factura');
+        $proprietario = $this->request->getPost('proprietario');
+
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        $db = Database::connect();
+                        helper('funcao');
+                        $pagamento = $db->query("SELECT * FROM `facturas` WHERE id = $factura")->getRow(0);
+
+                        if ($pagamento->hash_factura != null) {
+                            $output = [
+                                'message' => 'Este pagamento já possui uma factura!',
+                                'status' => 401,
+                                'error' => true,
+                            ];
+                            return $this->respond($output, 401);
+                        }
+
+                        $clienteData = $db->query("SELECT proprietarios.nome, proprietarios.nif as bi, contas.nif, utilizadors.telefone, utilizadors.email  FROM `proprietarios` INNER JOIN `contas` ON proprietarios.conta = contas.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE proprietarios.id = $proprietario")->getRow(0);
+                        // echo $firmaData->api;
+                        #Aqui ficam os dados que depois serão enviados como response
+
+                        $cliente = [
+                            "name" => $clienteData->nome,
+                            "fiscal_id" => ($clienteData->bi != null) ? $clienteData->bi : '',
+                            "email" => $clienteData->email,
+                            "address" => 'Angola, Luanda', //Tendo de adicionar compos para endereço do prestador de serviço.
+                            "city" => "Luanda",
+                            "country" => "Angola",
+                            "phone" => $clienteData->telefone,
+                            "fax" => "",
+                            "mobile" => "",
+                            "postal_code" => "",
+                            "short_name" => "",
+                            "sigla" => "",
+                            "website" => "",
+                        ];
+                        if ($clienteData->bi != null) {
+                            $factura = [
+                                "date" => date('Y-m-d'),
+                                "due_date" => "",
+                                "observations" => "",
+                                "reference" => "",
+                                "retencao" => "",
+                                "type" => "FT",
+                                "vref" => "",
+                                "client" => $cliente,
+                                "items" => $db->query("SELECT itemfacturas.nome AS `name`, itemfacturas.valor AS unit_price, itemfacturas.qntidade AS quantity, 'servico' AS type, '0' AS discount, 'Meu Ruca' AS description FROM itemfacturas WHERE factura = $pagamento->id")->getResult(),
+                            ];
+                        } else {
+                            $factura = [
+                                "date" => date('Y-m-d'),
+                                "due_date" => "",
+                                "observations" => "",
+                                "reference" => "",
+                                "retencao" => "",
+                                "type" => "FT",
+                                "vref" => "",
+                                "items" => $db->query("SELECT itemfacturas.nome AS `name`, itemfacturas.valor AS unit_price, itemfacturas.qntidade AS quantity, 'servico' AS type, '0' AS discount, 'Meu Ruca' AS description FROM itemfacturas WHERE factura = $pagamento->id")->getResult(),
+                            ];
+                        }
+
+                        $data = [
+                                "invoice" =>  $factura
+                            ];
+
+                         //return $this->respond($data);
+
+                        $curl = curl_init();
+
+                        curl_setopt_array($curl, array(
+                            CURLOPT_URL => 'https://api.zcomercial.com/v1/invoice/create',
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_ENCODING => '',
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 0,
+                            CURLOPT_FOLLOWLOCATION => true,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => 'POST',
+                            CURLOPT_POSTFIELDS => json_encode($data, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE),
+                            CURLOPT_HTTPHEADER => array(
+                                'Authorization: ' . '9a2d9d31610ea03b16260515e479ff73ce2f01d0',
+                                'Content-Type: application/json',
+                            ),
+                        ));
+
+                        $response = json_decode(curl_exec($curl));
+
+                        // Check HTTP status code
+                        if (!curl_errno($curl)) {
+
+                            switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
+                                case 200: # OK	Everything worked as expected.
+                                    $db->query("UPDATE `facturas` SET `numero`= '" . $response->invoice->sequence_number . "', `datafactura`= '" . $response->invoice->date . "', `estado`= 1, `final`= 1, `hash_factura`= '" .$response->invoice->id ."' WHERE id = $pagamento->id;");
+                                    $db->query("UPDATE `agendas` SET `estado`= 1 WHERE factura = $pagamento->id;");
+                                    return $this->respond($response, 200);
+                                    break;
+                                case 400: # Bad Request	The request was unacceptable, often due to missing a required parameter.
+                                    return $this->respond($response);
+                                    break;
+                                case 401: # Unauthorized	No valid API key provided.
+                                    return $this->respond($response);
+                                    break;
+                                case 402: # Request Failed	The parameters were valid but the request failed.
+                                    return $this->respond($response);
+                                    break;
+                                case 409: # Conflict	The request conflicts with another request (perhaps due to using the same idempotent key).
+                                    return $this->respond($response);
+                                    break;
+                                case 429: # Too Many Requests	Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
+                                    return $this->respond($response);
+                                    break;
+                                case 500:
+                                case 502:
+                                case 503:
+                                case 504:                    # Server Errors	Something went wrong on example's end. (These are rare.)
+                                    return $this->respond($response);
+                                    break;
+                                case 404: # ERROR
+                                    return $this->respond($response);
+                                    break;
+                                default:
+                                    echo 'Unexpected HTTP code: ', $http_code, "\n";
+                                    return $this->respond($response);
+                            }
+                        }
+
+                        curl_close($curl);
+
+                        return $this->respond($response);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+
+    public function sendSMS()
+    {
+        $factura = $this->request->getPost('factura');
+        $proprietario = $this->request->getPost('proprietario');
+
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        $db = Database::connect();
+                        helper('funcao');
+                        $pagamento = $db->query("SELECT * FROM `facturas` WHERE id = $factura")->getRow(0);
+
+                        if ($pagamento->hash_factura == null) {
+                            $output = [
+                                'message' => 'Este pagamento ainda não possui uma factura!',
+                                'status' => 401,
+                                'error' => true,
+                            ];
+                            return $this->respond($output, 401);
+                        }
+
+                        $clienteData = $db->query("SELECT proprietarios.nome, proprietarios.nif as bi, contas.nif, utilizadors.telefone, utilizadors.email  FROM `proprietarios` INNER JOIN `contas` ON proprietarios.conta = contas.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE proprietarios.id = $proprietario")->getRow(0);
+                        $emissorMessage = "Saudações, Sr/Sra " . $clienteData->nome . ", Gostariamos de noficar sobre o estado de pagamento da factura " . $pagamento->numero;
+
+                        // echo $firmaData->api;
+                        //return $this->respond($data);
+
+                        $curl = curl_init();
+
+                        curl_setopt_array($curl, [
+                            CURLOPT_URL => "https://api.wesender.co.ao/envio/apikey",
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_ENCODING => "",
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 30,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => "POST",
+                            CURLOPT_POSTFIELDS => "{\n\t\"ApiKey\" : \"f450dec675494dc48e87e59ec29afcb77a4796587272496fb81d22020e91044a\",\n\"Destino\" : [\"". $clienteData->telefone ."\"],\n\"Mensagem\" : \"$emissorMessage\",\n\"CEspeciais\" : \"false\"\n}",
+                            CURLOPT_HTTPHEADER => [
+                                "Content-Type: application/json"
+                            ],
+                        ]);
+
+                        $response = json_decode(curl_exec($curl));
+
+                        // Check HTTP status code
+                        if (!curl_errno($curl)) {
+
+                            switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
+                                case 200: # OK	Everything worked as expected.
+                                    return $this->respond($response);
+                                    break;
+                                case 400: # Bad Request	The request was unacceptable, often due to missing a required parameter.
+                                    return $this->respond($response);
+                                    break;
+                                case 401: # Unauthorized	No valid API key provided.
+                                    return $this->respond($response);
+                                    break;
+                                case 402: # Request Failed	The parameters were valid but the request failed.
+                                    return $this->respond($response);
+                                    break;
+                                case 409: # Conflict	The request conflicts with another request (perhaps due to using the same idempotent key).
+                                    return $this->respond($response);
+                                    break;
+                                case 429: # Too Many Requests	Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
+                                    return $this->respond($response);
+                                    break;
+                                case 500:
+                                case 502:
+                                case 503:
+                                case 504:                    # Server Errors	Something went wrong on example's end. (These are rare.)
+                                    return $this->respond($response);
+                                    break;
+                                case 404: # ERROR
+                                    return $this->respond($response);
+                                    break;
+                                default:
+                                    echo 'Unexpected HTTP code: ', $http_code, "\n";
+                                    return $this->respond($response);
+                            }
+                        }
+                        curl_close($curl);
+                        return $this->respond($response);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function sendEmail()
+    {
+        $db = Database::connect();
+        $factura = $this->request->getPost('factura');
+        $proprietario = $this->request->getPost('proprietario');
+
+        $pagamento = $db->query("SELECT * FROM `facturas` WHERE id = $factura")->getRow(0);
+
+        if ($pagamento->hash_factura == null) {
+            $output = [
+                'message' => 'Este pagamento ainda nao possuí uma factura!',
+                'status' => 401,
+                'error' => true,
+            ];
+            return $this->respond($output, 401);
+        }
+
+        $clienteData = $db->query("SELECT proprietarios.nome, proprietarios.nif as bi, contas.nif, utilizadors.telefone, utilizadors.email  FROM `proprietarios` INNER JOIN `contas` ON proprietarios.conta = contas.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE proprietarios.id = $proprietario")->getRow(0);
+
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1) {
+                        helper('funcao');
+                        try {
+                            $email = \Config\Services::email();
+
+                            $emissorEmail = 'info@meuruca.ao';
+                            $emissorName = 'Meu Ruca';
+                            $emissorSubject = 'Factura - '. $pagamento->numero;
+                            $emissorMessage = "Saudações. <br><br>Sr/Sra " . $clienteData->nome . ", Gostariamos de noficar sobre o estado de pagamento da factura <b>" . $pagamento->numero . "<b>";
+                            $receptor = $clienteData->email;
+                            // $file = $this->request->getFile('file');
+
+                            // if (($file != null)) {
+                            //     $email->attach($file->getExtension(), $file->getBasename());
+                            // }
+                            $email->setFrom($emissorEmail, $emissorName);
+                            $email->setTo($receptor);
+
+                            $email->setSubject($emissorSubject);
+                            $email->setMessage($emissorMessage . '<br>De: ' . $emissorEmail);
+
+                            if ($email->send()) {
+                                return $this->respond([
+                                    'message' => 'Success'
+                                ], 200);
+                            } else {
+                                return $this->respond([
+                                    'message' => $email->printDebugger(['headers'])
+                                ], 501);
+                            }
+                        } catch (\Throwable $th) {
+                            return $this->respond([
+                                'message' => 'Erro',
+                                'error' => $th->getMessage()
+                            ], 501);
+                        }
+
+                        return $this->respond([
+                            'code' => 0,
+                            'message' => "Utilizador não encontrado!"
+                        ], 400);
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function finalizarPagamento()
+    {
+        $db = Database::connect();
+        $factura = $this->request->getPost('factura');
+        $proprietario = $this->request->getPost('proprietario');
+
+        $pagamento = $db->query("SELECT * FROM `facturas` WHERE id = $factura")->getRow(0);
+
+        if ($pagamento->hash_factura == null) {
+            $output = [
+                'message' => 'Este pagamento ainda nao possuí uma factura!',
+                'status' => 401,
+                'error' => true,
+            ];
+            return $this->respond($output, 401);
+        }
+
+        $clienteData = $db->query("SELECT proprietarios.nome, proprietarios.nif as bi, contas.nif, utilizadors.telefone, utilizadors.email  FROM `proprietarios` INNER JOIN `contas` ON proprietarios.conta = contas.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE proprietarios.id = $proprietario")->getRow(0);
+        
+        $sql = $db->query("UPDATE `facturas` SET `pago`= 1, `estado`= 2 WHERE id = $pagamento->id;");
+        $db->query("UPDATE `agendas` SET `estado`= 1 WHERE factura = $pagamento->id;");
+
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1 && $sql) {
+                        try {
+                            $email = \Config\Services::email();
+
+                            $emissorEmail = 'info@meuruca.ao';
+                            $emissorName = 'Meu Ruca';
+                            $emissorSubject = 'Factura - ' . $pagamento->numero;
+                            $emissorMessage = "Saudações. <br><br>Sr/Sra " . $clienteData->nome . ", Gostariamos de noficar que a factura " . $pagamento->numero . ", foi paga com sucesso <br><b>Muito obrigado pele preferência!<b>";
+                            $receptor = $clienteData->email;
+                            // $file = $this->request->getFile('file');
+
+                            // if (($file != null)) {
+                            //     $email->attach($file->getExtension(), $file->getBasename());
+                            // }
+                            $email->setFrom($emissorEmail, $emissorName);
+                            $email->setTo($receptor);
+
+                            $email->setSubject($emissorSubject);
+                            $email->setMessage($emissorMessage . '<br>De: ' . $emissorEmail);
+
+                            if ($email->send()) {
+                                return $this->respond([
+                                    'message' => 'Success'
+                                ], 200);
+                            } else {
+                                return $this->respond([
+                                    'message' => $email->printDebugger(['headers'])
+                                ], 501);
+                            }
+                        } catch (\Throwable $th) {
+                            return $this->respond([
+                                'message' => 'Erro',
+                                'error' => $th->getMessage()
+                            ], 501);
+                        }
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
+    public function finalizarAgendamento()
+    {
+        $db = Database::connect();
+        $agenda = $this->request->getPost('factura');
+        $proprietario = $this->request->getPost('proprietario');
+
+        $clienteData = $db->query("SELECT proprietarios.nome, proprietarios.nif as bi, contas.nif, utilizadors.telefone, utilizadors.email  FROM `proprietarios` INNER JOIN `contas` ON proprietarios.conta = contas.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE proprietarios.id = $proprietario")->getRow(0);
+
+        $sql = $db->query("UPDATE `agendas` SET `estado`= 3 WHERE factura = $agenda;");
+
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+
+            if ($token_validate < 1) {
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ], 403);
+            }
+
+
+            if ($token) {
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
+
+                if ($decoded) {
+
+                    if ($decoded->data->acesso > 1 && $sql) {
+                        try {
+                            $email = \Config\Services::email();
+
+                            $emissorEmail = 'info@meuruca.ao';
+                            $emissorName = 'Meu Ruca';
+                            $emissorSubject = 'Serviço finalizado';
+                            $emissorMessage = "Saudações. <br><br>Sr/Sra " . $clienteData->nome . ", O serviço está concluido, gostariamos de saber a tua avaliação. <br><b>Muito obrigado pele preferência!<b>";
+                            $receptor = $clienteData->email;
+                            // $file = $this->request->getFile('file');
+
+                            // if (($file != null)) {
+                            //     $email->attach($file->getExtension(), $file->getBasename());
+                            // }
+                            $email->setFrom($emissorEmail, $emissorName);
+                            $email->setTo($receptor);
+
+                            $email->setSubject($emissorSubject);
+                            $email->setMessage($emissorMessage . '<br>De: ' . $emissorEmail);
+
+                            if ($email->send()) {
+                                return $this->respond([
+                                    'message' => 'Success'
+                                ], 200);
+                            } else {
+                                return $this->respond([
+                                    'message' => $email->printDebugger(['headers'])
+                                ], 501);
+                            }
+                        } catch (\Throwable $th) {
+                            return $this->respond([
+                                'message' => 'Erro',
+                                'error' => $th->getMessage()
+                            ], 501);
+                        }
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+            print_r($th);
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ], 403);
+        }
+    }
+
     public function saveProduto($id = null)
     {
         try {
@@ -155,7 +721,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -209,7 +775,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -257,7 +823,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -302,7 +868,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -414,18 +980,21 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
                     if ($decoded->data->acesso > 1) {
                         helper('funcao');
 
-
                         $foto = $this->request->getFile('foto');
+                        $img1 = $this->request->getFile('img1');
+                        $img2 = $this->request->getFile('img2');
+                        $img3 = $this->request->getFile('img3');
+                        $img4 = $this->request->getFile('img4');
+                        $img5 = $this->request->getFile('img5');
 
                         $data = [
-
                             'nome' => $this->request->getPost('nome'),
                             'nif' => $this->request->getPost('nif'),
                             'email' => $this->request->getPost('email'),
@@ -451,7 +1020,7 @@ class Admin extends ResourceController
 
                         $data = cleanarray($data);
 
-                        $resposta = cadastrocomumafoto($this->prestadorModel, $data, $this->db, $this->auditoriaModel, $foto, 'foto');
+                        $resposta = cadastrocomseisfotos($this->prestadorModel, $data, $this->db, $this->auditoriaModel, 'Novo Prestador', $foto, 'foto', $img1, 'img1', $img2, 'img2' ,$img3, 'img3', $img4, 'img4' , $img5, 'img5');
 
                         return $this->respond($resposta);
                     }
@@ -497,7 +1066,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -560,15 +1129,19 @@ class Admin extends ResourceController
             }
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
                     if ($decoded->data->acesso > 1) {
                         helper('funcao');
 
-
                         $foto = $this->request->getFile('foto');
+                        $img1 = $this->request->getFile('img1');
+                        $img2 = $this->request->getFile('img2');
+                        $img3 = $this->request->getFile('img3');
+                        $img4 = $this->request->getFile('img4');
+                        $img5 = $this->request->getFile('img5');
 
                         $data = [
                             'id' => $id,
@@ -597,7 +1170,7 @@ class Admin extends ResourceController
 
                         $data = cleanarray($data);
 
-                        $resposta = updatecomumafoto($this->prestadorModel, $data, $this->db, $this->auditoriaModel, 'Prestador', $this->prestadorModel->table, $foto, 'foto');
+                        $resposta = updatecomseisfotos($this->prestadorModel, $data, $decoded->data->id, $this->db, $this->auditoriaModel, 'Prestador', $foto, 'foto', $img1, 'img1', $img2, 'img2', $img3, 'img3',$img4, 'img4', $img5, 'img5');
 
                         return $this->respond($resposta);
                     }
@@ -642,7 +1215,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -707,7 +1280,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -769,7 +1342,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -832,7 +1405,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -895,7 +1468,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -959,7 +1532,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1022,7 +1595,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1086,7 +1659,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1146,7 +1719,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 

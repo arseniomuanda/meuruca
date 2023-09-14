@@ -1,0 +1,36 @@
+ERROR - 2023-03-14 16:30:06 --> mysqli_sql_exception: Unknown column 'referencia' in 'field list' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('INSERT INTO `ut...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ut...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ut...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2265): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ut...', Array, false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(758): CodeIgniter\Model->doInsert(Array)
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(26): CodeIgniter\BaseModel->save(Array)
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Operations.php(200): cadastronormal(Object(App\Models\CaracteristicaModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#10 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#11 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#12 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#14 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#15 {main}
+ERROR - 2023-03-14 16:33:06 --> mysqli_sql_exception: Unknown column 'referencia' in 'field list' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('INSERT INTO `ut...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ut...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ut...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2265): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ut...', Array, false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(758): CodeIgniter\Model->doInsert(Array)
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(26): CodeIgniter\BaseModel->save(Array)
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Operations.php(200): cadastronormal(Object(App\Models\CaracteristicaModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel))
+#10 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Operations->index()
+#11 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Operations))
+#12 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#14 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#15 {main}

@@ -48,7 +48,7 @@ class Email extends BaseConfig
      * @var string
      */
     // Enter your email id from where you send email
-    public $SMTPUser = 'sistema@meuruca.ao';
+    public $SMTPUser = 'system@meuruca.ao';
 
     /**
      * SMTP Password
@@ -56,7 +56,7 @@ class Email extends BaseConfig
      * @var string
      */
     // Enter your email's password
-    public $SMTPPass = 'fakepassword2';
+    public $SMTPPass = 'FM4w?;sa=fm.';
     /**
      * SMTP Port
      *

@@ -1,0 +1,37 @@
+CRITICAL - 2023-04-18 08:29:53 --> Too few arguments to function Firebase\JWT\JWT::encode(), 2 passed in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Login.php on line 157 and at least 3 expected
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Login.php(157): Firebase\JWT\JWT::encode(Array, '<<<EOD\r\n       ...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->index()
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#6 {main}
+CRITICAL - 2023-04-18 08:32:21 --> openssl_sign(): supplied key param cannot be coerced into a private key
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'openssl_sign():...', '/Users/arseniom...', 215, Array)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/firebase/php-jwt/src/JWT.php(215): openssl_sign('eyJ0eXAiOiJKV1Q...', '', '<<<EOD\r\n       ...', 'SHA384')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/firebase/php-jwt/src/JWT.php(185): Firebase\JWT\JWT::sign('eyJ0eXAiOiJKV1Q...', '<<<EOD\r\n       ...', 'ES384')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Login.php(157): Firebase\JWT\JWT::encode(Array, '<<<EOD\r\n       ...', 'ES384')
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->index()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#9 {main}
+CRITICAL - 2023-04-18 08:32:49 --> Too few arguments to function Firebase\JWT\JWT::encode(), 2 passed in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Login.php on line 157 and at least 3 expected
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Login.php(157): Firebase\JWT\JWT::encode(Array, '<<<EOD\r\n       ...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->index()
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#6 {main}
+CRITICAL - 2023-04-18 08:35:47 --> Illegal offset type in isset or empty
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/firebase/php-jwt/src/JWT.php(206): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal offset ...', '/Users/arseniom...', 206, Array)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/firebase/php-jwt/src/JWT.php(185): Firebase\JWT\JWT::sign('eyJ0eXAiOiJKV1Q...', '<<<EOD\r\n       ...', Array)
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Login.php(157): Firebase\JWT\JWT::encode(Array, '<<<EOD\r\n       ...', Array)
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->index()
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#8 {main}

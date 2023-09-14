@@ -7,10 +7,13 @@ use \Config\Services;
 
 use CodeIgniter\RESTful\ResourceController;
 use \Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use App\Models\AuditoriaModel;
 use App\Models\ContaModel;
 use App\Models\ProprietarioModel;
 use App\Models\UtilizadorModel;
+use CodeIgniter\HTTP\Request;
+use CodeIgniter\HTTP\Response;
 
 class Login extends ResourceController
 {
@@ -105,11 +108,16 @@ class Login extends ResourceController
         helper('funcao');
         $email      = $this->request->getPost('email');
         $password   = $this->request->getPost('password');
-        
+
         $user       = $this->validar_login($email);
         if (!is_null($user)) {
             if (password_verify($password, $user->password)) {
-
+                if (!$user->confirmed_email) {
+                    $this->askEmailConfirmation($email);
+                    return returnVoid([
+                        'message' => 'Confirmar Email!'
+                    ], 403, 'Email não confirmado');
+                }
                 $id = $user->id;
                 $dataLigin = date("Y-m-d H:i:s");
 
@@ -140,12 +148,13 @@ class Login extends ResourceController
                         'email'     => $email,
                         'id'        => $user->id,
                         'conta'     => $user->conta,
-                        'proprietario'=> $user->proprietario
+                        'proprietario' => $user->proprietario,
+                        'nif' => $user->nif
                     ]
                 ];
 
                 // Gerar Token
-                $token = JWT::encode($token, $secret_key);
+                $token = JWT::encode($token, $secret_key, 'HS256');
 
                 $this->db->query("UPDATE `utilizadors` SET `ultimoAcesso`= '$dataLigin',  api_token = '$token' WHERE id = $id");
                 $this->auditoriaModel->save([
@@ -164,6 +173,7 @@ class Login extends ResourceController
                     'now'       => date('Y-m-d H:i:s'),
                     'email'     => $email,
                     'id'        => $user->id,
+                    'nif'        => $user->nif,
                     'username'  => $user->username,
                     'profilename' => $user->porfilename,
                     'telefone' => $user->telefone,
@@ -236,7 +246,7 @@ class Login extends ResourceController
                 ];
 
                 // Gerar Token
-                $token = JWT::encode($token, $secret_key);
+                $token = JWT::encode($token, $secret_key, 'HS256');
 
                 $this->db->query("UPDATE `utilizadors` SET `ultimoAcesso`= '$dataLigin',  api_token = '$token' WHERE id = $id");
                 $this->auditoriaModel->save([
@@ -271,7 +281,7 @@ class Login extends ResourceController
                     'message'   => 'Palavra pass errada!'
                 ];
 
-                return $this->respondNoContent(401);
+                return $this->respond($data,401);
             }
         } else {
             $data = [
@@ -314,6 +324,119 @@ class Login extends ResourceController
             'code' => 0,
             'message' => "Utilizador não encontrado!"
         ], 400);
+    }
+
+    public function askEmailConfirmation($conta)
+    {
+        helper('funcao');
+        $user       = $this->validar_login($conta);
+        try {
+            $email = \Config\Services::email();
+
+            $emissorEmail = 'system@meuruca.ao';
+            $emissorName = 'Meu Ruca';
+            $emissorSubject = 'Confirmação de E-mail';
+
+            if (filter_var($conta, FILTER_VALIDATE_EMAIL)) {
+
+                $newDueDate = date('Y-m-d H:i:s', strtotime('+15 minutes', strtotime(date('Y-m-d H:i:s'))));
+
+                $token_before_hash = $conta . $user->id . $newDueDate;
+                $token = md5("12345678910" . $token_before_hash);
+                $this->db->query("UPDATE `utilizadors` SET `confirm_email_token_data` = '$newDueDate', `confirm_email_token` = '$token' WHERE email = '$conta'");
+
+                $email->setFrom($emissorEmail, $emissorName);
+                $email->setTo($conta);
+
+                $email->setSubject($emissorSubject);
+                $email->setMessage(base_url() . 'login/confiremail/' . $token);
+
+                if ($email->send()) {
+                    return $this->respondNoContent();
+                }
+                return $this->respond([
+                    'message' => $email->printDebugger(['headers'])
+                ], 501);
+            } else {
+                return $this->respond([
+                    'message' => 'Email not found!' . " " . $conta
+                ], 401);
+            }
+        } catch (\Throwable $th) {
+            return $this->respond(
+                [
+                    'message' => 'Erro',
+                    'error' => $th->getMessage()
+                ],
+                501
+            );
+        }
+
+        return $this->respond([
+            'code' => 0,
+            'message' => "Utilizador não encontrado!"
+        ], 400);
+    }
+
+    public function confiremail($token)
+    {
+        helper('funcao');
+
+        if (!isset($token)) {
+
+            return $this->respond(returnVoid($token, 404, "Token não encontrado!"));
+        }
+
+        $user = $this->db->query("SELECT * FROM utilizadors WHERE confirm_email_token = '$token'")->getRow(0);
+
+        // return $this->respond($user);
+
+
+        if (strtotime(date('Y-m-d H:i:s')) > strtotime(date($user->confirm_email_token_data))) {
+            $newDueDate = date('Y-m-d H:i:s', strtotime('+5 minutes', strtotime(date('Y-m-d H:i:s'))));
+
+            $token_before_hash = $user->email . $user->id . $newDueDate;
+            $token = md5("12345678910" . $token_before_hash);
+            $this->db->query("UPDATE `utilizadors` SET `confirm_email_token_data` = '$newDueDate', `confirm_email_token` = '$token' WHERE email = '$user->email'");
+
+            return $this->respond(returnVoid([], 404, "Token Expirado!"));
+        }
+
+        $data = [
+            'email' => $user->email,
+            'token' => $user->confirm_email_token,
+            'tempo' =>  $user->confirm_email_token_data
+        ];
+
+        return view('templates/confirmemail', $data);
+    }
+
+    public function setConfirmedEmail($token)
+    {
+        helper('funcao');
+
+        if (!isset($token)) {
+            return $this->respond(returnVoid($token, 404, "Token não encontrado!"));
+        }
+
+        $user = $this->db->query("SELECT * FROM utilizadors WHERE confirm_email_token = '$token'")->getRow(0);
+
+        // return $this->respond($user);
+
+
+        if (strtotime(date('Y-m-d H:i:s')) > strtotime(date($user->confirm_email_token_data))) {
+            $newDueDate = date('Y-m-d H:i:s', strtotime('+5 minutes', strtotime(date('Y-m-d H:i:s'))));
+
+            $token_before_hash = $user->email . $user->id . $newDueDate;
+            $token = md5("12345678910" . $token_before_hash);
+            $this->db->query("UPDATE `utilizadors` SET `confirm_email_token_data` = '$newDueDate', `confirm_email_token` = '$token' WHERE email = '$user->email'");
+
+            return $this->respond(returnVoid([], 404, "Token Expirado!"));
+        }
+
+        $this->db->query("UPDATE `utilizadors` SET `confirm_email_token_data` = NULL, `confirm_email_token` = NULL, `confirmed_email` = 1 WHERE email = '$user->email'");
+        echo 'OK';
+        return;
     }
 
     public function newPasswordByForgetedPassword()
@@ -363,7 +486,7 @@ class Login extends ResourceController
 
         $data = $this->request->getPost();
         if ($this->existEmail($data['email']))
-            return $this->respond(['message'=>'Email existente!'],403);
+            return $this->respond(['message' => 'Email existente!'], 403);
         #criacao da conta
         /* $conta = $this->contaModel->save($data); */
         $conta = cadastronormal($this->contaModel, $data, $this->db, $this->auditoriaModel);
@@ -380,7 +503,7 @@ class Login extends ResourceController
 
         $data = [
             'proprietario' => $proprietario['id'],
-            'estado' => 1,
+            'estado' => 0,
             'tipo' => 1,
             'username' => $username[0],
             'email' => $email,

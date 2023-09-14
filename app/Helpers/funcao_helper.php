@@ -559,7 +559,316 @@ function nextManutencao(
         'dias' => datadiff($resultado),
         'data' => $resultado,
         'mensagem' => 'O meu ruca sugere uma manutencão em ' . $resultado,
+        'titulo' => 'Revisão',
         'pecas' => 'Formas em desenvolvimento'
+    ];
+}
+function nextManutencao2(
+    $km_actual,
+    $km_diaria_dias_semana,
+    $km_diaria_final_semana,
+    $data_ultima_revisao,
+    $km_na_ultima_revisao,
+    $periodo_de_revisao = 5000
+) {
+    $dias_laborais = (float)$km_diaria_dias_semana * 5;
+    $final_de_semanda = (float) $km_diaria_final_semana * 2;
+
+    $semanal = $dias_laborais + $final_de_semanda;
+    $km_total = $km_actual - (float) $km_na_ultima_revisao;
+    $dias = 0;
+    do {
+        $km_total += $semanal;
+        $dias += 7;
+    } while ($km_total <= $periodo_de_revisao);
+
+    $resultado = date('Y-m-d', strtotime($data_ultima_revisao . " + $dias days"));
+    return [
+        'dias' => datadiff($resultado),
+        'data' => $resultado,
+        'mensagem' => 'O meu ruca sugere uma manutencão em ' . $resultado,
+        'titulo' => 'Revisão 2',
+        'pecas' => 'Formas em desenvolvimento'
+    ];
+}
+
+function nextMudancaPneus(
+    $km_actual,
+    $km_diaria_dias_semana,
+    $km_diaria_final_semana,
+    $data_ultima_revisao,
+    $km_na_ultima_revisao
+) {
+    $periodo_de_revisao = 60000;
+    $dias_laborais = (float)$km_diaria_dias_semana * 5;
+    $final_de_semanda = (float) $km_diaria_final_semana * 2;
+
+    $semanal = $dias_laborais + $final_de_semanda;
+    $km_total = $km_actual - (float) $km_na_ultima_revisao;
+    $dias = 0;
+    do {
+        $km_total += $semanal;
+        $dias += 7;
+    } while ($km_total <= $periodo_de_revisao);
+
+    $resultado = date('Y-m-d', strtotime($data_ultima_revisao . " + $dias days"));
+    return [
+        'dias' => '',
+        'data' => '',
+        'mensagem' => 'O meu ruca sugere que a troca de pneus seja em um intervalo de 40 à 70 km',
+        'titulo' => 'Troca de Pneus',
+        'pecas' => 'Formas em desenvolvimento'
+    ];
+}
+
+function nextMudancaVelas(
+    $km_actual,
+    $km_diaria_dias_semana,
+    $km_diaria_final_semana,
+    $data_ultima_revisao,
+    $km_na_ultima_revisao
+) {
+    $periodo_de_revisao = 17000;
+    $dias_laborais = (float)$km_diaria_dias_semana * 5;
+    $final_de_semanda = (float) $km_diaria_final_semana * 2;
+
+    $semanal = $dias_laborais + $final_de_semanda;
+    $km_total = $km_actual - (float) $km_na_ultima_revisao;
+    $dias = 0;
+    do {
+        $km_total += $semanal;
+        $dias += 7;
+    } while ($km_total <= $periodo_de_revisao);
+
+    $resultado = date('Y-m-d', strtotime($data_ultima_revisao . " + $dias days"));
+    return [
+        'dias' => datadiff($resultado),
+        'data' => $resultado,
+        'mensagem' => 'O meu ruca sugere que a troca de valas seja em um intervalo de 17.000 km o que seria ',
+        'titulo' => 'Troca de Velas',
+        'pecas' => 'Formas em desenvolvimento'
+    ];
+}
+
+function cadastrocomseisfotos($model, $data, $db, $auditoria, $precesso, $foto1, $campo1, $foto2, $campo2, $foto3, $campo3, $foto4, $campo4, $foto5, $campo5, $foto6, $campo6)
+{
+    $query = $model->save($data);
+
+    if ($query) {
+        $id = $db->insertID();
+
+        if (is_file($foto1)) {
+            $nome1 = $campo1 . (int)$id . '.' . $foto1->getExtension();
+            if (store($foto1, $nome1, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto1',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome1";
+        }
+
+        if (is_file($foto2)) {
+            $nome2 = $campo2 . (int)$id . '.' . $foto2->getExtension();
+            if (store($foto2, $nome2, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto2',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome2";
+            $db->query("UPDATE $model->table SET $campo2 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto3)) {
+            $nome3 = $campo3 . (int)$id . '.' . $foto3->getExtension();
+            if (store($foto3, $nome3, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto3',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome3";
+            $db->query("UPDATE $model->table SET $campo3 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto4)) {
+            $nome4 = $campo4 . (int)$id . '.' . $foto4->getExtension();
+            if (store($foto4, $nome4, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto4',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome4";
+            $db->query("UPDATE $model->table SET $campo4 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto5)) {
+            $nome5 = $campo5 . (int)$id . '.' . $foto5->getExtension();
+            if (store($foto5, $nome5, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto5',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome5";
+            $db->query("UPDATE $model->table SET $campo5 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto6)) {
+            $nome6 = $campo6 . (int)$id . '.' . $foto6->getExtension();
+            if (store($foto6, $nome6, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto6',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome6";
+            $db->query("UPDATE $model->table SET $campo6 = '$path' WHERE `id` = $id");
+        }
+        $auditoria->save([
+            'accao' => 'Inserir',
+            'processo' => $precesso,
+            'registo' => $id,
+            'utilizador' => $data['criadopor'],
+            'dataAcao' => date('Y-m-d H:i:s'),
+            'dataExpiracao' => date('Y-m-d H:i:s', strtotime('+2 years', strtotime(date('Y-m-d H:i:s')))),
+        ]);
+        return [
+            'message' => 'Sucesso!',
+            'error' => false,
+            'code' => 200,
+            'data' => $model->where('id', $id)->paginate()
+        ];
+    } else if ($model->errors()) {
+        $message = $model->errors();
+    } else {
+        $message = 'Sem sucesso';
+    }
+
+    return [
+        'message' => $message,
+        'error' => false,
+        'code' => 400,
+    ];
+}
+
+function updatecomseisfotos($model, $data, $criadopor, $db, $auditoria, $precesso, $foto1, $campo1, $foto2, $campo2, $foto3, $campo3, $foto4, $campo4, $foto5, $campo5, $foto6, $campo6)
+{
+    $query = $model->save($data);
+    if ($query) {
+        $id = $data['id'];
+        if (is_file($foto1)) {
+            $nome1 = $campo1 . (int)$id . '.' . $foto1->getExtension();
+            if (store($foto1, $nome1, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto1',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome1";
+        }
+
+        if (is_file($foto2)) {
+            $nome2 = $campo2 . (int)$id . '.' . $foto2->getExtension();
+            if (store($foto2, $nome2, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto2',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome2";
+            $db->query("UPDATE $model->table SET $campo2 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto3)) {
+            $nome3 = $campo3 . (int)$id . '.' . $foto3->getExtension();
+            if (store($foto3, $nome3, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto3',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome3";
+            $db->query("UPDATE $model->table SET $campo3 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto4)) {
+            $nome4 = $campo4 . (int)$id . '.' . $foto4->getExtension();
+            if (store($foto4, $nome4, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto4',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome4";
+            $db->query("UPDATE $model->table SET $campo4 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto5)) {
+            $nome5 = $campo5 . (int)$id . '.' . $foto5->getExtension();
+            if (store($foto5, $nome5, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto5',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome5";
+            $db->query("UPDATE $model->table SET $campo5 = '$path' WHERE `id` = $id");
+        }
+        if (is_file($foto6)) {
+            $nome6 = $campo6 . (int)$id . '.' . $foto6->getExtension();
+            if (store($foto6, $nome6, $model->table) !== true) {
+                $output = [
+                    'message' => 'Não foi possivel salvar a foto6',
+                    'error' => true,
+                    'type' => $model->erros()
+                ];
+                return $output;
+            }
+            $path = base_url() . "/file/$model->table/$nome6";
+            $db->query("UPDATE $model->table SET $campo6 = '$path' WHERE `id` = $id");
+        }
+        $auditoria->save([
+            'accao' => 'Inserir',
+            'processo' => $precesso,
+            'registo' => $id,
+            'utilizador' => $criadopor,
+            'dataAcao' => date('Y-m-d H:i:s'),
+            'dataExpiracao' => date('Y-m-d H:i:s', strtotime('+2 years', strtotime(date('Y-m-d H:i:s')))),
+        ]);
+        return [
+            'message' => 'Sucesso!',
+            'error' => false,
+            'code' => 200,
+            'data' => $model->where('id', $id)->paginate()
+        ];
+    } else if ($model->errors()) {
+        $message = $model->errors();
+    } else {
+        $message = 'Sem sucesso';
+    }
+
+    return [
+        'message' => $message,
+        'error' => false,
+        'code' => 400,
     ];
 }
 
@@ -602,14 +911,13 @@ function cadastronormalFromJson($model, $data, $db)
     ];
 }
 
-
 function newGuid()
 {
     if (function_exists('com_create_guid') === true) {
         return trim(com_create_guid(), '{}');
     }
 
-    $ar = Array();
+    $ar = array();
 
     array_pop($ar);
     array_push($ar, 'dsf');

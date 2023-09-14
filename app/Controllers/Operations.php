@@ -6,10 +6,12 @@ use App\Models\AnofabricoModel;
 use CodeIgniter\RESTful\ResourceController;
 use Config\Database;
 use \Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 use App\Models\AgendaimagemModel;
 use App\Models\AgendaModel;
 use App\Models\AuditoriaModel;
+use App\Models\CaracteristicaModel;
 use App\Models\CarrinhoModel;
 use App\Models\CategoriaModel;
 use App\Models\ContactoModel;
@@ -33,6 +35,7 @@ use App\Models\UtilizadorModel;
 use App\Models\ViaturaModel;
 use App\Models\SeguroModel;
 use App\Models\SinistroModel;
+use App\Models\AvaliacaoModel;
 
 use function PHPSTORM_META\type;
 
@@ -62,6 +65,8 @@ class Operations extends ResourceController
     protected $sinistroModel;
     protected $agendaimagemModel;
     protected $emergenciaModel;
+    protected $caracteristicaModel;
+    protected $avaliacaoModel;
 
     protected $lojaModel;
     protected $categoriaModel;
@@ -119,11 +124,13 @@ class Operations extends ResourceController
         $this->seguroModel = new SeguroModel();
         $this->sinistroModel = new SinistroModel();
         $this->agendaimagemModel = new AgendaimagemModel();
+        $this->avaliacaoModel = new AvaliacaoModel();
 
         $this->lojaModel = new LojaModel();
         $this->categoriaModel = new CategoriaModel();
         $this->produtoModel = new ProdutoModel();
         $this->carrinhoModel = new CarrinhoModel();
+        $this->caracteristicaModel = new CaracteristicaModel();
 
         $this->db = Database::connect();
         $this->protect = new Login();
@@ -170,7 +177,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
@@ -179,6 +186,7 @@ class Operations extends ResourceController
                     $data = $this->request->getPost();
                     $data['proprietario'] = $decoded->data->proprietario;
                     $data['criadopor'] = $decoded->data->id;
+                    $data['utilizador'] = $decoded->data->id;
 
                     $option = $this->request->getPost('option');
                     if (isset($data['table']))
@@ -217,7 +225,7 @@ class Operations extends ResourceController
                             break;
                         case 'show':
                             # code...
-                            $response = $model->paginate();
+                            $response = $model->paginate(1000);
                             break;
                         case 'perfil':
                             # code...
@@ -243,7 +251,7 @@ class Operations extends ResourceController
                             break;
                         case 'changeUserProfile':
                             # code...
-                            $response = $this->changeUserProfile($data['utilizador'], $data['proprietario'], $data, $model, $this->request->getFile('foto'));
+                            $response = $this-> changeUserProfile($data['utilizador'], $data['proprietario'], $data, $model, $this->request->getFile('foto'));
                             break;
                         case 'agendaProfile':
                             # code...
@@ -277,6 +285,13 @@ class Operations extends ResourceController
                         case 'showPestadores':
                             # code...
                             $response = $this->getPrestadores($this->db, $model);
+                        case 'showPagamentos':
+                            # code...
+                            $response = $this->db->query("SELECT facturas.*, proprietarios.id proprietario, proprietarios.nome, utilizadors.email, utilizadors.telefone, (SELECT SUM(valor * qntidade) FROM `itemfacturas` WHERE factura = facturas.id) AS total FROM `facturas` INNER JOIN proprietarios ON facturas.proprietario = proprietarios.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE facturas.estado <> 3 AND proprietarios.id = ". $data['proprietario'] . " ORDER BY facturas.estado")->getResultArray();
+                            break;
+                        case 'arquivarPagamento':
+                            # code...
+                            $response = $this->db->query("UPDATE facturas SET estado = 3 WHERE id = " . $data['factura']);
                             break;
                         case 'newAgendamento':
                             # code...
@@ -301,11 +316,6 @@ class Operations extends ResourceController
                             # code...
                             $response = $this->getAgendaNotifications($this->db, $data['proprietario']);
                             break;
-                        case 'finalizarAgendamento':
-                            # code...
-                            $response = $this->gerarFacturaapi($data['agenda'], $data['proprietario']);
-                            break;
-
                             //ainda nao trabalhei nessas funçoes
                         case 'buscarProdutos':
                             # code...
@@ -386,7 +396,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
@@ -397,7 +407,6 @@ class Operations extends ResourceController
                     $decoded->data->id;
 
                     $data = json_decode(file_get_contents("php://input"));
-                    helper('funcao');
 
                     $factura = cadastronormal($this->facturaModel, [
                         'proprietario' => $decoded->data->proprietario,
@@ -440,6 +449,139 @@ class Operations extends ResourceController
         }
     }
 
+
+    public function finalizarAgendamento()
+    {
+
+        try {
+            $secret_key = $this->protect->privateKey();
+            $token = null;
+            $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
+            if (!$authHeader) return null;
+            $arr = explode(" ", $authHeader);
+            $token = $arr[1];
+            $token_validate = $this->db->query("SELECT COUNT(*) total FROM `utilizadors` WHERE api_token = '$token'")->getRow(0)->total;
+            if ($token_validate < 1)
+                return $this->respond([
+                    'message' => 'Access denied',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => "Token não encontrado!"
+                ]);
+        } catch (\Throwable $th) {
+            return $this->respond([
+                'message' => 'Access denied',
+                'status' => 401,
+                'error' => true,
+                'type' => "Token não encontrado!"
+            ]);
+        }
+
+        if ($token) {
+            try {
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                // return $this->respond($decoded);
+                // Access is granted. Add code of the operation here
+                if ($decoded) {
+
+                    $data = json_decode(file_get_contents("php://input"));
+                
+                    helper('funcao');
+
+                    $factura = null;
+                    $agendaData = [
+                        'inicio' => isset($data->agenda->data_pedido) ? $data->agenda->data_pedido : $data->agenda->categoria,
+                        'data_pedido' => isset($data->agenda->data_pedido) ? $data->agenda->data_pedido : $data->agenda->categoria,
+                        'descricao' => isset($data->agenda->descricao) ? $data->agenda->descricao : null,
+                        'viatura' => isset($data->agenda->viatura) ? $data->agenda->viatura : null,
+                        'prestador' => isset($data->agenda->prestador) ? $data->agenda->prestador : null,
+                        'is_domicilio' => isset($data->agenda->is_domicilio) ? $data->agenda->is_domicilio : null,
+                        'servico_entrega' => isset($data->agenda->servico_entrega) ? $data->agenda->servico_entrega : null,
+                        'categoria' => isset($data->agenda->categoria) ? $data->agenda->categoria : null,
+                        'criadopor' => isset($decoded->data->id) ? $decoded->data->id : null,
+                        'address' => isset($data->agenda->endereco) ? $data->agenda->endereco : null,
+                        'latitude' => isset($data->agenda->latitude) ? $data->agenda->latitude : null,
+                        'longitude' => isset($data->agenda->longitude) ? $data->agenda->longitude : null,
+                        'criadopor' => $decoded->data->id,
+                        'table' => 'Agenda'
+                    ];
+
+                    $agendaData = cleanarray($agendaData);
+
+                    $agenda = cadastronormal($this->agendaModel, $agendaData, $this->db, $this->auditoriaModel);
+
+                    if (!$agenda) {
+                        return $this->respond($agenda, 501);
+                    }
+
+                    if ($agenda['code'] == 200) {
+                        $facturaData = [
+                            'agenda' => $agenda['id'],
+                            'proprietario' => $decoded->data->proprietario,
+                            'criadopor' => $decoded->data->id,
+                            'datafactura' => date('Y-m-d'),
+                            'conta' => $decoded->data->conta,
+                            'table' => 'factura',
+                        ];
+
+                        $factura = cadastronormal($this->facturaModel, $facturaData, $this->db, $this->auditoriaModel);
+
+                        if ($factura['code'] == 200) {
+                            $this->db->query("UPDATE `agendas` SET `factura` = " . $factura['id'] . " WHERE `id` = " . $agenda['id']);
+                            if ($data->agenda->servico_entrega == 1) {
+
+                                $itemData = [
+                                    'factura' => $factura['id'],
+                                    'valor' => $data->agenda->preco_distancia,
+                                    'criadopor' => $decoded->data->id,
+                                    'nome' => 'Serviço de entrega',
+                                    'conta' => $decoded->data->conta,
+                                    'qntidade' => 1,
+                                    'table' => 'itemfactura',
+                                ];
+
+                                $row = cadastronormal($this->itemfacturaModel, $itemData, $this->db, $this->auditoriaModel);
+                                if (!$row) {
+                                    return $this->respond($row, 501);
+                                }
+                            }
+
+                            foreach ($data->items as $value) {
+                                $itemFactura = [
+                                    'factura' => $factura['id'],
+                                    'valor' => isset($value->valor) ? $value->valor : null,
+                                    'criadopor' => $decoded->data->id,
+                                    'nome' => isset($value->nome) ? $value->nome : null,
+                                    'conta' => $decoded->data->conta,
+                                    'qntidade' => isset($value->quantidade) ? $value->quantidade : 1,
+                                    'itemId' => isset($value->itemId) ? $value->itemId : null,
+                                ];
+                                $row =cadastronormal($this->itemfacturaModel, $itemFactura, $this->db, $this->auditoriaModel);
+                                if(!$row){
+                                    return $this->respond($row, 501);
+                                }
+                            }
+
+
+                        } else {
+                            deletarnormal($factura, $this->db, $this->facturaModel, $this->auditoriaModel);
+                            deletarnormal($agenda, $this->db, $this->agendaModel, $this->auditoriaModel);
+                        }
+                    }
+                }
+            } catch (\Exception $e) {
+                $output = [
+                    'message' => 'Access denied ',
+                    'status' => 401,
+                    'error' => true,
+                    'type' => $e->getMessage()
+                ];
+
+                return $this->respond($output, 401);
+            }
+        }
+    }
+
     public function webRequest(int $user, string $option)
     {
         switch ($option) {
@@ -466,7 +608,7 @@ class Operations extends ResourceController
 
     private function userPorfile($user, $db, $proprietario)
     {
-        $data = $db->query("SELECT utilizadors.id, utilizadors.email, utilizadors.estado, utilizadors.proprietario proprietarioID, utilizadors.foto, utilizadors.telefone, utilizadors.username, proprietarios.nome profilename, proprietarios.bi FROM utilizadors INNER JOIN proprietarios ON utilizadors.proprietario=proprietarios.id INNER JOIN contas ON contas.id=proprietarios.conta WHERE utilizadors.id = '$user' AND proprietarios.id = $proprietario");
+        $data = $db->query("SELECT utilizadors.id, utilizadors.email, utilizadors.estado, utilizadors.proprietario proprietarioID, utilizadors.foto, utilizadors.telefone, utilizadors.username, proprietarios.nome profilename, utilizadors.nif FROM utilizadors INNER JOIN proprietarios ON utilizadors.proprietario=proprietarios.id INNER JOIN contas ON contas.id=proprietarios.conta WHERE utilizadors.id = '$user' AND proprietarios.id = $proprietario");
         $response = $data->getRow(0);
         return $response;
     }
@@ -474,10 +616,9 @@ class Operations extends ResourceController
     private function changeUserProfile($user, $proprietario, $data, $model, $foto = null)
     {
         helper('funcao');
-
         //return returnVoid($data, 501, 'Funcionalidade incompleta!');
         //return var_dump($data['password']);
-        if ($data['old_password'] != '') {
+        if (isset($data['old_password']) && $data['old_password'] != '') {
             $passwordData = [
                 'email' => $data['email'],
                 'password' => $data['old_password'],
@@ -492,7 +633,7 @@ class Operations extends ResourceController
 
         $proprietarioData = [
             'id' => $proprietario,
-            'bi' => $data['bi'],
+            'nif' =>isset($data['nif']) ? $data['nif'] : '',
             'nome' => $data['profilename'],
             'criadopor' => $data['criadopor']
         ];
@@ -500,12 +641,14 @@ class Operations extends ResourceController
         $utilizadorData = [
             'id' => $user,
             'telefone' => $data['telefone'],
+            'nome' => $data['profilename'],
+            'nif' => isset($data['nif']) ? $data['nif'] : '',
             'criadopor' => $data['criadopor']
         ];
 
         $contaData = [
             'id' => $data['conta'],
-            'nif' => $data['bi'],
+            'nif' => isset($data['nif']) ? $data['nif'] : '',
             'nome' => $data['profilename'],
             'criadopor' => $data['criadopor']
         ];
@@ -526,7 +669,7 @@ class Operations extends ResourceController
 
     private function showUserCar($db, $user, $model)
     {
-        $data = $db->query("SELECT viaturas.*, marcas.nome AS marca, modelos.nome AS modelo, ano_fabricos.nome AS ano FROM `viaturas` INNER JOIN ano_fabricos ON viaturas.ano=ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo=modelos.id INNER JOIN marcas ON modelos.marca = marcas.id WHERE proprietario = $user");
+        $data = $db->query("SELECT viaturas.*, marcas.nome AS marca, modelos.id AS modelo_id, modelos.nome AS modelo, ano_fabricos.nome AS ano, ano_fabricos.foto AS imagem FROM `viaturas` INNER JOIN ano_fabricos ON viaturas.ano=ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo=modelos.id INNER JOIN marcas ON modelos.marca = marcas.id WHERE proprietario = $user");
         $response = $data->getResult();
 
         $row = array();
@@ -535,7 +678,7 @@ class Operations extends ResourceController
             $id = $value->id;
             $proprietario = $value->proprietario;
             $gestVia = $db->query("SELECT * FROM `gestao_viaturas` INNER JOIN viaturas ON gestao_viaturas.viatura = viaturas.id WHERE viaturas.id = $id AND viaturas.proprietario = $proprietario ORDER BY gestao_viaturas.id DESC LIMIT 1")->getRow(0);
-
+            $caracteristica = $db->query("SELECT '' AS dias, '' AS `data`, '' AS pecas, caracteristicas.item AS titulo, caracteristicas.descricao mensagem FROM `caracteristicas` WHERE referencia = $value->modelo_id")->getResult();
             $result = [
                 "id" => $value->id,
                 "matricula" => $value->matricula,
@@ -579,7 +722,14 @@ class Operations extends ResourceController
                     "imagem" => $gestVia->imagem ?? '0',
                 ],
                 'previsao' => [
+            // Tipo de olho apartir da infirmação de modelo.
+            // Mudança de Velas .
+            // Mudança de dos cauços* de travão.
+            // Mudança de pneus.
+                    nextMudancaVelas($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0),
+                    nextMudancaPneus($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0),
                     nextManutencao($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0, $gestVia->periodo_de_revisao ?? 5000),
+                    ...$caracteristica
                 ]
 
             ];
@@ -616,6 +766,7 @@ class Operations extends ResourceController
         if ($agenda['code'] == 200) {
             $facturaData = [
                 'agenda' => $agenda['id'],
+                'origem' => $data['categoria'],
                 'proprietario' => $data['proprietario'],
                 'criadopor' => $data['criadopor'],
                 'datafactura' => date('Y-m-d'),
@@ -724,7 +875,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
@@ -776,7 +927,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
+                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
@@ -890,47 +1041,6 @@ class Operations extends ResourceController
         return;
     }
 
-    private function eliminar($id)
-    {
-        $secret_key = $this->protect->privateKey();
-
-        $token = null;
-
-        $authHeader = $this->request->getServer('HTTP_AUTHORIZATION');
-
-        if (!$authHeader) {
-            return null;
-        }
-
-        $arr = explode(" ", $authHeader);
-
-        $token = $arr[1];
-
-        if ($token) {
-            try {
-                $decoded = JWT::decode($token, $secret_key, array('HS256'));
-                // return $this->respond($decoded);
-                // Access is granted. Add code of the operation here
-                if ($decoded) {
-                    $actor =  $decoded->data->user->id;
-                    helper('funcao');
-
-                    $data = deletarnormal($id, $this->db, 'escola', $actor, $this->auditoriaModel, 'Escola');
-                    return $this->respond($data);
-                }
-            } catch (\Exception $e) {
-                $output = [
-                    'message' => 'Access denied',
-                    'code' => 401,
-                    'error' => true,
-                    'type' => $e->getMessage()
-                ];
-
-                return $this->respond($output, 401);
-            }
-        }
-    }
-
     private function newPassword($data, $db, $model, $auditoria)
     {
         helper('funcao');
@@ -1030,6 +1140,11 @@ class Operations extends ResourceController
                 'bairro' => $value->bairro,
                 'n_casa' => $value->n_casa,
                 'tipo' => $value->tipo,
+                'img1' => $value->img1,
+                'img2' => $value->img2,
+                'img3' => $value->img3,
+                'img4' => $value->img4,
+                'img5' => $value->img5,
                 'services' => $db->query("SELECT servicos.* FROM servicos WHERE prestador = $id")->getResult(),
             ];
 
@@ -1039,133 +1154,6 @@ class Operations extends ResourceController
         return $row;
 
         return $response;
-    }
-
-    private function gerarFacturaapi($agenda, $proprietario)
-    {
-        helper('funcao');
-        $pagamento = $this->db->query("SELECT * FROM `facturas` WHERE agenda = $agenda")->getRow(0);
-
-        if ($pagamento->hash_factura != null) {
-            $output = [
-                'message' => 'Este pagamento já possui uma factura!',
-                'status' => 401,
-                'error' => true,
-            ];
-            return $this->respond($output, 401);
-        }
-
-        $clienteData = $this->db->query("SELECT proprietarios.nome, proprietarios.bi, contas.nif, utilizadors.telefone, utilizadors.email  FROM `proprietarios` INNER JOIN `contas` ON proprietarios.conta = contas.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE proprietarios.id = $proprietario")->getRow(0);
-        // echo $firmaData->api;
-        #Aqui ficam os dados que depois serão enviados como response
-
-        $cliente = [
-            "name" => $clienteData->nome,
-            "fiscal_id" => ($clienteData->bi != null) ? $clienteData->bi : '',
-            "email" => $clienteData->email,
-            "address" => 'Angola, Luanda', //Tendo de adicionar compos para endereço do prestador de serviço.
-            "city" => "Luanda",
-            "country" => "Angola",
-            "phone" => $clienteData->telefone,
-            "fax" => "",
-            "mobile" => "",
-            "postal_code" => "",
-            "short_name" => "",
-            "sigla" => "",
-            "website" => "",
-        ];
-        if ($clienteData->bi != null) {
-            $factura = [
-                "date" => date('Y-m-d'),
-                "due_date" => "",
-                "observations" => "",
-                "reference" => "",
-                "retencao" => "",
-                "type" => "FT",
-                "vref" => "",
-                "client" => $cliente,
-                "items" => $this->db->query("SELECT itemfacturas.nome AS `name`, itemfacturas.valor AS unit_price, itemfacturas.qntidade AS quantity, 'servico' AS type, '0' AS discount, 'Meu Ruca' AS description FROM itemfacturas WHERE factura = $pagamento->id")->getResult(),
-            ];
-        } else {
-            $factura = [
-                "date" => date('Y-m-d'),
-                "due_date" => "",
-                "observations" => "",
-                "reference" => "",
-                "retencao" => "",
-                "type" => "FT",
-                "vref" => "",
-                "items" => $this->db->query("SELECT itemfacturas.nome AS `name`, itemfacturas.valor AS unit_price, itemfacturas.qntidade AS quantity, 'servico' AS type, '0' AS discount, 'Meu Ruca' AS description FROM itemfacturas WHERE factura = $pagamento->id")->getResult(),
-            ];
-        }
-
-        $data = [
-            "invoice" =>  $factura
-        ];
-
-        /* return $data; */
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.zcomercial.com/v1/invoice/create',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => json_encode($data, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE),
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: ' . '9a2d9d31610ea03b16260515e479ff73ce2f01d0',
-                'Content-Type: application/json',
-            ),
-        ));
-
-        $response = json_decode(curl_exec($curl));
-
-        // Check HTTP status code
-        if (!curl_errno($curl)) {
-
-            switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
-                case 200: # OK	Everything worked as expected.
-                    $this->db->query("UPDATE `facturas` SET `final` = '1 ' WHERE id = $pagamento->id;");
-                    return $response;
-                    break;
-                case 400: # Bad Request	The request was unacceptable, often due to missing a required parameter.
-                    return $response;
-                    break;
-                case 401: # Unauthorized	No valid API key provided.
-                    return $response;
-                    break;
-                case 402: # Request Failed	The parameters were valid but the request failed.
-                    return $response;
-                    break;
-                case 409: # Conflict	The request conflicts with another request (perhaps due to using the same idempotent key).
-                    return $response;
-                    break;
-                case 429: # Too Many Requests	Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
-                    return $response;
-                    break;
-                case 500:
-                case 502:
-                case 503:
-                case 504:                    # Server Errors	Something went wrong on example's end. (These are rare.)
-                    return $response;
-                    break;
-                case 404: # ERROR
-                    return $response;
-                    break;
-                default:
-                    echo 'Unexpected HTTP code: ', $http_code, "\n";
-                    return $response;
-            }
-        }
-
-        curl_close($curl);
-
-        return $this->respond($response);
     }
 
     private function chooseModel(string $table)
@@ -1221,9 +1209,13 @@ class Operations extends ResourceController
                 return $this->viaturaModel;
             case 'produtos':
                 return $this->produtoModel;
+            case 'caracteristica':
+                return $this->caracteristicaModel;
                 //Eu ainda nao tratei dessa parte do app
             case 'loja':
                 return $this->lojaModel;
+            case 'avaliacao':
+                return $this->avaliacaoModel;
             case 'categoria':
                 return $this->categoriaModel;
             case 'produto':

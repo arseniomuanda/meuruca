@@ -1,0 +1,36 @@
+ERROR - 2023-04-19 06:44:05 --> mysqli_sql_exception: Unknown column 'proprietarios.bi' in 'field list' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('SELECT propriet...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('SELECT propriet...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT propriet...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(180): CodeIgniter\Database\BaseConnection->query('SELECT propriet...')
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->gerarFacturaapi()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#9 {main}
+ERROR - 2023-04-19 09:38:05 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 378' at line 1 in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE `factura...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `factura...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `factura...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(255): CodeIgniter\Database\BaseConnection->query('UPDATE `factura...')
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->gerarFacturaapi()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#9 {main}
+ERROR - 2023-04-19 09:38:46 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = 378' at line 1 in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE `factura...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `factura...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `factura...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(255): CodeIgniter\Database\BaseConnection->query('UPDATE `factura...')
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->gerarFacturaapi()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#9 {main}

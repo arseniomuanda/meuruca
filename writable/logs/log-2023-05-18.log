@@ -1,0 +1,93 @@
+ERROR - 2023-05-18 12:09:38 --> mysqli_sql_exception: Unknown column 'numero' in 'field list' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE prestado...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE prestado...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE prestado...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(659): CodeIgniter\Database\BaseConnection->query('UPDATE prestado...')
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(1023): cadastrocomseisfotos(Object(App\Models\PrestadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), 'Novo Prestador', Object(CodeIgniter\HTTP\Files\UploadedFile), 'foto', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img1', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img2', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img3', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img4', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img5')
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->newPrestador()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#10 {main}
+ERROR - 2023-05-18 12:10:12 --> mysqli_sql_exception: Duplicate entry '43879435' for key 'nif' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('INSERT INTO `pr...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2265): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(758): CodeIgniter\Model->doInsert(Array)
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(655): CodeIgniter\BaseModel->save(Array)
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(1023): cadastrocomseisfotos(Object(App\Models\PrestadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), 'Novo Prestador', Object(CodeIgniter\HTTP\Files\UploadedFile), 'foto', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img1', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img2', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img3', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img4', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img5')
+#10 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->newPrestador()
+#11 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#12 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#14 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#15 {main}
+ERROR - 2023-05-18 12:10:47 --> mysqli_sql_exception: Duplicate entry '43879435' for key 'nif' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('INSERT INTO `pr...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2265): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(758): CodeIgniter\Model->doInsert(Array)
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(655): CodeIgniter\BaseModel->save(Array)
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(1023): cadastrocomseisfotos(Object(App\Models\PrestadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), 'Novo Prestador', Object(CodeIgniter\HTTP\Files\UploadedFile), 'foto', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img1', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img2', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img3', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img4', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img5')
+#10 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->newPrestador()
+#11 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#12 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#14 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#15 {main}
+ERROR - 2023-05-18 12:10:58 --> mysqli_sql_exception: Unknown column 'numero' in 'field list' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE prestado...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE prestado...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE prestado...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(659): CodeIgniter\Database\BaseConnection->query('UPDATE prestado...')
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(1023): cadastrocomseisfotos(Object(App\Models\PrestadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), 'Novo Prestador', Object(CodeIgniter\HTTP\Files\UploadedFile), 'foto', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img1', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img2', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img3', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img4', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img5')
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->newPrestador()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#10 {main}
+ERROR - 2023-05-18 12:12:33 --> mysqli_sql_exception: Duplicate entry '438794343545' for key 'nif' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('INSERT INTO `pr...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pr...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pr...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(2265): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pr...', Array, false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(278): CodeIgniter\Database\BaseBuilder->insert()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(758): CodeIgniter\Model->doInsert(Array)
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Model.php(705): CodeIgniter\BaseModel->insert(Array, false)
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/BaseModel.php(667): CodeIgniter\Model->insert(Array, false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(655): CodeIgniter\BaseModel->save(Array)
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(1023): cadastrocomseisfotos(Object(App\Models\PrestadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), 'Novo Prestador', Object(CodeIgniter\HTTP\Files\UploadedFile), 'foto', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img1', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img2', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img3', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img4', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img5')
+#10 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->newPrestador()
+#11 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#12 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#14 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#15 {main}
+ERROR - 2023-05-18 12:12:51 --> mysqli_sql_exception: Unknown column 'numero' in 'field list' in /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:314
+Stack trace:
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(314): mysqli->query('UPDATE prestado...')
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE prestado...')
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Database/BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE prestado...')
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Helpers/funcao_helper.php(671): CodeIgniter\Database\BaseConnection->query('UPDATE prestado...')
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Admin.php(1023): cadastrocomseisfotos(Object(App\Models\PrestadorModel), Array, Object(CodeIgniter\Database\MySQLi\Connection), Object(App\Models\AuditoriaModel), 'Novo Prestador', Object(CodeIgniter\HTTP\Files\UploadedFile), 'foto', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img1', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img2', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img3', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img4', Object(CodeIgniter\HTTP\Files\UploadedFile), 'img5')
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Admin->newPrestador()
+#6 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#9 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#10 {main}

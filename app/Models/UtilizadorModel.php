@@ -12,7 +12,7 @@ class UtilizadorModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['estado', 'tipo', 'username', 'reset_token', 'email', 'password', 'autenticacao', 'perfil', 'ultimoAcesso', 'criadopor', 'telefone', 'acesso', 'proprietario', 'foto'];
+    protected $allowedFields = ['estado', 'nif', 'tipo', 'username', 'reset_token', 'email', 'password', 'autenticacao', 'perfil', 'ultimoAcesso', 'criadopor', 'telefone', 'acesso', 'proprietario', 'foto'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';

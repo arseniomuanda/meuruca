@@ -14,7 +14,7 @@ class ProprietarioModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['passport', 'bi', 'nome', 'conta'];
+	protected $allowedFields        = ['passport', 'nif', 'nome', 'conta'];
 
 	// Dates
 	protected $useTimestamps        = false;

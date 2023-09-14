@@ -1,0 +1,8 @@
+CRITICAL - 2023-05-04 15:47:48 --> Attempt to read property "confirmed_email" on null
+#0 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/app/Controllers/Login.php(113): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', '/Users/arseniom...', 113)
+#1 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(935): App\Controllers\Login->index()
+#2 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/public/index.php(44): CodeIgniter\CodeIgniter->run()
+#5 /Users/arseniomuanda/Arpetic/GitHub/Meu Ruca/meuruca/vendor/codeigniter4/framework/system/Commands/Server/rewrite.php(45): require_once('/Users/arseniom...')
+#6 {main}
