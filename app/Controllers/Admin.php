@@ -107,7 +107,7 @@ class Admin extends ResourceController
                 ]);
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
                 if ($decoded) {
                     if ($decoded->data->acesso > 1) {
                         return $this->respond([
@@ -159,7 +159,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -222,10 +222,10 @@ class Admin extends ResourceController
                         }
 
                         $data = [
-                                "invoice" =>  $factura
-                            ];
+                            "invoice" =>  $factura
+                        ];
 
-                         //return $this->respond($data);
+                        //return $this->respond($data);
 
                         $curl = curl_init();
 
@@ -252,7 +252,7 @@ class Admin extends ResourceController
 
                             switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
                                 case 200: # OK	Everything worked as expected.
-                                    $db->query("UPDATE `facturas` SET `numero`= '" . $response->invoice->sequence_number . "', `datafactura`= '" . $response->invoice->date . "', `estado`= 1, `final`= 1, `hash_factura`= '" .$response->invoice->id ."' WHERE id = $pagamento->id;");
+                                    $db->query("UPDATE `facturas` SET `numero`= '" . $response->invoice->sequence_number . "', `datafactura`= '" . $response->invoice->date . "', `estado`= 1, `final`= 1, `hash_factura`= '" . $response->invoice->id . "' WHERE id = $pagamento->id;");
                                     $db->query("UPDATE `agendas` SET `estado`= 1 WHERE factura = $pagamento->id;");
                                     return $this->respond($response, 200);
                                     break;
@@ -363,7 +363,7 @@ class Admin extends ResourceController
                             CURLOPT_TIMEOUT => 30,
                             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                             CURLOPT_CUSTOMREQUEST => "POST",
-                            CURLOPT_POSTFIELDS => "{\n\t\"ApiKey\" : \"f450dec675494dc48e87e59ec29afcb77a4796587272496fb81d22020e91044a\",\n\"Destino\" : [\"". $clienteData->telefone ."\"],\n\"Mensagem\" : \"$emissorMessage\",\n\"CEspeciais\" : \"false\"\n}",
+                            CURLOPT_POSTFIELDS => "{\n\t\"ApiKey\" : \"f450dec675494dc48e87e59ec29afcb77a4796587272496fb81d22020e91044a\",\n\"Destino\" : [\"" . $clienteData->telefone . "\"],\n\"Mensagem\" : \"$emissorMessage\",\n\"CEspeciais\" : \"false\"\n}",
                             CURLOPT_HTTPHEADER => [
                                 "Content-Type: application/json"
                             ],
@@ -473,7 +473,7 @@ class Admin extends ResourceController
 
                             $emissorEmail = 'info@meuruca.ao';
                             $emissorName = 'Meu Ruca';
-                            $emissorSubject = 'Factura - '. $pagamento->numero;
+                            $emissorSubject = 'Factura - ' . $pagamento->numero;
                             $emissorMessage = "Saudações. <br><br>Sr/Sra " . $clienteData->nome . ", Gostariamos de noficar sobre o estado de pagamento da factura <b>" . $pagamento->numero . "<b>";
                             $receptor = $clienteData->email;
                             // $file = $this->request->getFile('file');
@@ -539,7 +539,7 @@ class Admin extends ResourceController
         }
 
         $clienteData = $db->query("SELECT proprietarios.nome, proprietarios.nif as bi, contas.nif, utilizadors.telefone, utilizadors.email  FROM `proprietarios` INNER JOIN `contas` ON proprietarios.conta = contas.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE proprietarios.id = $proprietario")->getRow(0);
-        
+
         $sql = $db->query("UPDATE `facturas` SET `pago`= 1, `estado`= 2 WHERE id = $pagamento->id;");
         $db->query("UPDATE `agendas` SET `estado`= 1 WHERE factura = $pagamento->id;");
 
@@ -721,7 +721,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -775,7 +775,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -823,7 +823,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -868,7 +868,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -980,7 +980,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1020,7 +1020,7 @@ class Admin extends ResourceController
 
                         $data = cleanarray($data);
 
-                        $resposta = cadastrocomseisfotos($this->prestadorModel, $data, $this->db, $this->auditoriaModel, 'Novo Prestador', $foto, 'foto', $img1, 'img1', $img2, 'img2' ,$img3, 'img3', $img4, 'img4' , $img5, 'img5');
+                        $resposta = cadastrocomseisfotos($this->prestadorModel, $data, $this->db, $this->auditoriaModel, 'Novo Prestador', $foto, 'foto', $img1, 'img1', $img2, 'img2', $img3, 'img3', $img4, 'img4', $img5, 'img5');
 
                         return $this->respond($resposta);
                     }
@@ -1066,7 +1066,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1129,7 +1129,7 @@ class Admin extends ResourceController
             }
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1170,7 +1170,7 @@ class Admin extends ResourceController
 
                         $data = cleanarray($data);
 
-                        $resposta = updatecomseisfotos($this->prestadorModel, $data, $decoded->data->id, $this->db, $this->auditoriaModel, 'Prestador', $foto, 'foto', $img1, 'img1', $img2, 'img2', $img3, 'img3',$img4, 'img4', $img5, 'img5');
+                        $resposta = updatecomseisfotos($this->prestadorModel, $data, $decoded->data->id, $this->db, $this->auditoriaModel, 'Prestador', $foto, 'foto', $img1, 'img1', $img2, 'img2', $img3, 'img3', $img4, 'img4', $img5, 'img5');
 
                         return $this->respond($resposta);
                     }
@@ -1215,7 +1215,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1280,7 +1280,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1298,7 +1298,6 @@ class Admin extends ResourceController
                         $data = cleanarray($data);
 
                         $resposta = cadastrocomumafoto($this->marcaModel, $data, $this->db, $this->auditoriaModel, $foto, 'foto');
-
                         return $this->respond($resposta);
                     }
                 }
@@ -1342,7 +1341,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1405,7 +1404,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1468,7 +1467,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1532,7 +1531,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1595,7 +1594,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1659,7 +1658,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 
@@ -1719,7 +1718,7 @@ class Admin extends ResourceController
 
 
             if ($token) {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
 
                 if ($decoded) {
 

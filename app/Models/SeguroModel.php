@@ -14,7 +14,10 @@ class SeguroModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = [
+		'viatura', 'bi', 'bi_file', 'livrete_file', 'titulo_file', 'titulo', 'livrete', 'seguradora', 'tipo_seguro', 'nome_contudor', 'referencia', 'comprovante', 'numero_apolice', 'datanascimento_motorista', 'created_at', 'updated_at', 'deleted_at', 'validade', 'estado', 'preferencia',
+		'mais_indicado'
+	];
 
 	// Dates
 	protected $useTimestamps        = false;
