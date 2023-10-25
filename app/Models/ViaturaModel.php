@@ -14,7 +14,7 @@ class ViaturaModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['matricula', 'numero_apolice', 'apolice', 'livrete', 'titudo_propriedade', 'data_validade', 'motorista', 'numero_cartaira', 'cartaira', 'certidao', 'bi', 'bi_file', 'estado_seguro', 'n_chassi', 'cilindrada', 'n_placa', 'n_motor', 'cor', 'created_at', 'updated_at', 'deleted_at', 'proprietario', 'ano', 'descricao', 'imagem', 'placa'];
+	protected $allowedFields        = ['matricula', 'numero_apolice', 'apolice', 'livrete', 'titudo_propriedade', 'motorista', 'numero_cartaira', 'cartaira', 'certidao', 'estado_seguro', 'n_chassi', 'cilindrada', 'n_placa', 'n_motor', 'cor', 'created_at', 'updated_at', 'deleted_at', 'proprietario', 'ano', 'descricao', 'imagem', 'placa'];
 
 	// Dates
 	protected $useTimestamps        = false;

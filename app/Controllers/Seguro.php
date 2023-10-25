@@ -84,12 +84,12 @@ class Seguro extends ResourceController
 	public function new()
 	{
 		helper('funcao');
+		$bi_file = $this->request->getFile('bi_file');
+			$livrete_file = $this->request->getFile('livrete_file');
+			$titulo_file = $this->request->getFile('titulo_file');
 		$data = [
 			'viatura' => $this->request->getPost('viatura'),
 			'bi' => $this->request->getPost('bi'),
-			'bi_file' => $this->request->getPost('bi_file'),
-			'livrete_file' => $this->request->getPost('livrete_file'),
-			'titulo_file' => $this->request->getPost('titulo_file'),
 			'titulo' => $this->request->getPost('titulo'),
 			'livrete' => $this->request->getPost('livrete'),
 			'seguradora' => $this->request->getPost('seguradora'),
@@ -103,28 +103,26 @@ class Seguro extends ResourceController
 			'preferencia' => $this->request->getPost('preferencia'),
 			'mais_indicado' => $this->request->getPost('mais_indicado'),
 			'criadopor' => 1,
-			'estado' => $this->request->getPost('estado')
+			'estado' => 0
 		];
 		$data = cleanarray($data);
-		$resposta = cadastronormal($this->model, $data, $this->db, $this->auditoria);
+		$resposta = cadastrocomseisfotos($this->model, $data, $this->db, $this->auditoria, 'Seguro', $bi_file, 'bi_file', $livrete_file, 'livrete_file', $titulo_file, 'titulo_file', null, null, null, null, null, null);
 		
 		
 		if ($resposta['code'] !== 200) {
 			return $this->respond(returnVoid($data, (int) 400), 400);
 		}
+
 		$data2 = [
 			'id' => $this->request->getPost('viatura'), 
 			'numero_apolice' => $this->request->getPost('numero_apolice'), 
 			'apolice' => $this->request->getPost('apolice'), 
 			'livrete' => $this->request->getPost('livrete'), 
-			'titudo_propriedade' => $this->request->getPost('titulo'), 
-			'data_validade' => $this->request->getPost('data_validade'), 
+			'titudo_propriedade' => $this->request->getPost('titulo'),
 			'motorista' => $this->request->getPost('nome_contudor'), 
 			'numero_cartaira' => $this->request->getPost('numero_cartaira'), 
 			'cartaira' => $this->request->getPost('cartaira'), 
 			'certidao' => $this->request->getPost('certidao'), 
-			'bi' => $this->request->getPost('bi'), 
-			'bi_file' => $this->request->getPost('bi_file'), 
 			'estado_seguro' => $this->request->getPost('estado_seguro'), 
 			'n_chassi' => $this->request->getPost('n_chassi'), 
 			'cilindrada' => $this->request->getPost('cilindrada'), 
@@ -173,13 +171,13 @@ class Seguro extends ResourceController
 	public function update($id = null)
 	{
 		helper('funcao');
+		$bi_file = $this->request->getFile('bi_file');
+		$livrete_file = $this->request->getFile('livrete_file');
+		$titulo_file = $this->request->getFile('titulo_file');
 		$data = [
 			'id' => $id,
 			'viatura' => $this->request->getPost('viatura'),
 			'bi' => $this->request->getPost('bi'),
-			'bi_file' => $this->request->getPost('bi_file'),
-			'livrete_file' => $this->request->getPost('livrete_file'),
-			'titulo_file' => $this->request->getPost('titulo_file'),
 			'titulo' => $this->request->getPost('titulo'),
 			'livrete' => $this->request->getPost('livrete'),
 			'seguradora' => $this->request->getPost('seguradora'),
@@ -190,14 +188,15 @@ class Seguro extends ResourceController
 			'numero_apolice' => $this->request->getPost('numero_apolice'),
 			'datanascimento_motorista' => $this->request->getPost('datanascimento_motorista'),
 			'validade' => $this->request->getPost('validade'),
+			'data_validade' => $this->request->getPost('data_validade'),
 			'preferencia' => $this->request->getPost('preferencia'),
 			'mais_indicado' => $this->request->getPost('mais_indicado'),
 			'criadopor' => 1,
-			'estado' => $this->request->getPost('estado')
+			'estado' => $this->request->getPost('estado'),
 		];
 		$data = cleanarray($data);
+		$resposta = cadastrocomseisfotos($this->model, $data, $this->db, $this->auditoria, 'Seguro', $bi_file, 'bi_file', $livrete_file, 'livrete_file', $titulo_file, 'titulo_file', null, null, null, null, null, null);
 
-		$resposta = updatenormal($this->model, $data, $this->auditoria);
 
 		if ($resposta['code'] !== 200) {
 			return $this->respond(returnVoid($data, (int) 400), 400);
