@@ -177,7 +177,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
@@ -251,7 +251,7 @@ class Operations extends ResourceController
                             break;
                         case 'changeUserProfile':
                             # code...
-                            $response = $this-> changeUserProfile($data['utilizador'], $data['proprietario'], $data, $model, $this->request->getFile('foto'));
+                            $response = $this->changeUserProfile($data['utilizador'], $data['proprietario'], $data, $model, $this->request->getFile('foto'));
                             break;
                         case 'agendaProfile':
                             # code...
@@ -287,7 +287,7 @@ class Operations extends ResourceController
                             $response = $this->getPrestadores($this->db, $model);
                         case 'showPagamentos':
                             # code...
-                            $response = $this->db->query("SELECT facturas.*, proprietarios.id proprietario, proprietarios.nome, utilizadors.email, utilizadors.telefone, (SELECT SUM(valor * qntidade) FROM `itemfacturas` WHERE factura = facturas.id) AS total FROM `facturas` INNER JOIN proprietarios ON facturas.proprietario = proprietarios.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE facturas.estado <> 3 AND proprietarios.id = ". $data['proprietario'] . " ORDER BY facturas.estado")->getResultArray();
+                            $response = $this->db->query("SELECT facturas.*, proprietarios.id proprietario, proprietarios.nome, utilizadors.email, utilizadors.telefone, (SELECT SUM(valor * qntidade) FROM `itemfacturas` WHERE factura = facturas.id) AS total FROM `facturas` INNER JOIN proprietarios ON facturas.proprietario = proprietarios.id INNER JOIN utilizadors ON proprietarios.id = utilizadors.proprietario WHERE facturas.estado <> 3 AND proprietarios.id = " . $data['proprietario'] . " ORDER BY facturas.estado")->getResultArray();
                             break;
                         case 'arquivarPagamento':
                             # code...
@@ -396,7 +396,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
@@ -479,13 +479,13 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
 
                     $data = json_decode(file_get_contents("php://input"));
-                
+
                     helper('funcao');
 
                     $factura = null;
@@ -556,13 +556,11 @@ class Operations extends ResourceController
                                     'qntidade' => isset($value->quantidade) ? $value->quantidade : 1,
                                     'itemId' => isset($value->itemId) ? $value->itemId : null,
                                 ];
-                                $row =cadastronormal($this->itemfacturaModel, $itemFactura, $this->db, $this->auditoriaModel);
-                                if(!$row){
+                                $row = cadastronormal($this->itemfacturaModel, $itemFactura, $this->db, $this->auditoriaModel);
+                                if (!$row) {
                                     return $this->respond($row, 501);
                                 }
                             }
-
-
                         } else {
                             deletarnormal($factura, $this->db, $this->facturaModel, $this->auditoriaModel);
                             deletarnormal($agenda, $this->db, $this->agendaModel, $this->auditoriaModel);
@@ -633,7 +631,7 @@ class Operations extends ResourceController
 
         $proprietarioData = [
             'id' => $proprietario,
-            'nif' =>isset($data['nif']) ? $data['nif'] : '',
+            'nif' => isset($data['nif']) ? $data['nif'] : '',
             'nome' => $data['profilename'],
             'criadopor' => $data['criadopor']
         ];
@@ -669,7 +667,7 @@ class Operations extends ResourceController
 
     private function showUserCar($db, $user, $model)
     {
-        $data = $db->query("SELECT viaturas.*, marcas.nome AS marca, modelos.id AS modelo_id, modelos.nome AS modelo, ano_fabricos.nome AS ano, ano_fabricos.foto AS imagem FROM `viaturas` INNER JOIN ano_fabricos ON viaturas.ano=ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo=modelos.id INNER JOIN marcas ON modelos.marca = marcas.id WHERE proprietario = $user");
+        $data = $db->query("SELECT viaturas.*, marcas.nome AS marca, modelos.id AS modelo_id, modelos.nome AS modelo, ano_fabricos.nome AS ano, ano_fabricos.foto AS imagem, seguros.bi, seguros.bi_file, seguros.datanascimento_motorista FROM `viaturas` INNER JOIN ano_fabricos ON viaturas.ano=ano_fabricos.id INNER JOIN modelos ON ano_fabricos.modelo=modelos.id INNER JOIN marcas ON modelos.marca = marcas.id LEFT JOIN seguros ON viaturas.id = seguros.viatura WHERE proprietario = $user");
         $response = $data->getResult();
 
         $row = array();
@@ -681,16 +679,30 @@ class Operations extends ResourceController
             $caracteristica = $db->query("SELECT '' AS dias, '' AS `data`, '' AS pecas, caracteristicas.item AS titulo, caracteristicas.descricao mensagem FROM `caracteristicas` WHERE referencia = $value->modelo_id")->getResult();
             $result = [
                 "id" => $value->id,
-                "matricula" => $value->matricula,
-                "created_at" => $value->created_at,
-                "updated_at" => $value->updated_at,
-                "deleted_at" => $value->deleted_at,
-                "proprietario" => $value->proprietario,
-                "ano" => $value->ano,
-                "descricao" => $value->descricao,
-                "imagem" => $value->imagem,
-                "marca" => $value->marca,
-                "modelo" => $value->modelo,
+                'matricula' => $value->matricula,
+                'marca' => $value->marca,
+                'modelo' => $value->modelo,
+                'numero_apolice' => $value->numero_apolice,
+                'apolice' => $value->apolice,
+                'livrete' => $value->livrete,
+                'titudo_propriedade' => $value->titudo_propriedade,
+                'motorista' => $value->motorista,
+                'numero_cartaira' => $value->numero_cartaira,
+                'cartaira' => $value->cartaira,
+                'certidao' => $value->certidao,
+                'estado_seguro' => $value->estado_seguro,
+                'n_chassi' => $value->n_chassi,
+                'cilindrada' => $value->cilindrada,
+                'n_placa' => $value->n_placa,
+                'combustivel' => $value->combustivel,
+                'cor' => $value->cor,
+                'created_at' => $value->created_at,
+                'updated_at' => $value->updated_at,
+                'deleted_at' => $value->deleted_at,
+                'proprietario' => $value->proprietario,
+                'ano' => $value->ano,
+                'descricao' => $value->descricao,
+                'imagem' => $value->imagem,
 
                 // 'km_actual' => $gestVia->km_actual ?? 0,
                 // 'km_diaria_dias_semana' => $gestVia->km_diaria_dias_semana ?? 0,
@@ -722,10 +734,10 @@ class Operations extends ResourceController
                     "imagem" => $gestVia->imagem ?? '0',
                 ],
                 'previsao' => [
-            // Tipo de olho apartir da infirmação de modelo.
-            // Mudança de Velas .
-            // Mudança de dos cauços* de travão.
-            // Mudança de pneus.
+                    // Tipo de olho apartir da infirmação de modelo.
+                    // Mudança de Velas .
+                    // Mudança de dos cauços* de travão.
+                    // Mudança de pneus.
                     nextMudancaVelas($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0),
                     nextMudancaPneus($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0),
                     nextManutencao($gestVia->km_actual ?? 0, $gestVia->km_diaria_dias_semana ?? 2, $gestVia->km_diaria_final_semana ?? 5, $gestVia->data_ultima_revisao ?? date('Y-m-d'), $gestVia->km_na_ultima_revisao ?? 0, $gestVia->periodo_de_revisao ?? 5000),
@@ -875,7 +887,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {
@@ -927,7 +939,7 @@ class Operations extends ResourceController
 
         if ($token) {
             try {
-                $decoded =JWT::decode($token, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($token, new Key($secret_key, 'HS256'));
                 // return $this->respond($decoded);
                 // Access is granted. Add code of the operation here
                 if ($decoded) {

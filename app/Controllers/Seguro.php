@@ -63,7 +63,7 @@ class Seguro extends ResourceController
 	public function show($id = null)
 	{
 		if (!is_null($id)) {
-			$data = $this->model->where('id', $id)->first();
+			$data = $this->model->where('viatura', $id)->first();
 		} else {
 			$data = $this->model->paginate();
 		}
@@ -85,8 +85,8 @@ class Seguro extends ResourceController
 	{
 		helper('funcao');
 		$bi_file = $this->request->getFile('bi_file');
-			$livrete_file = $this->request->getFile('livrete_file');
-			$titulo_file = $this->request->getFile('titulo_file');
+		$livrete_file = $this->request->getFile('livrete_file');
+		$titulo_file = $this->request->getFile('titulo_file');
 		$data = [
 			'viatura' => $this->request->getPost('viatura'),
 			'bi' => $this->request->getPost('bi'),
@@ -103,38 +103,38 @@ class Seguro extends ResourceController
 			'preferencia' => $this->request->getPost('preferencia'),
 			'mais_indicado' => $this->request->getPost('mais_indicado'),
 			'criadopor' => 1,
-			'estado' => 0
+			'estado' => 1
 		];
 		$data = cleanarray($data);
 		$resposta = cadastrocomseisfotos($this->model, $data, $this->db, $this->auditoria, 'Seguro', $bi_file, 'bi_file', $livrete_file, 'livrete_file', $titulo_file, 'titulo_file', null, null, null, null, null, null);
-		
-		
+
+
 		if ($resposta['code'] !== 200) {
 			return $this->respond(returnVoid($data, (int) 400), 400);
 		}
 
 		$data2 = [
-			'id' => $this->request->getPost('viatura'), 
-			'numero_apolice' => $this->request->getPost('numero_apolice'), 
-			'apolice' => $this->request->getPost('apolice'), 
-			'livrete' => $this->request->getPost('livrete'), 
+			'id' => $this->request->getPost('viatura'),
+			'numero_apolice' => $this->request->getPost('numero_apolice'),
+			'apolice' => $this->request->getPost('apolice'),
+			'livrete' => $this->request->getPost('livrete'),
 			'titudo_propriedade' => $this->request->getPost('titulo'),
-			'motorista' => $this->request->getPost('nome_contudor'), 
-			'numero_cartaira' => $this->request->getPost('numero_cartaira'), 
-			'cartaira' => $this->request->getPost('cartaira'), 
-			'certidao' => $this->request->getPost('certidao'), 
-			'estado_seguro' => $this->request->getPost('estado_seguro'), 
-			'n_chassi' => $this->request->getPost('n_chassi'), 
-			'cilindrada' => $this->request->getPost('cilindrada'), 
-			'n_placa' => $this->request->getPost('n_placa'), 
+			'motorista' => $this->request->getPost('nome_contudor'),
+			'numero_cartaira' => $this->request->getPost('numero_cartaira'),
+			'cartaira' => $this->request->getPost('cartaira'),
+			'certidao' => $this->request->getPost('certidao'),
+			'estado_seguro' => 1,
+			'n_chassi' => $this->request->getPost('n_chassi'),
+			'cilindrada' => $this->request->getPost('cilindrada'),
+			'n_placa' => $this->request->getPost('n_placa'),
 			'n_motor' => $this->request->getPost('n_motor'),
-			'cor' => $this->request->getPost('cor'), 
-			'created_at' => $this->request->getPost('created_at'), 
-			'updated_at' => $this->request->getPost('updated_at'), 
-			'deleted_at' => $this->request->getPost('deleted_at'), 
-			'proprietario' => $this->request->getPost('proprietario'), 
-			'ano' => $this->request->getPost('ano'), 
-			'descricao' => $this->request->getPost('descricao'), 
+			'cor' => $this->request->getPost('cor'),
+			'created_at' => $this->request->getPost('created_at'),
+			'updated_at' => $this->request->getPost('updated_at'),
+			'deleted_at' => $this->request->getPost('deleted_at'),
+			'proprietario' => $this->request->getPost('proprietario'),
+			'ano' => $this->request->getPost('ano'),
+			'descricao' => $this->request->getPost('descricao'),
 			'imagem' => $this->request->getPost('imagem'),
 			'criadopor' => 1
 		];
@@ -171,15 +171,14 @@ class Seguro extends ResourceController
 	public function update($id = null)
 	{
 		helper('funcao');
-		$bi_file = $this->request->getFile('bi_file');
-		$livrete_file = $this->request->getFile('livrete_file');
-		$titulo_file = $this->request->getFile('titulo_file');
+
 		$data = [
 			'id' => $id,
 			'viatura' => $this->request->getPost('viatura'),
 			'bi' => $this->request->getPost('bi'),
 			'titulo' => $this->request->getPost('titulo'),
 			'livrete' => $this->request->getPost('livrete'),
+			'description' => $this->request->getPost('description'),
 			'seguradora' => $this->request->getPost('seguradora'),
 			'tipo_seguro' => $this->request->getPost('tipo_seguro'),
 			'nome_contudor' => $this->request->getPost('nome_contudor'),
@@ -192,15 +191,42 @@ class Seguro extends ResourceController
 			'preferencia' => $this->request->getPost('preferencia'),
 			'mais_indicado' => $this->request->getPost('mais_indicado'),
 			'criadopor' => 1,
-			'estado' => $this->request->getPost('estado'),
+			'estado' => $this->request->getPost('estado_seguro'),
 		];
 		$data = cleanarray($data);
-		$resposta = cadastrocomseisfotos($this->model, $data, $this->db, $this->auditoria, 'Seguro', $bi_file, 'bi_file', $livrete_file, 'livrete_file', $titulo_file, 'titulo_file', null, null, null, null, null, null);
-
+		$resposta = updatenormal($this->model, $data, $this->auditoria);
 
 		if ($resposta['code'] !== 200) {
 			return $this->respond(returnVoid($data, (int) 400), 400);
 		}
+
+		$apolice = $this->request->getFile('apolice');
+		$data2 = [
+			'id' => $this->request->getPost('id'),
+			'numero_apolice' => $this->request->getPost('numero_apolice'),
+			'livrete' => $this->request->getPost('livrete'),
+			'titudo_propriedade' => $this->request->getPost('titulo'),
+			'motorista' => $this->request->getPost('nome_contudor'),
+			'numero_cartaira' => $this->request->getPost('numero_cartaira'),
+			'cartaira' => $this->request->getPost('cartaira'),
+			'certidao' => $this->request->getPost('certidao'),
+			'estado_seguro' => $this->request->getPost('estado_seguro'),
+			'n_chassi' => $this->request->getPost('n_chassi'),
+			'cilindrada' => $this->request->getPost('cilindrada'),
+			'n_placa' => $this->request->getPost('n_placa'),
+			'n_motor' => $this->request->getPost('n_motor'),
+			'cor' => $this->request->getPost('cor'),
+			'created_at' => $this->request->getPost('created_at'),
+			'updated_at' => $this->request->getPost('updated_at'),
+			'deleted_at' => $this->request->getPost('deleted_at'),
+			'proprietario' => $this->request->getPost('proprietario'),
+			'ano' => $this->request->getPost('ano'),
+			'descricao' => $this->request->getPost('descricao'),
+			'imagem' => $this->request->getPost('imagem'),
+			'criadopor' => 1
+		];
+		$data2 = cleanarray($data2);
+		updatecomumafoto($this->viatura, $data2, $this->db, $this->auditoria, 'Viatura', $this->viatura->table, $apolice, 'apolice');
 		return $this->respond($resposta);
 	}
 
